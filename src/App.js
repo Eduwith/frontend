@@ -17,6 +17,8 @@ function App() {
             </Route>
             <Route path="/join" element={<Join />}>
             </Route>
+            <Route path="/volunteer" element={<Volunteer/>}></Route>
+            <Route path="/volunteerdetail/:idex" element={<VolunteerDetail vlist={vlist}/>}></Route>
           </Routes>
         </Router>
     </div>

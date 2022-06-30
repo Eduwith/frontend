@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/home/Navbar";
 import styles from "./Home.module.css";
 import fox from '../images/fox.png';
-import customAxios from '../../customAxios';
+import customAxios from '../customAxios';
 
 function Home() {
 
