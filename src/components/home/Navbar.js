@@ -43,15 +43,15 @@ function Navbar() {
           </li>
 
           <li  className={styles.navItem}>
-            <Link to="/Mypage" style={{textDecoration: 'none', color: 'gray'}} >마이페이지</Link>
+            <Link to="/mypage" style={{textDecoration: 'none', color: 'gray'}} >마이페이지</Link>
           </li>
         </ul>
     </nav>
     <nav className={styles.subvar}>
       <ul className={styles.subLinks}>
-        <li><NavLink to="/Mentoring" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 멘토링</NavLink></li>
-        <li><NavLink to="/Volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
-        <li><NavLink to="/Guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
+        <li><NavLink to="/mentoring" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 멘토링</NavLink></li>
+        <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
+        <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
       </ul>
     </nav>
     <Login open={loginOpen} close={closeLogin} />
