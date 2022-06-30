@@ -3,6 +3,7 @@ import Navbar from "../components/home/Navbar";
 import styles from "./Home.module.css";
 import fox from '../images/fox.png';
 import customAxios from '../customAxios';
+import Home_Volunteer from "../components/home/Home_Volunteer";
 
 function Home() {
 
@@ -27,6 +28,7 @@ function Home() {
       <Navbar />
       <div className={styles.container}>
         <img className={styles.imgFox} src={fox} alt="여우" />
+        <Home_Volunteer/>
       </div>
       <h1>IP 주소는 {ip}입니다.</h1>
     </div>

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Navbar from "../main/Navbar";
+import Navbar from "../home/Navbar";
 import styles from "./Join.module.css";
 
 function Join() {

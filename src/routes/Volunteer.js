@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import styled from "styled-components";
 import styles from "./Volunteer.module.css";
 import vimg from "../images/vimage.png";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/home/Navbar";
 import { Link } from "react-router-dom";
 //import vlists from "../data";
 

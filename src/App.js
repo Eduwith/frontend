@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
-import Home from './components/Home';
-import Join from './components/Join';
-import Login from './components/Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './routes/Home';
+import Join from './components/user/Join';
+import Login from './components//user/Login';
+import Volunteer from './routes/Volunteer';
+import VolunteerDetail from './components/volunteer/VolunteerDetail';
+import vlists from './data.js';
+
 function App() {
+  const [vlist, setVlist] = useState(vlists);
+
   return (
     <div className="App">
         <Router>
