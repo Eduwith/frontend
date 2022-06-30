@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import {NavLink, Link} from 'react-router-dom';
 import logo from '../images/logo.jpg';
-import Login from "./Login";
+import Login from "../Login";
 
 function Navbar() {
 

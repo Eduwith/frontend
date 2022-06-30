@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Navbar from "./Navbar";
+import Navbar from "../main/Navbar";
 import styles from "./Join.module.css";
 
 function Join() {
@@ -54,7 +54,7 @@ function Join() {
         address: address
       })
     }
-    fetch("http://34.64.147.56:8080/user/signup", join_info)
+    fetch("http://api_address", join_info)
     .then(response =>  response.json())
     .then(response => {
       console.log(response);
