@@ -54,7 +54,7 @@ function Join() {
         address: address
       })
     }
-    fetch("http://api_address", join_info)
+    fetch("http://localhost:8080/user/join", join_info)
     .then(response =>  response.json())
     .then(response => {
       console.log(response);

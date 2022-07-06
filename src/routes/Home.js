@@ -28,9 +28,8 @@ function Home() {
       <Navbar />
       <div className={styles.container}>
         <img className={styles.imgFox} src={fox} alt="여우" />
-        <Home_Volunteer/>
       </div>
-      <h1>IP 주소는 {ip}입니다.</h1>
+      <Home_Volunteer/>
     </div>
   );
 }

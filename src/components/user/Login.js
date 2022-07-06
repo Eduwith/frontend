@@ -33,7 +33,7 @@ const Login = ( props ) => {
           "Content-Type": "application/json"
         }
       }
-      fetch("http://api_address", login_info)
+      fetch("http://localhost:8080/user/join", login_info)
       .then(response =>  response.json())
       .then(result => {
         console.log(result);
