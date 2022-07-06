@@ -54,7 +54,7 @@ function Join() {
       body: JSON.stringify({
         email: email,
         name: name,
-        password: password,
+        pwd: password,
         age: age,
         gender: gender,
         address: address,

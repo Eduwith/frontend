@@ -27,7 +27,7 @@ const Login = ( props ) => {
         method: "POST",
         body: JSON.stringify({
           email: email,
-          password: pw
+          pwd: pw
         }),
         headers: {
           "Content-Type": "application/json"
