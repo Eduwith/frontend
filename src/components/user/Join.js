@@ -7,6 +7,7 @@ function Join() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [age, setAge] = useState(0);
   const [gender, setGender] = useState("남자");
   const [address, setAddress] = useState("");
 
@@ -23,6 +24,10 @@ function Join() {
 
   const onConfirmPasswordHandler = (event) => {
       setConfirmPassword(event.currentTarget.value)
+  }
+
+  const onAgeHandler = (event) => {
+    setAge(event.currentTarget.value)
   }
 
   const onGenderHandler = (event) => {
@@ -47,11 +52,13 @@ function Join() {
     const join_info = {
       method: "POST",
       body: JSON.stringify({
-        name: name,
         email: email,
+        name: name,
         password: password,
+        age: age,
         gender: gender,
-        address: address
+        address: address,
+
       })
     }
     fetch("http://localhost:8080/user/join", join_info)
@@ -91,6 +98,10 @@ function Join() {
                     <option value="남자" >남자</option>
                     <option value="여자">여자</option>
               </select>
+            </div>
+            <div className={styles.box}>
+              <h3>나이</h3>
+              <input name="age" type="number" placeholder="이름" value={age} onChange={onAgeHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <h3>주소</h3>
