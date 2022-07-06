@@ -8,7 +8,7 @@ function Join() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [age, setAge] = useState(0);
-  const [gender, setGender] = useState("남자");
+  const [gender, setGender] = useState("M");
   const [address, setAddress] = useState("");
 
   const onNameHandler = (event) => {
@@ -95,8 +95,8 @@ function Join() {
             <div className={styles.box}>
               <h3>성별</h3>
               <select onChange={onGenderHandler} value={gender} className={styles.input_join}>
-                    <option value="남자" >남자</option>
-                    <option value="여자">여자</option>
+                    <option value="M" >남자</option>
+                    <option value="F">여자</option>
               </select>
             </div>
             <div className={styles.box}>
