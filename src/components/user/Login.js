@@ -36,11 +36,11 @@ const Login = ( props ) => {
       fetch("http://localhost:8080/user/login", login_info)
       .then(response =>  response.json())
       .then(result => {
+        console.log('result 출력');
         console.log(result);
         if(result.token) {
           //localStorage.setItem('token', result.token);
           alert('환영합니다!');
-          navigate('/');
         } else if(result.message === 'INVALID_USER'){
           alert('ID와 PW를 확인해주세요.');
         }

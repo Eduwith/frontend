@@ -59,12 +59,16 @@ function Join() {
         gender: gender,
         address: address,
 
-      })
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     }
     fetch("http://localhost:8080/user/join", join_info)
     .then(response =>  response.json())
-    .then(response => {
-      console.log(response);
+    .then(result => {
+      console.log(result);
+      alert('출력 result');
     });
   };
 
