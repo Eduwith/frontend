@@ -4,6 +4,7 @@ import styles from "./Home.module.css";
 import fox from '../images/fox.png';
 import customAxios from '../customAxios';
 import Home_Volunteer from "../components/home/Home_Volunteer";
+import Mento from "../components/mentoring/Mento";
 
 function Home() {
 
@@ -26,10 +27,10 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className={styles.container}>
+      <div className={styles.ctn}>
         <img className={styles.imgFox} src={fox} alt="여우" />
       </div>
-      <Home_Volunteer/>
+      <Mento />
     </div>
   );
 }

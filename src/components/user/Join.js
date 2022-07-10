@@ -47,7 +47,6 @@ function Join() {
   }
 
   const handleSubmit = () => { // 정보 전송
-    //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
 
     const join_info = {
       method: "POST",
@@ -68,7 +67,6 @@ function Join() {
     .then(response =>  response.json())
     .then(result => {
       console.log(result);
-      alert('출력 result');
     });
   };
 

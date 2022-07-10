@@ -8,6 +8,7 @@ import Login from './components//user/Login';
 import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import vlists from './data.js';
+import Mentoring from './components/mentoring/Mentoring';
 
 function App() {
   const [vlist, setVlist] = useState(vlists);
@@ -23,6 +24,8 @@ function App() {
             <Route path="/login" element={<Login />}>
             </Route>
             <Route path="/join" element={<Join />}>
+            </Route>
+            <Route path="/mentoring" element={<Mentoring />}>
             </Route>
             <Route path="/volunteer" element={<Volunteer/>}></Route>
             <Route path="/volunteerdetail/:idex" element={<VolunteerDetail vlist={vlist}/>}></Route>
