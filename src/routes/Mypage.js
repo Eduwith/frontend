@@ -95,8 +95,9 @@ function Mypage() {
                                         </tr>
                                     </tbody>
                                 </Table>
-                                <div className={styles.editbtn}>
-                                    <button className={styles.editbtn1}>수정하기</button> 
+                                <div className={styles.btnbox}>
+                                    <button className={styles.editbtn}>수정하기</button> 
+                                    <button className={styles.quitbtn}>탈퇴하기</button> 
                                 </div>
                                 
                         </div>
