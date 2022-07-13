@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Navbar from "../main/Navbar";
+import Navbar from "../home/Navbar";
 import styles from "./Join.module.css";
 
 function Join() {
@@ -7,7 +7,8 @@ function Join() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [gender, setGender] = useState("남자");
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("M");
   const [address, setAddress] = useState("");
 
   const onNameHandler = (event) => {
@@ -23,6 +24,10 @@ function Join() {
 
   const onConfirmPasswordHandler = (event) => {
       setConfirmPassword(event.currentTarget.value)
+  }
+
+  const onAgeHandler = (event) => {
+    setAge(event.currentTarget.value)
   }
 
   const onGenderHandler = (event) => {
@@ -42,22 +47,26 @@ function Join() {
   }
 
   const handleSubmit = () => { // 정보 전송
-    //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
 
     const join_info = {
       method: "POST",
       body: JSON.stringify({
-        name: name,
         email: email,
-        password: password,
+        name: name,
+        pwd: password,
+        age: age,
         gender: gender,
-        address: address
-      })
+        address: address,
+
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     }
-    fetch("http://api_address", join_info)
+    fetch("http://localhost:8080/user/join", join_info)
     .then(response =>  response.json())
-    .then(response => {
-      console.log(response);
+    .then(result => {
+      console.log(result);
     });
   };
 
@@ -88,9 +97,13 @@ function Join() {
             <div className={styles.box}>
               <h3>성별</h3>
               <select onChange={onGenderHandler} value={gender} className={styles.input_join}>
-                    <option value="남자" >남자</option>
-                    <option value="여자">여자</option>
+                    <option value="M" >남자</option>
+                    <option value="F">여자</option>
               </select>
+            </div>
+            <div className={styles.box}>
+              <h3>나이</h3>
+              <input name="age" type="number" placeholder="이름" value={age} onChange={onAgeHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <h3>주소</h3>

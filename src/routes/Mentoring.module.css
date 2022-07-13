@@ -1,0 +1,178 @@
+body {
+  background-color: #F1F5FA;
+}
+
+.back {
+  background-color: #F1F5FA;
+}
+
+.Title {
+  font-size: 28pt;
+  padding-top: 40px;
+  margin-left: 10%;
+  font-weight: 600;
+}
+
+/*검색창*/
+.search {
+  width: 1250px;
+  height: 300px;
+  margin-top: 30px;
+  border: 2px solid #4673EA;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+}
+
+.hiddenblock {
+  width: 150px;
+  height: 30px;
+  
+}
+
+.cn1 div h2 {
+  margin-right: 30px;
+}
+.cn1::after{
+  clear:both;
+  content:"";
+  display: block;
+
+}
+
+.cn1 {
+  margin-bottom: 45px;
+
+}
+
+.subject > * {
+  float: left;
+}
+
+.subject > label {
+  line-height: 35px;
+  font-size: 22px;
+  margin-right: 30px;
+  
+}
+
+.date > input {
+  width: 200px;
+  height: 33px;
+}
+
+.selectbox1 {
+  width: 100px;
+  height: 33px;
+ }
+
+ .region {
+    width: 200px;
+    height: 33px;
+ }
+
+.region_sub {
+ width: 200px;
+ height: 33px;
+}
+
+span {
+  line-height: 37px;
+  font-size: 14pt;
+}
+
+.scBtn {
+  width: 80px;
+  height: 40px;
+  background-color: #4673EA;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 16pt;
+  margin-right: -25px;
+  float: right;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+/*멘토 창*/
+.mento {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  
+  float: left;
+}
+
+.group  {
+  margin-left: 5.5%;
+  
+}
+
+.group div span {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.mento > img {
+  width: 200px;
+  height: 300px;
+  float: left;
+  margin-left: 20px; 
+  margin-top: 25px;
+}
+
+.title {
+  font-size: 20px;
+  padding-top:5px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: left;
+}
+
+.btn {
+  margin-top: 20px;
+  float: left;
+  border-radius: 10px;
+  background-color: #4673EA;
+  height: 40px;
+  width: 70px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.box {
+  text-align: left;
+  width: 250px;
+  height: 60px;
+  background-color: rgb(252, 252, 178);
+  float: left;
+  margin-left: 30px;
+  margin-top: 10px; 
+}
+
+.box2 {
+  text-align: left;
+  width: 250px;
+  height: 120px;
+  background-color: rgb(252, 252, 178);
+  float: left;
+  margin-left: 30px;
+  margin-top: 10px; 
+}
+.bin::after {
+  clear:both;
+  content:"";
+  display: block;
+}

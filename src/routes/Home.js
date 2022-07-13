@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/home/Navbar";
 import styles from "./Home.module.css";
 import fox from '../images/fox.png';
-import customAxios from '../../customAxios';
+import customAxios from '../customAxios';
+import Home_Study from "../components/home/Home_Study";
+import Mento from "../components/mentoring/Mento";
 
 function Home() {
 
@@ -25,10 +27,11 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className={styles.container}>
+      <div className={styles.ctn}>
         <img className={styles.imgFox} src={fox} alt="여우" />
       </div>
-      <h1>IP 주소는 {ip}입니다.</h1>
+      <Mento />
+      <Home_Study/>
     </div>
   );
 }
