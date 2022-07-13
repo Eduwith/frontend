@@ -1,6 +1,4 @@
 .content{
-    /* position: relative; */
-    /* top: -180px; */
     margin: 0 auto;
     width: 1200px;
     height: 800px;
@@ -40,6 +38,7 @@
 }
 .buttonblock{
     display: flex;
+    margin: 0 25%;
 }
 .btn_apply{
     color: white;

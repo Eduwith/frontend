@@ -4,7 +4,7 @@ function data() {
         {
             vid:0,
             vtitle:"오디오북 녹음하기", 
-            vcountry: "대한한국",
+            vcountry: "서울 성북구",
             vrecruitperiod: "2022.02.28~2022.03.06",
             vperiod: "2022.03.07~2023.01.31",
             vpeople: "5/10"
@@ -12,7 +12,7 @@ function data() {
         {
             vid:1,
             vtitle:"자료 번역하기",
-            vcountry: "대한한국",
+            vcountry: "경기도",
             vrecruitperiod: "2022.02.28~2022.03.06",
             vperiod: "2023.03.07~2023.01.31",
             vpeople: "0/10"
@@ -20,7 +20,7 @@ function data() {
         {
             vid:2,
             vtitle: "디지털 취약계층을 위한 강의",
-            vcountry: "서울",
+            vcountry: "부산",
             vrecruitperiod: "2022.02.28~2022.03.06",
             vperiod: "2022.03.07~2023.01.31",
             vpeople: "2/10"
