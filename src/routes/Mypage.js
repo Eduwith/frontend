@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
-import styles from "./Mypage.module.css";
+import Navbar from "../components/home/Navbar";
+import styles from "./MyPage.module.css";
 import myimg from "../images/myimg.png"
 import {NavLink} from "react-router-dom";
 import Table from "react-bootstrap/Table";
@@ -25,19 +25,19 @@ function Mypage() {
                         <img src={myimg} alt="myimg" className={styles.myimg}/>
                         <h2 className={styles.name}>Tom </h2>
                         <ul className={styles.nav}>
-                            <li><NavLink to="/Mypage" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>프로필 수정</NavLink></li>
-                            <li><NavLink to="/Mymento" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>멘토링 정보</NavLink></li>
-                            <li><NavLink to="/Myvolunteer" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>자원봉사 내역</NavLink></li>
-                            <li><NavLink to="/Myaccount" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>계정정보 수정</NavLink></li>
-                            <li><NavLink to="/Myscrap"style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>스크랩 내역</NavLink></li>
+                            <li><NavLink to="/MyPage" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>프로필 수정</NavLink></li>
+                            <li><NavLink to="/MyMentoApply" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>멘토링 신청</NavLink></li>
+                            <li><NavLink to="/MyMento" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>멘토링 내역</NavLink></li>
+                            <li><NavLink to="/MyStudy" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>스터디 관리</NavLink></li>
+                            <li><NavLink to="/MyScrap"style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>스크랩 내역</NavLink></li>
+                            <li><NavLink to="/MyPoint" style={({ isActive }) => (isActive ? activeStyle : unactiveStyle)}>포인트 관리</NavLink></li>
                         </ul>
                     </div>
                     <div className={styles.right}>
                         <h2 className={styles.mymenu}>프로필 수정 </h2><hr/>
                         <div>
-                                <Table striped bordered hover
-                                background- color="white">
-                                    <tbody>
+                                <Table>
+                                    <tbody class="align-middle">
                                         <tr>
                                             <td className={styles.tbmenu} >프로필 이미지</td>
                                             <td>
@@ -49,39 +49,54 @@ function Mypage() {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className={styles.tbmenu}>name</td>
+                                            <td className={styles.tbmenu}>이메일</td>
                                             <td>
-                                            <input type="text" placeholder="name"
-                                            />
+                                            <input className={styles.userinfor} type="email" placeholder="이메일" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className={styles.tbmenu}>age</td>
+                                            <td className={styles.tbmenu}>비밀번호</td>
                                             <td>
-                                                <input type="text" placeholder="age"
-
-                                                />
+                                            <input className={styles.userinfor} type="password" placeholder="비밀번호" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className={styles.tbmenu}>nationality</td>
+                                            <td className={styles.tbmenu}>비밀번호 변경</td>
                                             <td>
-                                                <input type="text" placeholder="Korea"
-                                                />
+                                            <input className={styles.userinfor} type="password" placeholder="비밀번호" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td className={styles.tbmenu}>gender</td>
+                                            <td className={styles.tbmenu}>이름</td>
                                             <td>
-                                                <input type="text" placeholder="gender"
-                                                />
+                                            <input className={styles.userinfor} type="text" placeholder="이름" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.tbmenu}>나이</td>
+                                            <td>
+                                                <input className={styles.userinfor} type="number" placeholder="나이" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.tbmenu}>주소</td>
+                                            <td>
+                                                <input className={styles.userinfor} type="text" placeholder="주소" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles.tbmenu}>성별</td>
+                                            <td>
+                                            <select >
+                                                <option value="M" >남자</option>
+                                                <option value="F">여자</option>
+                                            </select>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </Table>
                                 <div className={styles.editbtn}>
-                                    <button className={styles.editbtn1}>edit</button> 
-                                    <button className={styles.editbtn2}>again</button> 
+                                    <button className={styles.editbtn1}>수정하기</button> 
                                 </div>
                                 
                         </div>

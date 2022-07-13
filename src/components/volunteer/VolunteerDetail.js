@@ -16,13 +16,14 @@ function VolunteerDetail(props) {
     const navigate = useNavigate();
     console.log(props.vlist[idex]);
 
-    const [posts, setPosts] = useState([]);
-    const apiVolunteer = "";
-    useEffect(async () => {
-        const response = await axios.get(apiVolunteer);
-        setPosts(response.data);
-        console.log(response.data);
-      }, []);
+    // const [posts, setPosts] = useState([]);
+    // const apiVolunteer = "";
+    // useEffect(async () => {
+    //     const response = await axios.get(apiVolunteer);
+    //     setPosts(response.data);
+    //     console.log(response.data);
+    //   }, []);
+
     return(
         <div>
             <Navbar/>
@@ -59,7 +60,7 @@ function VolunteerDetail(props) {
                                             <td colSpan={3}>...</td>
                                         </tr>
                                     </tbody>
-                                </Table>
+                        </Table>
                  </div>
                  <div className={s.buttonblock}>
                     <button className={s.btn_apply}>신청하기</button>

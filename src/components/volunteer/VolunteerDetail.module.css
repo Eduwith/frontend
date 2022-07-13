@@ -25,9 +25,10 @@
     border-radius: 30px;
 
     text-align: center;
+    padding-top: 5px;
     align-items: center;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 00;
+    font-size: 24px;
 }
 .table{
     font-size: 20px;

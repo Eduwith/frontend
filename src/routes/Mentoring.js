@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "../home/Navbar";
+import Navbar from "../components/home/Navbar";
 import styles from "./Mentoring.module.css";
-import pin from '../../images/pin.png';
-import MentoApply from "./MentoApply";
+import pin from "../images/pin.png";
+import MentoApply from "../components/mentoring/MentoApply";
 
 let mento = [['한이음(23세/여자)', '중1 수학 멘티 모집'],
              ['박서윤(24세/여자)', '고3 영어 멘티 모집'],
