@@ -37,7 +37,7 @@ function Mypage() {
                         <h2 className={styles.mymenu}>프로필 수정 </h2><hr/>
                         <div>
                                 <Table>
-                                    <tbody class="align-middle">
+                                    <tbody className="align-middle">
                                         <tr>
                                             <td className={styles.tbmenu} >프로필 이미지</td>
                                             <td>
