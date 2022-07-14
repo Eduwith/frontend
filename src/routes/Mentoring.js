@@ -25,7 +25,7 @@ function Mentoring() {
         멘토 찾기
       </div>
 
-
+    <div className={styles.big_box}>
       <div className={styles.search}>
         <div className={styles.cn1}>
           <div>
@@ -82,26 +82,27 @@ function Mentoring() {
 
       </div>
 
-      <div className={styles.group}>
-        {mento.map((n) => (
-           <div className={styles.mento} key={n[0]}>
-           <img className={styles.pic} src={pin} alt="mentopic" />
-           <div className={styles.title}>{n[1]}</div>
-           <div className={styles.btn} onClick={togglePopup}>신청</div>
-           
-           <div className={styles.box}><span>멘토 <b>{n[0]}</b></span></div>
-           <div className={styles.box}><span>분야</span></div>
-           <div className={styles.box2}><span>소개</span></div>
-         </div>
+        <div className={styles.group}>
+          {mento.map((n) => (
+            <div className={styles.mento} key={n[0]}>
+            <img className={styles.pic} src={pin} alt="mentopic" />
+            <div className={styles.title}>{n[1]}</div>
+            <div className={styles.btn} onClick={togglePopup}>신청</div>
+            
+            <div className={styles.box}><span>멘토 <b>{n[0]}</b></span></div>
+            <div className={styles.box}><span>분야</span></div>
+            <div className={styles.box2}><span>소개</span></div>
+          </div>
+            
+          ))}
           
-        ))}
-        
-        {showPopup && (
-              <MentoApply togglePopup={togglePopup} />
-            )}
-      </div>
+          {showPopup && (
+                <MentoApply togglePopup={togglePopup} />
+              )}
+        </div>
       </div>
     </div>
+  </div>
 
   );
 }

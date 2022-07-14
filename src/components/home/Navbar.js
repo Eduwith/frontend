@@ -3,6 +3,9 @@ import styles from "./Navbar.module.css";
 import {NavLink, Link} from 'react-router-dom';
 import logo from '../../images/logo.jpg';
 import Login from "../user/Login";
+import point from '../../images/point.png';
+import bell from '../../images/bell.png';
+import msg from '../../images/msg.png';
 
 function Navbar() {
 
@@ -52,6 +55,12 @@ function Navbar() {
         <li><NavLink to="/mentoring" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 멘토링</NavLink></li>
         <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
         <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
+      </ul>
+
+      <ul className={styles.nav_icons_ul}>
+        <li><Link to="/mypoint"><img alt="point" src={point} className={styles.nav_icons} /></Link></li>
+        <li><Link to="/mypoint"><img alt="point" src={msg} className={styles.nav_icons} /></Link></li>
+        <li><Link to="/mypoint"><img alt="point" src={bell} className={styles.nav_icons} /></Link></li>
       </ul>
     </nav>
     <Login open={loginOpen} close={closeLogin} />

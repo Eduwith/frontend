@@ -9,7 +9,7 @@ import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import vlists from './data.js';
 import Mentoring from "./routes/Mentoring";
-import MyPage from './routes/MyPage';
+import MyPage from './routes/Mypage';
 import MyMentoApply from './components/mypage/MyMentoApply';
 import MyMento from './components/mypage/MyMento';
 import MyStudy from './components/mypage/MyStudy';
