@@ -1,0 +1,40 @@
+.ctn {
+    /* width: 100%;
+    height: 335px; */
+    padding: 0px 100px;
+    background-color: #F1F5FA;
+}
+/* .banner{
+    width: 1440px;
+    margin: 0 auto;
+} */
+.btitle{
+    font-weight: 600;
+    font-size: 28px;
+}
+.btext{
+    font-size: 24px;
+    
+}
+.btntest{
+    width: 240px;
+    height: 50px;
+    margin-top: 50px;
+    margin-right: 60%;
+
+    color: white;
+    background-color: #4673EA;
+    border-radius: 30px;
+    border: none;
+    
+    text-align: center;
+    line-height: 45px;
+    font-weight: 600;
+    font-size: 22px;
+}
+.imgFox {
+    width: 305px;
+    height: 275px;
+    /* margin-left: 75%; */
+    /* margin-top: 4%; */
+}
