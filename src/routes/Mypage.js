@@ -4,7 +4,7 @@ import myimg from "../images/myimg.png"
 import {NavLink} from "react-router-dom";
 import Table from "react-bootstrap/Table";
 
-function Mypage() {
+function MyPage() {
     const activeStyle={
         color: 'blue',
         textDecoration: "none"
@@ -111,4 +111,4 @@ function Mypage() {
     );
 }
 
-export default Mypage;
+export default MyPage;
