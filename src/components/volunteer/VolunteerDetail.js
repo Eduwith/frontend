@@ -34,7 +34,7 @@ function VolunteerDetail(props) {
                 </div>
                 <div className={s.table}>
                     <Table>
-                            <tbody class="align-middle" height={500}>
+                            <tbody className="align-middle" height={500}>
                                         <tr height="10%">
                                             <td id={s.tbmenu} >봉사기간</td>
                                             <td colSpan={3}>{props.vlist[idex].vperiod}</td>
