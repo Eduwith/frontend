@@ -1,5 +1,5 @@
 import Navbar from "../components/home/Navbar";
-import styles from "./MyPage.module.css";
+import styles from "./Mypage.module.css";
 import myimg from "../images/myimg.png"
 import {NavLink} from "react-router-dom";
 import Table from "react-bootstrap/Table";
