@@ -11,6 +11,19 @@ let vlists =[["오디오북 녹음하기", "서울 성북구", "2022.02.28~2022.
 function Volunteer(props) {
     //const [vlist, setVlist] = useState(vlists);
 
+    // const [vlists, setVlists] = useState([]);
+    // const getVlists = async () => {
+    //     const json= await(
+    //         await fetch(
+    //             'http://localhost:8080/volunteers'
+    //         )
+    //     ).json();
+    //     setVlists(json.data.vlists);
+    // };
+    // useEffect(() => {
+    //     getVlists();
+    // },[]);
+
     return(
         <div className={styles.wrap}>
             <Navbar/>

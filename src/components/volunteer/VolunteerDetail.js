@@ -16,13 +16,29 @@ function VolunteerDetail(props) {
     const navigate = useNavigate();
     console.log(props.vlist[idex]);
 
-    // const [posts, setPosts] = useState([]);
-    // const apiVolunteer = "";
-    // useEffect(async () => {
-    //     const response = await axios.get(apiVolunteer);
-    //     setPosts(response.data);
-    //     console.log(response.data);
-    //   }, []);
+    const [vlists, setVlists] = useState([{
+
+    }]);
+    const apiVolunteer = "http://localhost:8080/api/volunteers";
+    useEffect(async () => {
+        const response = await axios.get(apiVolunteer);
+        setVlists(response.data);
+        console.log(response.data);
+      }, []);
+
+
+    // const [vlists, setVlists] = useState([]);
+    // const getVlists = async () => {
+    //     const json= await(
+    //         await fetch(
+    //             ''
+    //         )
+    //     ).json();
+    //     setVlists(json.data.vlists);
+    // };
+    // useEffect(() => {
+    //     getVlists();
+    // },[]);
 
     return(
         <div>
