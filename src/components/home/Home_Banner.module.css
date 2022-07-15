@@ -1,25 +1,26 @@
 .ctn {
     /* width: 100%;
     height: 335px; */
-    padding: 0px 100px;
+    height: 375px;
+    padding: 0px 8%;
     background-color: #F1F5FA;
+    display: flex;
 }
-/* .banner{
-    width: 1440px;
-    margin: 0 auto;
-} */
 .btitle{
+    margin-top: 50px;
     font-weight: 600;
-    font-size: 28px;
+    font-size: 30px;
 }
 .btext{
+    margin-top: 10px;
     font-size: 24px;
     
 }
 .btntest{
     width: 240px;
     height: 50px;
-    margin-top: 50px;
+    margin-top: 20%;
+    /* margin-top: 70px; */
     margin-right: 60%;
 
     color: white;
@@ -33,8 +34,8 @@
     font-size: 22px;
 }
 .imgFox {
-    width: 305px;
-    height: 275px;
-    /* margin-left: 75%; */
-    /* margin-top: 4%; */
+    width: 400px;
+    height: 350px;
+    margin-left: 50%;
+    margin-top: 25px;
 }

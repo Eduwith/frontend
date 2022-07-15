@@ -9,9 +9,10 @@
   flex-flow: row wrap;
   justify-content: space-between;
   font-weight: 600;
-  width: 1440px;
+  /* width: 1440px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 40px; */
+  padding: 40px 10% 0 10%;
   /* margin-left: 60px;
   margin-top: 40px; */
 }
@@ -73,9 +74,9 @@
 }
 
 .middle {
-  width: 1440px;
-  margin: 0 auto;
-  padding-bottom: 200px;
+  /* width: 1440px;
+  margin: 0 auto; */
+  padding: 0 10% 200px 10%;
   /* margin-bottom: 200px; */
   display: flex;
   justify-content: space-between;
