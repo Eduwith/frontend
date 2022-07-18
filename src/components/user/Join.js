@@ -1,13 +1,16 @@
+import axios from "axios";
 import React, {useState} from "react";
-import Navbar from "../home/Navbar";
+import { useNavigate } from "react-router";
 import styles from "./Join.module.css";
 
 function Join() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [gender, setGender] = useState("남자");
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("M");
   const [address, setAddress] = useState("");
 
   const onNameHandler = (event) => {
@@ -25,6 +28,10 @@ function Join() {
       setConfirmPassword(event.currentTarget.value)
   }
 
+  const onAgeHandler = (event) => {
+    setAge(event.currentTarget.value)
+  }
+
   const onGenderHandler = (event) => {
     setGender(event.currentTarget.value)
   }
@@ -33,40 +40,74 @@ function Join() {
     setAddress(event.currentTarget.value)
   }
 
-  const onSubmit = (event) => {
-    
-    if(password !== confirmPassword) {
-      return alert('비밀번호와 비밀번호확인은 같아야 합니다.');
+  const handleSubmit2 = async () => {
+    try {
+     axios.post('http://localhost:8080/user/join', {
+        email: email,
+        name: name,
+        pwd: password,
+        age: age,
+        gender: gender,
+        address: address,
+      }).then(function (response) {
+        if(response){
+           console.log('가입 성공!!!');
+          navigate('/main');
+        }
+        else
+          console.log('정보 없음');
+          
+        console.log(response);
+        console.log(response.data);
+      });
+      
+    } catch (err) {
+      console.log("Join Error >>", err);
     }
-    event.preventDefault()
-  }
+  };
+
 
   const handleSubmit = () => { // 정보 전송
-    //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
+
+    const url = "http://localhost:8080/user/join";
 
     const join_info = {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
         email: email,
-        password: password,
+        name: name,
+        pwd: password,
+        age: age,
         gender: gender,
-        address: address
-      })
-    }
-    fetch("http://api_address", join_info)
-    .then(response =>  response.json())
+        address: address,
+    };
+
+    axios.post(url, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: join_info,
+    })
     .then(response => {
-      console.log(response);
+      if(response.data.result === "SUCCESS"){
+        alert('회원가입 성공!');
+        navigate('/');
+      }
+      else{
+        alert('회원가입 실패');
+      }
+    }).catch(error => {
+      console.log("Join Error >>", error);
     });
   };
 
+  const onSubmit = () => {
+    console.log('버튼 클릭');
+  }
+
   return (
     <div>
-      <Navbar />
       <div className={styles.background}>
         &nbsp; <h1>eduwith</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit2}>
             <div className={styles.box}>
               <h3>이름</h3><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className={styles.input_join}/>
             </div>
@@ -88,16 +129,20 @@ function Join() {
             <div className={styles.box}>
               <h3>성별</h3>
               <select onChange={onGenderHandler} value={gender} className={styles.input_join}>
-                    <option value="남자" >남자</option>
-                    <option value="여자">여자</option>
+                    <option value="M" >남자</option>
+                    <option value="F">여자</option>
               </select>
+            </div>
+            <div className={styles.box}>
+              <h3>나이</h3>
+              <input name="age" type="number" placeholder="이름" value={age} onChange={onAgeHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
               <h3>주소</h3>
               <input name="address" type="text" placeholder="주소" value={address} onChange={onAddressHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
-              <button type="submit" onSubmit={onSubmit} className={styles.submitbtn}>가입하기</button>
+              <button type="submit" onSubmit={handleSubmit2} className={styles.submitbtn}>가입하기</button>
             </div>
         </form>
     </div>

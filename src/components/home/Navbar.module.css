@@ -22,9 +22,8 @@
 
 .logo {
   width: 30%;
+  height: auto;
   margin-top: 5px;
-
-  
 }
 
 .navLogo {
@@ -57,4 +56,17 @@
   font-size: 0.8rem;
   cursor: pointer;
   color: gray;
+}
+
+
+.nav_icons_ul {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav_icons {
+  width: 25px;
+  height: 25px;
 }

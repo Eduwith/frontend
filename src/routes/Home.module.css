@@ -1,8 +1,9 @@
-.container {
-  background-color: #F1F5FA;
+.ctn {
   width: 100%;
   height: 335px;
+  background-color: #F1F5FA;
 }
+
 
 .imgFox{
   width: 255px;
