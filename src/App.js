@@ -15,10 +15,11 @@ import MyMento from './components/mypage/MyMento';
 import MyStudy from './components/mypage/MyStudy';
 import MyScrap from './components/mypage/MyScrap';
 import MyPoint from './components/mypage/MyPoint';
-import vlists from './data.js';
+import Navbar from './components/home/Navbar';
 
 function App() {
   //const [vlist, setVlist] = useState(vlists);
+  const [isLogin, setIsLogin] = useState(false);
   const [vlist, setVlist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -50,16 +51,15 @@ function App() {
   if (!vlist) return null;
 
 
-
   return (
     <div className="App">
         <Router>
+          <Navbar isLogin={isLogin} />
           <Routes>
             <Route path="/" element={<Home />}>
             </Route>
             <Route path="/main" element={<Home />}>
             </Route>
-            <Route path="/login" element={<Login />}></Route>
             <Route path="/join" element={<Join />}></Route>
             <Route path="/mypage" element={<MyPage/>}></Route>
             <Route path="/mymentoapply" element={<MyMentoApply/>}></Route>

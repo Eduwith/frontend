@@ -7,7 +7,7 @@ import point from '../../images/point.png';
 import bell from '../../images/bell.png';
 import msg from '../../images/msg.png';
 
-function Navbar() {
+function Navbar({isLogin}) {
 
   const activeStyle = {
     textDecoration: 'none',
@@ -16,7 +16,6 @@ function Navbar() {
     fontWeight: 600,
     color:'#4673EA',
   };
-
   const [loginOpen, setLoginOpen] = useState(false);
 
   const openLogin = () => {
@@ -38,7 +37,7 @@ function Navbar() {
         </div>
         <ul className={styles.navLinks}>
           <li className={styles.navItem} style={{textDecoration: 'none', color: 'gray'}} onClick={openLogin} >
-            로그인
+            {isLogin? '로그아웃' : '로그인'}
           </li>
 
           <li className={styles.navItem}>

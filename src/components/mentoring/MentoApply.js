@@ -72,7 +72,7 @@ function MentoApply({togglePopup}) {
                 <div className={styles.title}>중1 수학 멘티 모집</div>
               </div>
               <div className={styles.content}>
-                <p>멘토 한이음(23세/여자)</p>
+                <p>멘토 한이음</p>
                 <p>분야 교육/수학</p>
                 <p>멘토링 기간 3개월</p>
                 <p>특징 #친절해요 #재밌어요</p>

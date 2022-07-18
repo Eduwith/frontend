@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import Navbar from "../components/home/Navbar";
+import React, { useEffect, useState } from "react";
 import styles from "./Mentoring.module.css";
 import pin from "../images/pin.png";
 import MentoApply from "../components/mentoring/MentoApply";
+import MentiRecruit from "../components/mentoring/MentiRecruit";
+import axios from "axios";
 
 let mento = [['한이음(23세/여자)', '중1 수학 멘티 모집'],
              ['박서윤(24세/여자)', '고3 영어 멘티 모집'],
@@ -11,18 +12,57 @@ let mento = [['한이음(23세/여자)', '중1 수학 멘티 모집'],
 
 function Mentoring() {
   const [showPopup, setShowPopup] = useState(false);
+  const [showApplyPopup, setShowApplyPopup] = useState(false);
+
+
+  const [geul, setGeul] = useState(null);
 
   const togglePopup = () => {
     setShowPopup(current => !current);
   };
 
+  const toggleApplyPopup = () => {
+    console.log('멘토 신청 버튼 클릭');
+    setShowApplyPopup(current => !current);
+  };
+
+
+  const fetchGeul = async () => {
+    try {
+      setGeul(null);
+      axios.get('http://localhost:8080/mentoring/list')
+      .then(function (response) {
+        if(response){
+          console.log('멘토링 조회 성공!');
+          setGeul(response.data);
+        }
+      })
+    } catch(err) {
+        console.log("Join Error >>", err);
+      }
+    };
+
+
+/*  const fetchGeul = async () => {
+    try {
+      setGeul(null);
+      const response = await axios.get('http://localhost:8080/mentoring/recruitment');
+      console.log(response.data);
+      setGeul(response.data);
+    } catch (err) {
+      console.log("Error >>", err);
+    }
+  }; */
+
+  useEffect(() => {
+    fetchGeul();
+  }, []);
   
   return (
     <div>
-      <Navbar />
       <div className={styles.back}>
       <div className={styles.Title}>
-        멘토 찾기
+        멘토 찾기 <button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청하기 </button>
       </div>
 
     <div className={styles.big_box}>
@@ -31,10 +71,10 @@ function Mentoring() {
           <div>
             <form method="get" action="#" className={styles.subject}>
               <h2>분야</h2>
-              <label><input type="radio" name="category" defaultValue="진로" /> 어학</label>
-              <label><input type="radio" name="category" defaultValue="교육" /> 컴퓨터</label>            
-              <label><input type="radio" name="category" defaultValue="문화예술스포츠" /> 학습</label>            
-              <label><input type="radio" name="category" defaultValue="기타" /> 기타</label>
+              <label><input type="radio" name="category" value="진로" /> 진로</label>
+              <label><input type="radio" name="category" value="교육" /> 교육</label>            
+              <label><input type="radio" name="category" value="문화예술스포츠" /> 문화예술스포츠</label>            
+              <label><input type="radio" name="category" value="기타" /> 기타</label>
               <div className={styles.hiddenblock}></div>
             </form>
            
@@ -83,15 +123,16 @@ function Mentoring() {
       </div>
 
         <div className={styles.group}>
-          {mento.map((n) => (
-            <div className={styles.mento} key={n[0]}>
+          {console.log(geul)}
+          {geul && geul.map((n) => (
+            <div className={styles.mento} key={n.m_no}>
             <img className={styles.pic} src={pin} alt="mentopic" />
-            <div className={styles.title}>{n[1]}</div>
+            <div className={styles.title}>{n.title}</div>
             <div className={styles.btn} onClick={togglePopup}>신청</div>
             
-            <div className={styles.box}><span>멘토 <b>{n[0]}</b></span></div>
-            <div className={styles.box}><span>분야</span></div>
-            <div className={styles.box2}><span>소개</span></div>
+            <div className={styles.box}><span>멘토 <b>{n.name}</b></span></div>
+            <div className={styles.box}><span>분야 <b>{n.field}</b></span></div>
+            <div className={styles.box2}><span>소개 <b>{n.info}</b></span></div>
           </div>
             
           ))}
@@ -99,6 +140,10 @@ function Mentoring() {
           {showPopup && (
                 <MentoApply togglePopup={togglePopup} />
               )}
+
+          {showApplyPopup && (
+                <MentiRecruit toggleApplyPopup={toggleApplyPopup} />
+              )}  
         </div>
       </div>
     </div>
