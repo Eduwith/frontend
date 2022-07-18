@@ -40,13 +40,31 @@ function Join() {
     setAddress(event.currentTarget.value)
   }
 
-  const onSubmit = (event) => {
-    
-    if(password !== confirmPassword) {
-      return alert('비밀번호와 비밀번호확인은 같아야 합니다.');
+  const handleSubmit2 = async () => {
+    try {
+     axios.post('http://localhost:8080/user/join', {
+        email: email,
+        name: name,
+        pwd: password,
+        age: age,
+        gender: gender,
+        address: address,
+      }).then(function (response) {
+        if(response){
+           console.log('가입 성공!!!');
+          navigate('/main');
+        }
+        else
+          console.log('정보 없음');
+          
+        console.log(response);
+      });
+      
+    } catch (err) {
+      console.log("Join Error >>", err);
     }
-    event.preventDefault()
-  }
+  };
+
 
   const handleSubmit = () => { // 정보 전송
 
@@ -80,11 +98,15 @@ function Join() {
     });
   };
 
+  const onSubmit = () => {
+    console.log('버튼 클릭');
+  }
+
   return (
     <div>
       <div className={styles.background}>
         &nbsp; <h1>eduwith</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit2}>
             <div className={styles.box}>
               <h3>이름</h3><input name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} className={styles.input_join}/>
             </div>
@@ -119,7 +141,7 @@ function Join() {
               <input name="address" type="text" placeholder="주소" value={address} onChange={onAddressHandler}className={styles.input_join} />
             </div>
             <div className={styles.box}>
-              <button type="submit" onSubmit={onSubmit} className={styles.submitbtn}>가입하기</button>
+              <button type="submit" onSubmit={handleSubmit2} className={styles.submitbtn}>가입하기</button>
             </div>
         </form>
     </div>

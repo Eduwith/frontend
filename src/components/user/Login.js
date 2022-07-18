@@ -21,21 +21,33 @@ const Login = ( props ) => {
       setPw(event.currentTarget.value)
     }
 
+
+    const handleSubmit2 = async () => {
+      try {
+        const response = await axios.post('http://localhost:8080/user/login', {
+          email: email,
+          pwd: pw
+        });
+        console.log(response);
+        console.log('로그인 성공!!!');
+      } catch (err) {
+        console.log("Login Error >>", err);
+      }
+    };
+
+
     const handleSubmit = () => { // 정보 전송
       //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
-
-      const url = "http://localhost:8080/user/login";
 
       const login_info = {
           email: email,
           pwd: pw
       };
 
-      axios
-      .post(url,{
-        headers: {
-          "Content-Type": "application/json",
-        },
+      axios({
+        method: "post",
+        url: 'http://localhost:8080/user/login',
+        responseType: "application/json",
         data: login_info,
       }) 
       .then(response => {
@@ -54,7 +66,7 @@ const Login = ( props ) => {
           {open ? (
             <div> 
             <div className={styles.back} ></div>
-            <form className={styles.loginbox} onSubmit={handleSubmit}>
+            <form className={styles.loginbox} onSubmit={handleSubmit2}>
                 <div className={styles.logo}>eduwith</div>
                 <div className={styles.text}>로그인</div>
                 <MdClose size={50} color="#5D6466" className={styles.icon} onClick={close} />
@@ -72,7 +84,7 @@ const Login = ( props ) => {
                 />
                 <div className={styles.findpw}>비밀번호를 잊어버리셨나요?</div>
                 <div className={styles.sign}>회원가입</div>
-                <button className={styles.lbtn} type="submit" onClick={handleSubmit}>
+                <button className={styles.lbtn} type="submit" onClick={handleSubmit2}>
                     LOGIN
                 </button>
             </form>

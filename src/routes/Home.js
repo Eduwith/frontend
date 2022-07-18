@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./Home.module.css";
 import fox from '../images/fox.png';
 import Home_Study from "../components/home/Home_Study";
