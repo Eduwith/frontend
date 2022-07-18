@@ -22,7 +22,7 @@
 
     font-family: Noto Sans;
     font-weight: 600;
-    font-size: 52px;
+    font-size: 48px;
 }
 .vtext{
     position: absolute;
@@ -30,7 +30,7 @@
     
     font-family: Noto Sans;
     font-weight: 500;
-    font-size: 36px;
+    font-size: 34px;
     line-height: 42px;
 }
  .vimg{
@@ -42,13 +42,11 @@
     height: auto;
 }
 .vlist> div{
-    margin: 0 auto;
-    width: 1400px;
-    padding-top: 30px;
-    /*width: 1400px;
-    height: 1200px;
-    margin: 0 auto;
+    /* margin: 0 auto;
+    width: 1400px; */
+    /* height: 1200px;
     position: relative;*/
+    padding: 30px 15% 0 15%;
 }
 .text{
     font-family: Noto Sans;
@@ -57,49 +55,48 @@
 }
 
 .listbox{
+    /* margin: 25px auto;
+    width: 1400px; */
     margin: 25px auto;
-    width: 1400px;
-    height: 190px;
+    padding: 25px 25px;
+    height: 180px;
     
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     /*align-items: center;*/
 
 }
-.listbox > h4{
-    position: absolute;
+.boxtop{
+    display: flex;
+}
+.boxtop > h4{
+    /* position: absolute;
     margin-top: 30px;
-    margin-left: 50px;
-    
-    font-family: Noto Sans;
+    margin-left: 50px; */
+
     font-weight: 500;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 47px;
 }
-.listbox > button{
+.boxtop > button{
     position: absolute;
-    width: 100px;
-    height: 100px;
-    margin-top: 30px;
-    margin-left: 1250px;
+    width: 90px;
+    height: 90px;
+    /* margin-left: 900px; */
+    margin-left: 1100px;
     
-
     background: #F9F59A;
     border: none;
 
-    font-family: Noto Sans;
-    font-style: normal;
-    font-weight: normal;
     font-size: 24px;
     line-height: 28px;
 }
-.listbox > div{
-    position: absolute;
+.boxdetail{
+    /* position: absolute;
     margin-top: 130px;
-    margin-left: 50px;
+    margin-left: 50px; */
+    margin-top: 35px;
 
-    font-family: Noto Sans;
-    font-style: normal;
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
