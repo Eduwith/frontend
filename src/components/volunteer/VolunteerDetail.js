@@ -17,7 +17,6 @@ function VolunteerDetail() {
 
     return(
         <div>
-            <Navbar/>
             <div className={s.content}>
                 <div className={s.titleblock}>
                     <div className={s.recruitstate}>모집중</div>
