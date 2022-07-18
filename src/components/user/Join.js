@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, {useState} from "react";
-import Navbar from "../home/Navbar";
+import { useNavigate } from "react-router";
 import styles from "./Join.module.css";
 
 function Join() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,31 +50,38 @@ function Join() {
 
   const handleSubmit = () => { // 정보 전송
 
+    const url = "http://localhost:8080/user/join";
+
     const join_info = {
-      method: "POST",
-      body: JSON.stringify({
         email: email,
         name: name,
         pwd: password,
         age: age,
         gender: gender,
         address: address,
+    };
 
-      }),
+    axios.post(url, {
       headers: {
         "Content-Type": "application/json"
+      },
+      data: join_info,
+    })
+    .then(response => {
+      if(response.data.result === "SUCCESS"){
+        alert('회원가입 성공!');
+        navigate('/');
       }
-    }
-    fetch("http://localhost:8080/user/join", join_info)
-    .then(response =>  response.json())
-    .then(result => {
-      console.log(result);
+      else{
+        alert('회원가입 실패');
+      }
+    }).catch(error => {
+      console.log("Join Error >>", error);
     });
   };
 
   return (
     <div>
-      <Navbar />
       <div className={styles.background}>
         &nbsp; <h1>eduwith</h1>
         <form onSubmit={handleSubmit}>

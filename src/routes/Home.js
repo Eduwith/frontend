@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import Navbar from "../components/home/Navbar";
 import styles from "./Home.module.css";
 import fox from '../images/fox.png';
 import customAxios from '../customAxios';
@@ -26,7 +25,6 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
       <div className={styles.ctn}>
         <img className={styles.imgFox} src={fox} alt="여우" />
       </div>

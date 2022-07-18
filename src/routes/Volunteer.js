@@ -2,7 +2,6 @@ import React from "react";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import styles from "./Volunteer.module.css";
 import vimg from "../images/vimage.png";
-import Navbar from "../components/home/Navbar";
 import { Link } from "react-router-dom";
 //import vlists from "../data";
 
@@ -13,7 +12,6 @@ function Volunteer(props) {
 
     return(
         <div className={styles.wrap}>
-            <Navbar/>
             <div className={styles.vhead}>
                 <div>
                     <div className={styles.vtitle}>Volunteer</div>

@@ -1,4 +1,3 @@
-import Navbar from "../components/home/Navbar";
 import styles from "./Mypage.module.css";
 import myimg from "../images/myimg.png"
 import {NavLink} from "react-router-dom";
@@ -16,7 +15,6 @@ function Mypage() {
 
     return(
         <div className={styles.wrap}>
-            <Navbar/>
             <div className={styles.head}>마이페이지</div>
             <div className={styles.body}>
                 <div className={styles.box}>

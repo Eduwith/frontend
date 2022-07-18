@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from "./Login.module.css"
 import {MdClose} from "react-icons/md";
 import {useNavigate} from "react-router-dom"
+import axios from 'axios';
 
 
 const Login = ( props ) => {
@@ -23,27 +24,28 @@ const Login = ( props ) => {
     const handleSubmit = () => { // 정보 전송
       //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
 
+      const url = "http://localhost:8080/user/login";
+
       const login_info = {
-        method: "POST",
-        body: JSON.stringify({
           email: email,
           pwd: pw
-        }),
+      };
+
+      axios
+      .post(url,{
         headers: {
-          "Content-Type": "application/json"
-        }
-      }
-      fetch("http://localhost:8080/user/login", login_info)
-      .then(response =>  response.json())
-      .then(result => {
-        console.log('result 출력');
-        console.log(result);
-        if(result.token) {
-          //localStorage.setItem('token', result.token);
-          alert('환영합니다!');
-        } else if(result.message === 'INVALID_USER'){
-          alert('ID와 PW를 확인해주세요.');
-        }
+          "Content-Type": "application/json",
+        },
+        data: login_info,
+      }) 
+      .then(response => {
+        console.log(response.data);
+        const {accessToken} = response.data;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+        navigate('/');
+      }).catch(error => {
+        console.log("Login Error >>", error);
       });
     };
 
