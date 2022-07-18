@@ -3,6 +3,7 @@ import s from "./VolunteerDetail.module.css";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 
@@ -16,11 +17,12 @@ function VolunteerDetail(props) {
     const navigate = useNavigate();
     console.log(props.vlist[idex]);
 
-    // const [posts, setPosts] = useState([]);
-    // const apiVolunteer = "";
+    // const [vlists, setVlists] = useState([]);
+    // // const apiVolunteer = "http://localhost:8080/api/volunteers";
+    // const apiVolunteer = '';
     // useEffect(async () => {
     //     const response = await axios.get(apiVolunteer);
-    //     setPosts(response.data);
+    //     setVlists(response.data);
     //     console.log(response.data);
     //   }, []);
 
@@ -37,27 +39,21 @@ function VolunteerDetail(props) {
                             <tbody className="align-middle" height={500}>
                                         <tr height="10%">
                                             <td id={s.tbmenu} >봉사기간</td>
-                                            <td colSpan={3}>{props.vlist[idex].vperiod}</td>
+                                            <td colSpan={3}>{props.vlist[idex].v_start_date}~{props.vlist[idex].v_end_date}</td>
                                         </tr>
                                         <tr height="10%">
                                             <td id={s.tbmenu} >모집기간</td>
-                                            <td colSpan={3}>{props.vlist[idex].vrecruitperiod}</td>
+                                            <td colSpan={3}>{props.vlist[idex].r_start_date}~{props.vlist[idex].r_end_date}</td>
                                         </tr>
                                         <tr height="10%">
                                             <td id={s.tbmenu} >신청인원</td>
-                                            <td>{props.vlist[idex].vpeople}</td>
+                                            <td>{props.vlist[idex].current_people}/{props.vlist[idex].total_people}</td>
                                             <td id={s.tbmenu} >지역</td>
-                                            <td>{props.vlist[idex].vcountry}</td>
+                                            <td>{props.vlist[idex].address}</td>
                                         </tr>                   
-                                        <tr height="10%">
-                                            <td id={s.tbmenu} >봉사대상</td>
-                                            <td>시각장애인, 아동, 청소년</td>
-                                            <td id={s.tbmenu} >활동구분</td>
-                                            <td>온라인</td>
-                                        </tr>
                                         <tr height="40%">
                                             <td id={s.tbmenu} >활동내용</td>
-                                            <td colSpan={3}>...</td>
+                                            <td colSpan={3}>{props.vlist[idex].contents}</td>
                                         </tr>
                                     </tbody>
                         </Table>

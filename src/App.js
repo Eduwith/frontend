@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './routes/Home';
@@ -7,9 +8,8 @@ import Join from './components/user/Join';
 import Login from './components//user/Login';
 import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
-import vlists from './data.js';
 import Mentoring from "./routes/Mentoring";
-import MyPage from './routes/Mypage';
+import MyPage from "./routes/Mypage";
 import MyMentoApply from './components/mypage/MyMentoApply';
 import MyMento from './components/mypage/MyMento';
 import MyStudy from './components/mypage/MyStudy';
@@ -18,8 +18,38 @@ import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
 
 function App() {
-  const [vlist, setVlist] = useState(vlists);
-  const [isLogin, setIsLogin] = useState(true);
+  //const [vlist, setVlist] = useState(vlists);
+  const [isLogin, setIsLogin] = useState(false);
+  const [vlist, setVlist] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  // const apiVolunteer = "http://localhost:8080/api/volunteers";
+  const apiVolunteer = '';
+  const getVlist = async () => {
+    try {
+      // 요청이 시작 할 때에는 error 와 vlist 초기화 , loading 상태를 tru로
+      setError(null);
+      setVlist(null);
+      setLoading(true);
+      const response = await axios.get(apiVolunteer);
+      setVlist(response.data); // 데이터는 response.data 안에
+      console.log(response.data);
+    } catch (e) {
+      setError(e);
+      console.log(e);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getVlist();
+  }, []);
+
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  // 아직 users가 받아와 지지 않았을 때는 아무것도 표시되지 않음
+  if (!vlist) return null;
+
 
   return (
     <div className="App">
