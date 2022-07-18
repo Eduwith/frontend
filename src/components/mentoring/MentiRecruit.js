@@ -39,8 +39,8 @@ background: white;
 function MentiRecruit({toggleApplyPopup}) {
   const navigate = useNavigate();
 
-  const email = "12@naver.com";
-  const role = 'O';
+  const email = "12233@naver.com";
+  const role = "O";
   const [title, setTitle] = useState("");
   const [field, setField] = useState("");
   const [region, setRegion] = useState("");
@@ -85,7 +85,35 @@ function MentiRecruit({toggleApplyPopup}) {
     console.log(event.currentTarget.value);
   }
 
-  const onSubmit = () => {
+  const handleSubmit = async () => {
+    try {
+      axios.post('http://localhost:8080/mentoring/recruitment', {
+        role: role,
+        title: title,
+        field: field,
+        region: region,
+        way: teaching,
+        r_period: rPeriod,
+        m_period: mPeriod,
+        keyword: keyword,
+        info: info,
+        email: email
+      }).then(function (response) {
+        if(response.data){
+          console.log('모집글 등록 완료');
+        }
+        else{
+          alert('등록 실패');
+        }
+      });
+      
+    } catch (err) {
+      console.log("Mentoring Recruit Error >>", err);
+    }
+  };
+
+
+  /*const onSubmit = () => {
     const url = "http://localhost:8080/mentoring/recruitment";
 
     const recruit_info = {
@@ -119,11 +147,12 @@ function MentiRecruit({toggleApplyPopup}) {
       console.log("Join Error >>", error);
     });
   };
-
+ */
 
   const onClick = () => {
     alert('등록이 완료되었습니다.');
     toggleApplyPopup(false);
+    navigate('/mentoring');
   }
 
   return (
@@ -135,7 +164,7 @@ function MentiRecruit({toggleApplyPopup}) {
               <ImCross type="button" size="20" className={styles.x} onClick={toggleApplyPopup} />
             </div>
             <div className={styles.outer_box}>
-              <form onSubmit={onSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className={styles.inner_box}>
                   <div className={styles.left}>제목</div>
                   <input type="text" className={styles.input_title} value={title} onChange={onTitleHandler} />  
@@ -188,7 +217,7 @@ function MentiRecruit({toggleApplyPopup}) {
                   <input type="text" value={info} onChange={onInfoHandler} className={styles.input_desc} />  
                 </div>
 
-              <button type="submit" className={styles.btn} >멘토 등록하기</button>
+              <button type="button" onClick={onClick} className={styles.btn} >멘토 등록하기</button>
               </form>
             </div>
             

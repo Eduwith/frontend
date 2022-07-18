@@ -26,7 +26,19 @@ function Mentoring() {
     setShowApplyPopup(current => !current);
   };
 
+
   const fetchGeul = async () => {
+    try {
+      axios.get('http://localhost:8080/mentoring/recruitment');
+      console.log(response);
+      console.log(response.data);
+      setGeul(response.data);
+    } catch (err) {
+      console.log("Mentoring Recruit Error >>", err);
+    }
+  };
+
+/*  const fetchGeul = async () => {
     try {
       setGeul(null);
       const response = await axios.get('http://localhost:8080/mentoring/recruitment');
@@ -35,7 +47,7 @@ function Mentoring() {
     } catch (err) {
       console.log("Error >>", err);
     }
-  };
+  }; */
 
   useEffect(() => {
     fetchGeul();

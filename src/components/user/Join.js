@@ -58,6 +58,7 @@ function Join() {
           console.log('정보 없음');
           
         console.log(response);
+        console.log(response.data);
       });
       
     } catch (err) {

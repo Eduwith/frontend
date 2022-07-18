@@ -29,6 +29,7 @@ const Login = ( props ) => {
           pwd: pw
         });
         console.log(response);
+        console.log(response.data);
         console.log('로그인 성공!!!');
       } catch (err) {
         console.log("Login Error >>", err);
@@ -36,7 +37,7 @@ const Login = ( props ) => {
     };
 
 
-    const handleSubmit = () => { // 정보 전송
+    /*const handleSubmit = () => { // 정보 전송
       //event.preventDefault(); // 클릭해도 페이지 이동되지 않음
 
       const login_info = {
@@ -59,7 +60,7 @@ const Login = ( props ) => {
       }).catch(error => {
         console.log("Login Error >>", error);
       });
-    };
+    };*/
 
     return (
         <div>
