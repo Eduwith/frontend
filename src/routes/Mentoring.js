@@ -106,7 +106,8 @@ function Mentoring() {
       </div>
 
         <div className={styles.group}>
-          {geul && geul.data.map((n) => (
+          {console.log(geul)}
+          {geul && geul.map((n) => (
             <div className={styles.mento} key={n.m_no}>
             <img className={styles.pic} src={pin} alt="mentopic" />
             <div className={styles.title}>{n.title}</div>

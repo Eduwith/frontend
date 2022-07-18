@@ -108,7 +108,7 @@ function MentiRecruit({toggleApplyPopup}) {
       data: recruit_info,
     })
     .then(response => {
-      if(response.data.result === "SUCCESS"){
+      if(response.data === email){
         console.log('모집글 등록 완료');
         navigate('/mentoring');
       }
