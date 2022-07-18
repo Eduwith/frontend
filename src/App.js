@@ -19,7 +19,8 @@ import Navbar from './components/home/Navbar';
 
 function App() {
 
-
+  const [isLogin, setIsLogin] = useState(false);
+  
   return (
     <div className="App">
         <Router>
