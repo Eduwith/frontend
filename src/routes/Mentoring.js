@@ -29,14 +29,19 @@ function Mentoring() {
 
   const fetchGeul = async () => {
     try {
-      axios.get('http://localhost:8080/mentoring/recruitment');
-      console.log(response);
-      console.log(response.data);
-      setGeul(response.data);
-    } catch (err) {
-      console.log("Mentoring Recruit Error >>", err);
-    }
-  };
+      setGeul(null);
+      axios.get('http://localhost:8080/mentoring/list')
+      .then(function (response) {
+        if(response){
+          console.log('멘토링 조회 성공!');
+          setGeul(response.data);
+        }
+      })
+    } catch(err) {
+        console.log("Join Error >>", err);
+      }
+    };
+
 
 /*  const fetchGeul = async () => {
     try {

@@ -46,8 +46,8 @@ function MentiRecruit({toggleApplyPopup}) {
   const [region, setRegion] = useState("");
   const [teaching, setTeaching] = useState("");
   const rPeriod = "7";
-  const [mPeriod, setMPeriod] = useState("");
-  const [keyword, setKeyword] = useState("");
+  const [mPeriod, setMPeriod] = useState("1개월 미만");
+  const [keyword, setKeyword] = useState("재밌어요");
   const [info, setInfo] = useState("");
 
 
@@ -217,7 +217,7 @@ function MentiRecruit({toggleApplyPopup}) {
                   <input type="text" value={info} onChange={onInfoHandler} className={styles.input_desc} />  
                 </div>
 
-              <button type="button" onClick={onClick} className={styles.btn} >멘토 등록하기</button>
+              <button type="button" onClick={handleSubmit} className={styles.btn} >멘토 등록하기</button>
               </form>
             </div>
             
