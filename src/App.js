@@ -9,6 +9,7 @@ import Login from './components//user/Login';
 import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import Mentoring from "./routes/Mentoring";
+import Study from "./routes/Study";
 import MyPage from "./routes/Mypage";
 import MyMentoApply from './components/mypage/MyMentoApply';
 import MyMento from './components/mypage/MyMento';
@@ -18,7 +19,7 @@ import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
 
 function App() {
-  
+
   const [isLogin, setIsLogin] = useState(false);
 
   return (
@@ -29,7 +30,6 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/main" element={<Home />}></Route>
             <Route path="/login" element={<Login />}></Route>
-
             <Route path="/join" element={<Join />}></Route>
 
             <Route path="/mypage" element={<MyPage/>}></Route>
@@ -40,6 +40,7 @@ function App() {
             <Route path="/mypoint" element={<MyPoint/>}></Route>
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
+            <Route path="/study" element={<Study />}></Route>
             <Route path="/volunteer" element={<Volunteer/>}></Route>
             <Route path="/volunteerdetail/:idex" element={<VolunteerDetail />}></Route>
             

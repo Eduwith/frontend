@@ -52,6 +52,7 @@ function Navbar({isLogin}) {
     <nav className={styles.subvar}>
       <ul className={styles.subLinks}>
         <li><NavLink to="/mentoring" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 멘토링</NavLink></li>
+        <li><NavLink to="/study" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 스터디</NavLink></li>
         <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
         <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
       </ul>

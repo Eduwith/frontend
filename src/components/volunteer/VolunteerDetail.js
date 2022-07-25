@@ -17,7 +17,6 @@ function VolunteerDetail() {
 
     return(
         <div>
-            <Navbar/>
             <div className={s.content}>
                 <div className={s.titleblock}>
                     <div className={s.recruitstate}>모집중</div>
@@ -26,6 +25,7 @@ function VolunteerDetail() {
                 <div className={s.table}>
                     <Table>
                             <tbody className="align-middle" height={500}>
+
                                         <tr height="10%">
                                             <td id={s.tbmenu} >봉사기간</td>
                                             <td colSpan={3}>{vlist.v_start_date}~{vlist.v_end_date}</td>
@@ -48,7 +48,9 @@ function VolunteerDetail() {
                         </Table>
                  </div>
                  <div className={s.buttonblock}>
-                    <button className={s.btn_apply} >신청하기</button>
+                    <a href="https://www.1365.go.kr/" >
+                        <button className={s.btn_apply} >신청하기</button>
+                    </a>
                     <button className={s.btn_back} onClick={ () => navigate(-1)}>목록보기</button>
                 </div>
             </div>
