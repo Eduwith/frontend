@@ -23,7 +23,10 @@
 }
 .scrap{
     margin-left: 60%;
-    margin-top: 10px;
+    height: 50px;
+}
+.close{
+    height: 50px;
 }
 .boxtag{
     display: flex;

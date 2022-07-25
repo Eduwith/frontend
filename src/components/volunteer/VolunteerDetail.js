@@ -2,18 +2,15 @@ import Navbar from "../home/Navbar";
 import s from "./VolunteerDetail.module.css";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 
 
 function VolunteerDetail() {
     const location = useLocation();
     const vlist = location.state.data;
-    
     //const { idex } = useParams();
     const navigate = useNavigate();
-    console.log(vlist);
 
     return(
         <div>
@@ -48,7 +45,7 @@ function VolunteerDetail() {
                         </Table>
                  </div>
                  <div className={s.buttonblock}>
-                    <a href="https://www.1365.go.kr/" >
+                    <a href="https://www.1365.go.kr/" target="_blank" rel="noopener noreferrer">
                         <button className={s.btn_apply} >신청하기</button>
                     </a>
                     <button className={s.btn_back} onClick={ () => navigate(-1)}>목록보기</button>
