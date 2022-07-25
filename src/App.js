@@ -10,6 +10,7 @@ import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import Mentoring from "./routes/Mentoring";
 import Study from "./routes/Study";
+import StudyRegister from './components/study/StudyRegister';
 import MyPage from "./routes/Mypage";
 import MyMentoApply from './components/mypage/MyMentoApply';
 import MyMento from './components/mypage/MyMento';
@@ -41,6 +42,7 @@ function App() {
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
             <Route path="/study" element={<Study />}></Route>
+            <Route path="/study/register" element={<StudyRegister />}></Route>
             <Route path="/volunteer" element={<Volunteer/>}></Route>
             <Route path="/volunteerdetail/:idex" element={<VolunteerDetail />}></Route>
             
