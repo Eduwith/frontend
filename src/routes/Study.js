@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Study.module.css";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import slists from "../data_study.js";
@@ -9,6 +10,11 @@ import StudyDetail from "../components/study/StudyDetail";
 import Paging from "../components/volunteer/Paging";
 
 function Study(){
+    const [studyDetailPopup, setStudyDetailPopup] = useState(false);
+    const toggleStudyDetailPopup = () => {
+        console.log('스터디 모집 신청 버튼 클릭');
+        setStudyDetailPopup(current => !current);
+    };
     //const [slist, setSlist] = useState(slists);
     const [slist, setSlist] = useState([]);
     const [error, setError] = useState(null);
@@ -44,12 +50,6 @@ function Study(){
     // useEffect(()=>{
     //     setCurrentPosts(slist.slice(indexOfFirstPost, indexOfLastPost));
     // }, [indexOfFirstPost, indexOfLastPost, page]);
-
-    const [studyDetailPopup, setStudyDetailPopup] = useState(false);
-    const toggleStudyDetailPopup = () => {
-        console.log('스터디 모집 신청 버튼 클릭');
-        setStudyDetailPopup(current => !current);
-    };
 
     return(
         <div className={styles.wrap}>
@@ -88,8 +88,8 @@ function Study(){
                     </div>
                 ))}
             </div>
-            <Paging className={styles.vbottom} page={page} totalCount={slist.length} postPerPage={postPerPage}
-                    pageRangeDisplayed={5} handlePageChange={handlePageChange}/>
+            {/* <Paging className={styles.vbottom} page={page} totalCount={slist.length} postPerPage={postPerPage}
+                    pageRangeDisplayed={5} handlePageChange={handlePageChange}/> */}
         </div>
     );
 
