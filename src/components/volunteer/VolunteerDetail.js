@@ -48,7 +48,9 @@ function VolunteerDetail() {
                         </Table>
                  </div>
                  <div className={s.buttonblock}>
-                    <button className={s.btn_apply} >신청하기</button>
+                    <a href="https://www.1365.go.kr/" >
+                        <button className={s.btn_apply} >신청하기</button>
+                    </a>
                     <button className={s.btn_back} onClick={ () => navigate(-1)}>목록보기</button>
                 </div>
             </div>
