@@ -45,8 +45,8 @@ function App() {
     getVlist();
   }, []);
 
-  if (loading) return <div>로딩중..</div>;
-  if (error) return <div>에러가 발생했습니다</div>;
+  // if (loading) return <div>로딩중..</div>;
+  // if (error) return <div>에러가 발생했습니다</div>;
   // 아직 users가 받아와 지지 않았을 때는 아무것도 표시되지 않음
   if (!vlist) return null;
 

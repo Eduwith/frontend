@@ -15,8 +15,8 @@ function Mentoring() {
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      //axios.get('http://localhost:8080/mentoring/list')
-      axios.get('/dummyMData.json')
+      axios.get('http://localhost:8080/mentoring/list')
+      //axios.get('/dummyMData.json')
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
@@ -146,12 +146,13 @@ function Mentoring() {
   const filterBox = async () => {
     try {
       console.log('전달 목록', fieldSt, region, periodSt, way)
-      const response = await axios.get('http://localhost:8080/mentoring/search/filter', {
+      const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
+       { params: {
         field: fieldSt,
         region: region,
         m_period: periodSt,
-        way: way
-      });
+        way: way}}
+      );
       if (response) {
         setGeul(response.data);
         console.log('조건 검색 성공!!!', response.data);
