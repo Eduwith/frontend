@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from "react";
 import styles from "./Home.module.css";
-import fox from '../images/fox.png';
 import Home_Study from "../components/home/Home_Study";
 import Mento from "../components/mentoring/Mento";
+import Home_Banner from "../components/home/Home_Banner";
 
 function Home() {
   return (
     <div>
-      <div className={styles.ctn}>
-        <img className={styles.imgFox} src={fox} alt="여우" />
-      </div>
+      <Home_Banner/>
       <Mento />
       <Home_Study/>
     </div>
