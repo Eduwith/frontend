@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import './App.css';
+import './reset.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './routes/Home';
 import Join from './components/user/Join';
-import Login from './components//user/Login';
 import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import vlists from './data.js';
@@ -16,6 +15,7 @@ import MyStudy from './components/mypage/MyStudy';
 import MyScrap from './components/mypage/MyScrap';
 import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
+import MentoList from './components/mentoring/MentoList';
 
 function App() {
   const [vlist, setVlist] = useState(vlists);
@@ -39,6 +39,9 @@ function App() {
             <Route path="/mypoint" element={<MyPoint/>}></Route>
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
+            <Route path="/mentoring/:keyword" element={<Mentoring />}></Route>
+            <Route path="/mentoring/filter" element={<Mentoring />}></Route>
+
             <Route path="/volunteer" element={<Volunteer/>}></Route>
             <Route path="/volunteerdetail/:idex" element={<VolunteerDetail vlist={vlist}/>}></Route>
             

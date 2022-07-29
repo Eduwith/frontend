@@ -52,7 +52,7 @@ function Join() {
       }).then(function (response) {
         if(response){
            console.log('가입 성공!!!');
-          navigate('/main');
+          navigate('/');
         }
         else
           console.log('정보 없음');
