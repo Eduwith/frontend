@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './routes/Home';
@@ -10,6 +9,7 @@ import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import Mentoring from "./routes/Mentoring";
 import Study from "./routes/Study";
+import StudyDetail from './components/study/StudyDetail';
 import StudyRegister from './components/study/StudyRegister';
 import MyPage from "./routes/Mypage";
 import MyMentoApply from './components/mypage/MyMentoApply';
@@ -41,10 +41,11 @@ function App() {
             <Route path="/mypoint" element={<MyPoint/>}></Route>
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
-            <Route path="/study" element={<Study />}></Route>
-            <Route path="/study/register" element={<StudyRegister />}></Route>
-            <Route path="/volunteer" element={<Volunteer/>}></Route>
-            <Route path="/volunteerdetail/:idex" element={<VolunteerDetail />}></Route>
+            <Route path="/studies" element={<Study />}></Route>
+            <Route path="/studies?no=:idex" element={<StudyDetail />}></Route>
+            <Route path="/studies/register" element={<StudyRegister />}></Route>
+            <Route path="/volunteers" element={<Volunteer/>}></Route>
+            <Route path="/volunteers/:idex" element={<VolunteerDetail />}></Route>
             
           </Routes>
         </Router>

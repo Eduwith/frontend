@@ -3,7 +3,6 @@ import s from "./VolunteerDetail.module.css";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import axios from 'axios';
 
 
 function VolunteerDetail() {
@@ -11,7 +10,7 @@ function VolunteerDetail() {
     const vlist = location.state.data;
     //const { idex } = useParams();
     const navigate = useNavigate();
-
+    console.log(vlist)
     return(
         <div>
             <div className={s.content}>
