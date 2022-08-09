@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-function StudyRegister(toggleStudyRecruitPopup) {
+function StudyRegister() {
     const navigate = useNavigate();
 
     const email = "email.com";
@@ -47,11 +47,9 @@ function StudyRegister(toggleStudyRecruitPopup) {
       setContents(event.currentTarget.value);
       console.log(event.currentTarget.value);
     }
-  const [error, setError] = useState(null);
   const apiStudyRegister = "http://localhost:8080/api/studies/register";
   const postStudyRegister = async () => {
-    try {
-      setError(null);
+      console.log("스터디 등록 버튼 클릭됨");
       axios.post(apiStudyRegister, {
         s_no:s_no,
         email: email,
@@ -63,19 +61,20 @@ function StudyRegister(toggleStudyRecruitPopup) {
         contents: contents,
         current_people:current_people
       }).then(function (response) {
-        if (response.data) {
-          console.log('스터디 등록 완료');
-          navigate(-1);
-        }
-        else {
-          alert('등록 실패');
-        }
-
+        console.log('스터디 등록 완료');
+        navigate("/studies");
+        // if (response.data) {
+        //   console.log('스터디 등록 완료');
+        //   navigate("/study");
+        // }
+        // else {
+        //   alert('등록 실패');
+        // }
+      }).catch(function(error) {
+        console.log(error);
+        alert('등록 실패');
       });
-    } catch (e) {
-      setError(e);
-      console.log(e);
-    }
+
   };
 
   return (
@@ -122,8 +121,8 @@ function StudyRegister(toggleStudyRecruitPopup) {
             <div className={styles.left}>내용</div>
             <input type="text" value={contents} onChange={onContentsHandler} className={styles.input_desc} />
           </div>
-
-          <button type="submit" onClick={postStudyRegister} className={styles.btn} >등록하기</button>
+          
+          <button type="submit" className={styles.btn}>등록하기</button>
         </form>
       </div>
 
@@ -134,3 +133,9 @@ function StudyRegister(toggleStudyRecruitPopup) {
 }
 
 export default StudyRegister;
+
+// regin_big.map((item, idex ){regionB === region_big[idex] ? area[idex].map((item) => (
+//   <option value={item} key={item}>
+//     {item}
+//   </option>
+// )) : null}

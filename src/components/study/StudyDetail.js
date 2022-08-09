@@ -26,11 +26,11 @@ background-color: #333333;
 opacity: 0.2;
 `;
 
-function StudyDetail({slist, toggleStudyDetailPopup}) {
+function StudyDetail({slist, toggleStudyDetailPopup, scrap, onClickScrap}) {
     //const [slist, setSlist] = useState([]);
      const [error, setError] = useState(null);
-    // const apiStudyDetail = "http://localhost:8080/api/"+slist.s_no
-    const apiStudyDetail = "http://localhost:8080/api/studies";
+     //const apiStudyDetail = "http://localhost:8080/api/studies";
+     const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
     const postStudy = async () => {
         try {
             setError(null);
@@ -68,12 +68,11 @@ function StudyDetail({slist, toggleStudyDetailPopup}) {
     // }, []);
 
     const email = "이메일";
-    const [scrap, setScrap] = useState(false);
-    const [close, setClose] = useState(false);
+    // const [scrap, setScrap] = useState(false);
     
-    const onClickScrap = () => {
-        setScrap(current => !current);
-    }
+    // const onClickScrap = () => {
+    //     setScrap(current => !current);
+    // }
     const onClickApply = () => {
         alert('신청되었습니다.');
         toggleStudyDetailPopup(false);
@@ -81,7 +80,6 @@ function StudyDetail({slist, toggleStudyDetailPopup}) {
     }
     const onClickClose = () => {
         toggleStudyDetailPopup(false);
-        console.log("close");
     }
     // var slist = [{
     //     s_no:5,
