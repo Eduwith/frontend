@@ -1,58 +1,124 @@
 /*멘토 창*/
 .pic {
-  display: fixed;
-  width: 250px;
-  height: 48vh;
-  margin-top: 7vh;
+  width: 200px;
+  height: 200px;
+  margin-top: 5vh;
   margin-left: 3.5vw;
-  margin-right: 30px;
   border-radius: 5px;
 }
 
+.bin {
+  position: relative;
+  width: 100%;
+  background-color: #F1F5FA;
+  height: 70px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.x {
+  position: absolute;
+  right: 40px;
+  top: 25px;
+  cursor: pointer;
+  color: grey;
+}
+
 .book {
-  position: fixed;
-  left: 74vw;
-  top: 20vh;
+  position: absolute;
+  right: 80px;
+  top: 21px;
   color: #4673EA;
 }
 
 .title {
-  font-size: 24pt;
-  margin-top: 45px;
-  margin-bottom: 15px;
-  text-align: left;
+  
+  font-size: 24px;
+  padding-left: 76px;
+  padding-top: 17px;
+  font-weight: 600;
 }
 
 .content {
-  width: 38vw;
-  height: 41vh;
-  background-color: #fffcca;
-  padding: 20px;
+  width: 42vw;
+  height: 40vh;
+  padding-top: 35px;
+  font-weight: 550;
 }
 
 .content > p {
-  font-size: 18pt;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.content_span {
+  font-size: 17px;
+  color: #999;
+  display:inline-block;  
+  width: 80px;
+}
+
+.content_span2 {
+  font-size: 16px;
+  width: 180px;
+  display:inline-block;  
+  color: #333;
+}
+
+.content_span3 {
+  font-size: 17px;
+  color: #999;
+  display:inline-block;
+  width: 140px;
+}
+
+.content_keyword {
+  font-size: 16px;
+  width: 100px;
+  height: 30px;
+  line-height: 25px;
+  text-align: center;
+  display:inline-block;
+  border: 2px solid #4673EA;
+  border-radius: 20px;  
+  color: #333;
+}
+
+.content_region {
+  
+  font-size: 16px;  
+  color: #333;
+  width: 200px;
+  display:inline-block;
+}
+
+
+.content_info {
+  
+  font-size: 16px;  
+  width: 450px;
+  color: #333;
+  display:inline-block;  
+  vertical-align: top;
+}
+
+.sub_box {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .btn {
-  margin-top: 30px;
-  width: 300px;
-  height: 60px;
+  width: 180px;
+  height: 50px;
+  margin-top: 70px;
+  margin-left: 400px;
   background-color: #4673EA;
   box-shadow: none;
   border: none;
-  border-radius: 5px;
-  font-size: 22pt;
+  border-radius: 30px;
+  font-size: 20px;
   color: white;
-  font-weight: 550;
   cursor: pointer;
-}
-
-.x {
-  display: fixed;
-  cursor: pointer;
-  margin-top: 25px;
-  margin-right: 25px;
-  color: grey;
 }

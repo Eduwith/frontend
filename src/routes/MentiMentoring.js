@@ -8,11 +8,12 @@ import { Link } from "react-router-dom";
 
 
 
-function Mentoring() {
+function MentiMentoring() {
 
   //글 불러오기
   const [geul, setGeul] = useState([]);
   const [current, setCurrent] = useState(0);
+
 
   const url = 'http://34.64.249.190:8080/';
 
@@ -20,7 +21,7 @@ function Mentoring() {
     try {
       setGeul(null);
       axios.get(url + 'mentoring/list')
-      // axios.get('/dummyMData.json')
+      //axios.get('/dummyMtData.json')
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
@@ -177,8 +178,8 @@ function Mentoring() {
     <div>
       <div className={styles.back}>
         <div className={styles.Title}>
-          멘토 찾기 {/*<button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청  </button>*/}
-          <Link to="/mentiRecruit" className={styles.apply_btn}>멘토 신청</Link>
+          멘티 찾기 {/*<button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청  </button>*/}
+          <Link to="/mentiRecruit" className={styles.apply_btn}>멘티 신청</Link>
 
 
           <form className={styles.nav_form}>
@@ -251,7 +252,7 @@ function Mentoring() {
           </form>
 
           <div className={styles.group}>
-            <div className={styles.middle_title}>🔎 멘티 구해요!</div>
+            <div className={styles.middle_title}>🔎 멘토 구해요!</div>
             {kw !== null ? <MentoList geul={filterTitle} onView={onView} togglePopup={togglePopup} /> : <MentoList geul={geul} onView={onView} togglePopup={togglePopup} />}
 
   
@@ -279,4 +280,4 @@ function Mentoring() {
   );
 }
 
-export default Mentoring;
+export default MentiMentoring;

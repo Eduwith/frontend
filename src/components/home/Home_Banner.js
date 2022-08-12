@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./Home_Banner.module.css";
 import testfox from "../../images/testfox.png";
+import { Link } from 'react-router-dom';
 
 function HomeBanner() {
 
@@ -12,7 +13,7 @@ function HomeBanner() {
                     나의 학습 유형이 궁금하다면? <br />
                     나에게 맞는 공부법이 궁금하다면?
                 </div>
-                <button className={styles.btntest}>테스트 하러가기 {">"}</button>
+                <Link to="/test"><button type="button" className={styles.btntest}> 테스트 하러가기 {">"}</button></Link>
             </div>
             <img className={styles.imgFox} src={testfox} alt="여우" />
         </div>
