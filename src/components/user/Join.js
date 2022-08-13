@@ -44,7 +44,7 @@ function Join() {
 
   const handleSubmit2 = async () => {
     try {
-     axios.post(url +'/user/join', {
+     axios.post( url + '/user/join', {
         email: email,
         name: name,
         pwd: password,

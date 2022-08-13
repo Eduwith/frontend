@@ -1,6 +1,8 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import mbti from "../common/result.json"
+import styles from "./TestResult.module.css"
 
 function TestResult() {
 
@@ -39,35 +41,43 @@ function TestResult() {
     }
   }
   
-  const url = 'http://34.64.249.190:8080/';
+  const url = "http://34.64.249.190:8080"
 
   const sendMbti = () => {
-    // axios.post(url + 'test',{
-    //   name: username,
-    //   result: mbti[count].id
-    // })
-    // .then((res) => {
-    //   console.log('mbti 결과 전송 완료 ', res.data)
-    // });
+    axios.post('/userTest',{
+      mbti: mbti[count].id,
+      animal: mbti[count].nickname
+
+    })
+    .then((res) => {
+      console.log('mbti 결과 전송 완료 ', res.data)
+    });
   }
+
+  useEffect(() => {
+    sendMbti();
+  }, []);
 
 
   return (
-    <div>
-      <h3><span>{username}</span>님의 학습 유형은?</h3>
-      <p>{mbti[count].id}</p>
+    <div className={styles.bdbox}>
+    <div className={styles.qbox}>
+      <div className={styles.subtitle}>{username}님의 학습 유형은?</div>
+      {/* <p className={styles.titlebt}>{mbti[count].id}</p> */}
+      <p className={styles.title}>{mbti[count].nickname}</p>
+      
       <img src={mbti[count].img} alt="결과 이미지" width="200px" height="200px" />
-      <p>{mbti[count].nickname}</p>
-      <ul >
+      <ul className={styles.desc}>
         {mbti[count].description.map((item) => {
           return (
             <li key={item.des}>
-              {item.des}
+              💙 {item.des}
             </li>
           );
         })}
       </ul>
       
+    </div>
     </div>
   )
 

@@ -52,11 +52,13 @@ function MentoApply({ togglePopup, geul, current}) {
     console.log(m_no);
   }
 
+  const url = 'http://34.64.249.190:8080';
+
   const onClick = () => {
     alert(`지원이 완료되었습니다. ${m_no}`);
     togglePopup(false);
     try {
-      axios.post('http://34.64.84.219:8080/mypage/mentoring', {
+      axios.post(`${url}/mentoring/${m_no}/apply`, {
         m_no: m_no
       }).then(function (response) {
         if(response){

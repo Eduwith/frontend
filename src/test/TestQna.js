@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import data from "../common/data.json"
 import { useNavigate, useSearchParams } from "react-router-dom";
+import styles from "./TestQna.module.css"
+import fox2 from "../images/fox2.png";
 
 function TestQna() {
 
@@ -27,15 +29,29 @@ function TestQna() {
   };
 
   return (
-    <div className="question">
-      <h1>Q{data[num].id}</h1>
-      <p><span>{data[num].question}</span></p>
-      <button onClick={() => nextSlide(0)}>
-        <span>{data[num].answers[0].content}</span>
-      </button>
-      <button onClick={() => nextSlide(1)}>
-        <span>{data[num].answers[1].content}</span>
-      </button>
+    <div className={styles.bdbox}>
+    <div className={styles.qbox}>
+     
+     <div className={styles.bar}></div>
+     
+      <div className={styles.qnum}>Q{data[num].id}.</div>
+      <p className={styles.question}>{data[num].question}</p>
+      
+      <div>
+        <button className={styles.btn} onClick={() => nextSlide(0)}>
+          {data[num].answers[0].content}
+        </button>
+      </div>
+      <div>
+        <button className={styles.btn} onClick={() => nextSlide(1)}>
+          {data[num].answers[1].content}
+        </button>
+      </div>
+
+      <img src={fox2} className={styles.pic}/>
+
+      <div className={styles.copyright}>ⓒ2022. Eduwith all rights reserved.</div>
+    </div>
     </div>
   )
 

@@ -20,7 +20,7 @@ function MentiMentoring() {
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      axios.get(url + 'mentoring/list')
+      axios.get(url + 'mentoring/mentee')
       //axios.get('/dummyMtData.json')
         .then(function (response) {
           if (response) {

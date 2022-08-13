@@ -25,16 +25,16 @@ function Navbar({isLogin}) {
   let token = localStorage.getItem('jwtToken') || '';
 
   const authCheck = () => {
-    axios.post(url + 'user/loginCheck', {token: token})
-         .then((res) => {
-          setUserId(res.data.email);
-          setUsername(res.data.name);
-          console.log('email', userID);
-          console.log('name', username);
-         })
-         .catch(() => {
-            logOut();
-         })
+    // axios.post('/user/loginCheck', {token: token})
+    //      .then((res) => {
+    //       setUserId(res.data.email);
+    //       setUsername(res.data.name);
+    //       console.log('email', userID);
+    //       console.log('name', username);
+    //      })
+    //      .catch(() => {
+    //         logOut();
+    //      })
   }
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function Navbar({isLogin}) {
     <div>
     <nav className={styles.navbar}>
         <div className={styles.logo}>
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Link to="/main" style={{textDecoration: 'none'}}>
             <img className={styles.logo} src={logo} alt="로고" />
           </Link>
         </div>

@@ -35,7 +35,7 @@ function MyMentoApply() {
                     <div className={styles.right}>
                         <h2 className={styles.mymenu}>멘토링 신청 <hr/></h2>
                         <div>
-
+{/* 내가 작성한 글이랑 신청한 사람 목록 조회 / 모집글 작성 버튼 보내기 */}
                         </div>
                     </div>
                 </div>

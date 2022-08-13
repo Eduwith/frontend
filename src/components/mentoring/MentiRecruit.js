@@ -81,9 +81,12 @@ function MentiRecruit() {
 
   const region = regionB + regionS;
 
+
+  const url = 'http://34.64.249.190:8080';
+
    const handleSubmit = async () => {
     try {
-      axios.post('http://34.64.84.219:8080/mentoring/recruitment', {
+      axios.post(url + '/mentoring/recruitment', {
         role: role,
         title: title,
         field: field,

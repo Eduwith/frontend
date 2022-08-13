@@ -45,8 +45,8 @@ function App() {
             <Route path="/testqna" element={<TestQna />}></Route>
             <Route path="/result" element={<TestResult />}></Route>
 
-            <Route path="/mentoring/mento" element={<Mentoring/>}></Route>
-            <Route path="/mentoring/menti" element={<MentiMentoring/>}></Route>
+            <Route path="/mentoring/mentor" element={<Mentoring/>}></Route>
+            <Route path="/mentoring/mentee" element={<MentiMentoring/>}></Route>
 
             <Route path="/mentiRecruit" element={<MentiRecruit />}></Route>
 
