@@ -2,6 +2,8 @@ import Navbar from "../home/Navbar";
 import styles from "./MyMento.module.css";
 import myimg from "../../images/myimg.png";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
 function MyMentoApply() {
     const activeStyle={
@@ -12,6 +14,23 @@ function MyMentoApply() {
         color: 'black',
         textDecoration: "none"
     };
+
+    const [myList, setMyList] = useState([]);
+
+    const url = 'http://34.64.249.190:8080';
+    
+    const getList = () => {
+      try{
+        axios.get(url + '/mypage/mentolist')
+        .then((res) => {
+          setMyList(res.data.list);
+        })
+      }
+      catch(err) {
+        console.log('list get error', err);
+      }
+      
+    }
 
     return(
         <div className={styles.wrap}>
@@ -35,7 +54,7 @@ function MyMentoApply() {
                     <div className={styles.right}>
                         <h2 className={styles.mymenu}>멘토링 신청 <hr/></h2>
                         <div>
-{/* 내가 작성한 글이랑 신청한 사람 목록 조회 / 모집글 작성 버튼 보내기 */}
+{/* 1. 내가 작성한 글이랑 신청한 사람 목록 조회 / 모집글 작성 버튼 보내기 */}
                         </div>
                     </div>
                 </div>
