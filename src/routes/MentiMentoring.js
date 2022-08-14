@@ -23,7 +23,7 @@ function MentiMentoring() {
       axios.get(url + 'mentoring/mentee')
       //axios.get('/dummyMtData.json')
         .then(function (response) {
-          if (response) {
+          if (response.data) {
             console.log('멘토링 조회 성공!');
             setGeul(response.data); // 연결하면서 수정하기
           }

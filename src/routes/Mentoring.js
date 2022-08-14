@@ -137,7 +137,7 @@ function Mentoring() {
       const response = await axios.get(`http://localhost:8080/mentoring/search/${kw}`, {
         keyword: kw
       });
-      if (response) {
+      if (response.data) {
         setGeul(response.data);
         console.log('키워드 검색 성공!!!', response.data);
         

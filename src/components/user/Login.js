@@ -5,11 +5,17 @@ import { useNavigate } from "react-router-dom"
 import axios from 'axios';
 import setAuthorizationToken from './setAuthorizationToken';
 import { useCookies } from 'react-cookie';
+import { useRecoilState } from 'recoil';
+import { nicknameState } from '../../recoil/User';
+import { IdState } from '../../recoil/RecoilId';
 
 
 const Login = (props) => {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(['id']);
+
+  const [username, setUsername] = useRecoilState(nicknameState);
+  const [userID, setUserId] = useRecoilState(IdState);
   const { open, close } = props;
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
@@ -35,8 +41,10 @@ const Login = (props) => {
       })
         .then((res) => {
           const token = res.data.accessToken;
-          localStorage.setItem('jwtToken', token)
+          localStorage.setItem('jwtToken', token);
           setAuthorizationToken(token);
+          setUsername(res.data.name);
+          setUserId(res.data.email);
         });
     } catch (err) {
       console.log('login err', err)

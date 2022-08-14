@@ -1,32 +1,91 @@
-[
-  {
-    "m_no": 1,
-    "role": "E",
-    "title" : "중 1 수학 멘토 모집",
-    "name" : "최연준",
-    "field": "교육",
-    "region": "서울특별시광진구",
-    "r_period": "7",
-    "m_period": 3,
-    "way": "OFF",
-    "keyword": "친절해요",
-    "info": "안녕하세요! 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역",
-    "email": "12233@naver.com"
+{
+  "mentee": [
+    {
+      "m_no": 1,
+      "role": "O",
+      "title": "중 1 수학 멘티 모집",
+      "name": "최연준",
+      "field": "교육",
+      "region": "서울특별시광진구",
+      "r_period": "7",
+      "m_period": 3,
+      "way": "OFF",
+      "keyword": "친절해요",
+      "info": "안녕하세요! 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역",
+      "email": "12233@naver.com",
+      "mentoringApply": [
+        {
+          "apply_no": 1,
+          "email": "goeun@naver.com",
+          "m_no": 1,
+          "result": "F"
+        },
+        {
+          "apply_no": 2,
+          "email": "goeun123@naver.com",
+          "m_no": 1,
+          "result": "F"
+        }
+      ]
+    }
+  ],
 
-  },
-  {
-    "m_no": 2,
-    "role": "E",
-    "title" : "중학 미술 도와주실분",
-    "name" : "태릉이",
-    "field": "문화예술스포츠",
-    "region": "서울특별시광진구",
-    "r_period": "7",
-    "m_period": 6,
-    "way": "ON",
-    "keyword": "성실해요",
-    "info": "멘티구해요!",
-    "email": "12233@naver.com"
-
-  }
-]
+  "mentor" : [
+    {
+      "m_no": 1,
+      "role": "E",
+      "title": "중등 수학 멘티 모집",
+      "name": "한이음",
+      "field": "교육",
+      "region": "서울특별시광진구",
+      "r_period": "7",
+      "m_period": 6,
+      "way": "ON",
+      "keyword": "성실해요",
+      "info": "멘티구해요!",
+      "email": "12233@naver.com",
+      "mentoringApply": [
+        {
+          "apply_no": 1,
+          "email": "goeun456@naver.com",
+          "m_no": 2,
+          "result": "F"
+        },
+        {
+          "apply_no": 2,
+          "email": "goeun789@naver.com",
+          "m_no": 2,
+          "result": "F"
+        }
+      ]
+    },
+    {
+      "m_no": 1,
+      "role": "O",
+      "title": "중 1 수학 멘티 모집",
+      "name": "최연준",
+      "field": "교육",
+      "region": "서울특별시광진구",
+      "r_period": "7",
+      "m_period": 3,
+      "way": "OFF",
+      "keyword": "친절해요",
+      "info": "안녕하세요! 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역 기러기 토마토 스위스 별똥별 인도인 우영우 역삼역",
+      "email": "12233@naver.com",
+      "mentoringApply": [
+        {
+          "apply_no": 1,
+          "email": "goeun@naver.com",
+          "m_no": 1,
+          "result": "F"
+        },
+        {
+          "apply_no": 2,
+          "email": "goeun123@naver.com",
+          "m_no": 1,
+          "result": "F"
+        }
+      ]
+    }
+  ]
+}

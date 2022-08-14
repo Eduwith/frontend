@@ -14,38 +14,6 @@ import { IdState } from "../../recoil/RecoilId";
 
 function Navbar({isLogin}) {
 
-  const [cookies, setCookie, removeCookie] = useCookies(['id']);
-  const [username, setUsername] = useRecoilState(nicknameState);
-  const [userID, setUserId] = useRecoilState(IdState);
-	const navigate = useNavigate();
-
-  const url = 'http://34.64.249.190:8080/';
-
-
-  let token = localStorage.getItem('jwtToken') || '';
-
-  const authCheck = () => {
-    // axios.post('/user/loginCheck', {token: token})
-    //      .then((res) => {
-    //       setUserId(res.data.email);
-    //       setUsername(res.data.name);
-    //       console.log('email', userID);
-    //       console.log('name', username);
-    //      })
-    //      .catch(() => {
-    //         logOut();
-    //      })
-  }
-
-  useEffect(() => {
-		authCheck(); // 로그인 체크 함수
-	}, []);
-
-  const logOut = () => {
-		removeCookie('id'); // 쿠키를 삭제
-		navigate('/'); // 메인 페이지로 이동
-	};
-
   const activeStyle = {
     textDecoration: 'none',
     borderBottom: '4px solid #4673EA',
@@ -62,10 +30,7 @@ function Navbar({isLogin}) {
   const closeLogin = () => {
     setLoginOpen(false);
   }
-
   
-  
-
   return (
     <div>
     <nav className={styles.navbar}>

@@ -52,15 +52,12 @@ function Join() {
         gender: gender,
         address: address,
       }).then(function (response) {
-        if(response){
-           console.log('가입 성공!!!');
-          navigate('/');
+        if(response.data.result === "SUCCESS"){
+           alert('회원가입이 완료되었습니다.');
+           navigate('/main');
         }
         else
-          console.log('정보 없음');
-          
-        console.log(response);
-        console.log(response.data);
+          alert('회원가입에 실패하였습니다.');          
       });
       
     } catch (err) {

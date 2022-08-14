@@ -95,11 +95,10 @@ function MentiRecruit() {
         m_period: mPeriod,
         keyword: keyword,
         info: info,
-        email: userId})
+      })
         .then(function (response) {
-          if (response) {
+          if (response.data) {
             alert('멘티 모집글이 등록되었습니다.');
-            console.log(response.data); // 연결하면서 수정하기
             navigate('/mentoring/mento') // 멘토 찾기 사이트로 간다.
           }
         })

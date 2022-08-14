@@ -1,2 +1,17 @@
+.App {
+  font-family: "GangwonEduLight";
+}
 
+@font-face {
+  font-family: 'GangwonEduBold';
+  src: url('./fonts/GWBold.ttf') format('truetype'),
+  url('./fonts/GWBold.woff') format('woff');
 
+}
+
+@font-face {
+  font-family: 'GangwonEduLight';
+  src: url('./fonts/GWLight.ttf') format('truetype')
+  ,url('./fonts/GWLight.woff') format('woff');
+
+}

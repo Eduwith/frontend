@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './reset.css';
+import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './routes/Home';
 import Join from './components/user/Join';
@@ -16,9 +17,9 @@ import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
 import MentiRecruit from './components/mentoring/MentiRecruit';
 import MentiMentoring from './routes/MentiMentoring';
-import TestMain from './test/TestMain';
-import TestQna from './test/TestQna';
-import TestResult from './test/TestResult';
+import TestMain from './components/test/TestMain';
+import TestQna from './components/test/TestQna';
+import TestResult from './components/test/TestResult';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
         <Router>
           <Navbar isLogin={isLogin}/>
           <Routes>
+            <Route path="/" element={<Home />}>
+            </Route>
             <Route path="/main" element={<Home />}>
             </Route>
             <Route path="/join" element={<Join />}></Route>

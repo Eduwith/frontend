@@ -15,7 +15,6 @@ function MyStudy() {
 
     return(
         <div className={styles.wrap}>
-            <Navbar/>
             <div className={styles.head}>마이페이지</div>
             <div className={styles.body}>
                 <div className={styles.box}>
