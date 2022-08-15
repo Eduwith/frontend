@@ -30,12 +30,13 @@ const Login = (props) => {
     setPw(event.currentTarget.value)
   }
 
-  const url = 'http://34.64.249.190:8080';
+  const url = 'http://localhost:8080';
+  //const url = 'http://34.64.249.190:8080';
 
   const login = (e) => {
     e.preventDefault();
     try {
-      axios.post(url + '/user/login', {
+      axios.post('http://localhost:8080/user/login', {
         email: email,
         pwd: pw
       })

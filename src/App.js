@@ -20,6 +20,7 @@ import MentiMentoring from './routes/MentiMentoring';
 import TestMain from './components/test/TestMain';
 import TestQna from './components/test/TestQna';
 import TestResult from './components/test/TestResult';
+import MyEditRecruit from './components/mypage/MyEditRecruit';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
             <Route path="/mentoring/mentee" element={<MentiMentoring/>}></Route>
 
             <Route path="/mentiRecruit" element={<MentiRecruit />}></Route>
+            <Route path="/myEditRecruit/:m_no" element={<MyEditRecruit />}></Route>
 
 
             <Route path="/mentoring/:keyword" element={<Mentoring />}></Route>

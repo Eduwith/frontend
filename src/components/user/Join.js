@@ -40,11 +40,12 @@ function Join() {
     setAddress(event.currentTarget.value)
   }
 
-  const url = 'http://34.64.249.190:8080';
+  //const url = 'http://34.64.249.190:8080';
+  const url = 'http://localhost:8080';
 
   const handleSubmit2 = async () => {
     try {
-     axios.post( url + '/user/join', {
+     axios.post('/user/join', {
         email: email,
         name: name,
         pwd: password,

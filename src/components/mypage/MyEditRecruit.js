@@ -1,16 +1,28 @@
 import React, { useState } from "react";
-import styles from "./MentiRecruit.module.css";
+import styles from "./MyEditRecruit.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { IdState } from "../../recoil/RecoilId";
 import { useRecoilValue } from "recoil";
 
-function MentiRecruit() {
+function MyEditRecruit() {
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const m_no = location.state.title;
+  const mtitle = location.state.title;
+  const mm_period = location.state.m_period;
+  const mregion = location.state.region;
+  const mway = location.state.way;
+  const mkeyword = location.state.keyword;
+  const minfo = location.state.info;
+  const mfield = location.state.field;
+
+  console.log(mtitle);
 
   const userId = useRecoilValue(IdState);
   const role = "O";
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(mtitle ? mtitle : "");
   const [field, setField] = useState("");
   const [teaching, setTeaching] = useState("");
   const [mPeriod, setMPeriod] = useState("1개월 미만");
@@ -83,11 +95,12 @@ function MentiRecruit() {
 
 
   //const url = 'http://34.64.249.190:8080';
+
   const url = 'http://localhost:8080';
 
    const handleSubmit = async () => {
     try {
-      axios.post(url + '/mentoring/recruitment', {
+      axios.put(url + `/mentoring/${m_no}`, {
         role: role,
         title: title,
         field: field,
@@ -121,23 +134,23 @@ function MentiRecruit() {
         <form onSubmit={handleSubmit}>
           <div className={styles.inner_box}>
             <div className={styles.left}>제목</div>
-            <input type="text" className={styles.input_title} value={title} onChange={onTitleHandler} placeholder="제목을 입력하세요." />
+            <input type="text" className={styles.input_title} value={title} onChange={onTitleHandler} placeholder={mtitle ? `${mtitle}` : "제목을 입력하세요."} />
           </div>
 
           <div className={styles.outside}>
             <div className={styles.inner_box}>
               <div className={styles.left}>분야</div>
               <div className={styles.radio_field}>
-                <label><input type="radio" name="field" value="dream" onChange={onFieldHandler} />&nbsp;진로</label>
-                <label><input type="radio" name="field" value="teach" onChange={onFieldHandler} />&nbsp;교육</label>
-                <label><input type="radio" name="field" value="art" onChange={onFieldHandler} />&nbsp;문화예술스포츠</label>
-                <label><input type="radio" name="field" value="etc" onChange={onFieldHandler} />&nbsp;기타</label>
+                <label><input type="radio" name="field" value="dream" onChange={onFieldHandler} defaultChecked={mfield === "진로" ? true : false}/>&nbsp;진로</label>
+                <label><input type="radio" name="field" value="teach" onChange={onFieldHandler} defaultChecked={mfield === "교육" ? true : false}/>&nbsp;교육</label>
+                <label><input type="radio" name="field" value="art" onChange={onFieldHandler} defaultChecked={mfield === "문화예술스포츠" ? true : false}/>&nbsp;문화예술스포츠</label>
+                <label><input type="radio" name="field" value="etc" onChange={onFieldHandler} defaultChecked={mfield === "기타" ? true : false}/>&nbsp;기타</label>
               </div>
             </div>
 
             <div className={styles.period}>
               <div className={styles.left}>멘토링 기간</div>
-              <select name="period" onChange={onMPeriodHandler}>
+              <select name="period" value={mm_period ? mm_period : mPeriod} onChange={onMPeriodHandler}>
                 <option value="1">1개월 이상</option>
                 <option value="3">3개월 이상</option>
                 <option value="6">6개월 이상</option>
@@ -172,26 +185,26 @@ function MentiRecruit() {
           <div className={styles.way}>
             <div className={styles.left}>강의방식</div>
             <div className={styles.checkbox}>
-              <label><input type="checkbox" name="teaching" value="on" onChange={onTeachingHandler} />&nbsp;온라인</label>
-              <label><input type="checkbox" name="teaching" value="off" onChange={onTeachingHandler} />&nbsp;오프라인</label>
+              <label><input type="checkbox" name="teaching" value="on" onChange={onTeachingHandler} checked={mway === "ON" ? "checked" : ""}/>&nbsp;온라인</label>
+              <label><input type="checkbox" name="teaching" value="off" onChange={onTeachingHandler} checked={mway === "OFF" ? "checked" : ""} />&nbsp;오프라인</label>
             </div>
           </div>
           </div>
           <div className={styles.inner_box}>
             <div className={styles.left}>특징</div>
-            <select name="keyword" onChange={onKeywordHandler} value={keyword} className={styles.keyword}>
-              <option value="재밌어요">재밌어요</option>
-              <option value="성실해요">성실해요</option>
+            <select name="keyword" onChange={onKeywordHandler} value={mkeyword ? mkeyword : keyword} className={styles.keyword}>
+              <option value="재밌어요" >재밌어요</option>
+              <option value="성실해요" defaultChecked={mkeyword === "성실해요" ? true : false}>성실해요</option>
               <option value="친절해요">친절해요</option>
             </select>
           </div>
 
           <div className={styles.inner_box}>
             <div className={styles.left}>소개글</div>
-            <input type="text" value={info} onChange={onInfoHandler} className={styles.input_desc} placeholder="멘티에게 하고 싶은 말, 자기소개 등을 적어주세요." />
+            <input type="text" value={info} onChange={onInfoHandler} className={styles.input_desc} placeholder={minfo ? `${minfo}` : "멘티에게 하고 싶은 말, 자기소개 등을 적어주세요."} />
           </div>
 
-          <button type="button" onClick={handleSubmit} className={styles.btn} >등록하기</button>
+          <button type="button" onClick={handleSubmit} className={styles.btn} >수정하기</button>
           <button type="button" onClick={handleSubmit2} className={styles.cbtn} >취소하기</button>
         </form>
       </div>
@@ -199,4 +212,4 @@ function MentiRecruit() {
     </div>
   );
 }
-export default MentiRecruit;
+export default MyEditRecruit;

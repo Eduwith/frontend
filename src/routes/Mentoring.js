@@ -14,7 +14,8 @@ function Mentoring() {
   const [geul, setGeul] = useState([]);
   const [current, setCurrent] = useState(0);
 
-  const url = 'http://34.64.249.190:8080/';
+  const url = 'http://localhost:8080';
+  //const url = 'http://34.64.249.190:8080/';
 
   const fetchGeul = async () => {
     try {

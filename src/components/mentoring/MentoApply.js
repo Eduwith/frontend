@@ -43,22 +43,21 @@ function MentoApply({ togglePopup, geul, current}) {
 
   const {m_no, title, name, field, m_period, way, region, keyword, info} = geul[Object.keys(geul)[idx]];
 
-  
-  const userId = useRecoilValue(IdState);
-
   console.log(geul[idx]);
   const onClickBMK = () => {
     setBmk(current => !current);
     console.log(m_no);
   }
 
-  const url = 'http://34.64.249.190:8080';
+  //const url = 'http://34.64.249.190:8080';
+
+  const url = 'http://localhost:8080';
 
   const onClick = () => {
     alert(`지원이 완료되었습니다.`);
     togglePopup(false);
     try {
-      axios.get(`${url}/mentoring/${m_no}/apply`, {
+      axios.post(`${url}/mentoring/${m_no}/apply`, {
         m_no: m_no
       }).then(function (response) {
         if(response){

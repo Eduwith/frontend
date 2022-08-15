@@ -18,13 +18,14 @@ function MyMentoApply() {
 
   const [myList, setMyList] = useState([]);
 
-  const url = 'http://34.64.249.190:8080';
+  const url = 'http://localhost:8080';
+  //const url = 'http://34.64.249.190:8080';
   const [role, setRole] = useState("O");
 
   const getList = () => {
     try {
-      // axios.get(url + '/mentoring/mypage/mentoring')
-        axios.get('/dummyMtData.json')
+       axios.get(url + '/mentoring/mypage/mentoring')
+      //axios.get('/dummyMtData.json')
         .then((res) => {
           //역할에 맞는 글 가져오기
           role === "O" ? setMyList(res.data.mentor) : setMyList(res.data.mentee)
@@ -46,8 +47,24 @@ function MyMentoApply() {
     setRole("E");
   }
 
+  const [myAList, setMyAList] = useState({});
+
+  const getAcceptList = () => {
+    try {
+       axios.get(url + 'mypage/apply')
+      //axios.get('/dummyMtData.json')
+        .then((res) => {
+          setMyAList(res.data.mentee);
+        })
+    }
+    catch (err) {
+      console.log('list get error', err);
+    }
+
+  }
+
   useEffect(() => {
-    getList()
+    getList();
   }, [role])
 
   return (
@@ -74,6 +91,19 @@ function MyMentoApply() {
               {
                 myList && myList.map((item) => (
                   <MyWroteGeul key={item.m_no} item={item} />
+                ))
+              }
+            </div>
+
+            <h2 className={styles.mymenu}>나의 신청 내역 </h2>
+            <div>
+            {
+                myList && myList.map((item) => (
+                  <div key={item.m_no}>
+                    {item.title}
+                  
+                  <button>취소하기</button>
+                  </div>
                 ))
               }
             </div>
