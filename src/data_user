@@ -1,0 +1,20 @@
+function data_user() {
+    
+    const user = [
+        {
+            email: "test@gmail.com",
+            name: "성수정",
+            pwd : "123456",
+            age : "23",
+            gender : "F",      
+            address : "성신여자대학교",
+            profile_img : ""
+        }
+    ]
+    
+    return(
+        user
+    )
+}
+
+export default data_user;

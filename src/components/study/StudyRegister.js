@@ -15,6 +15,7 @@ function StudyRegister() {
     const [total_people, setTPeople] = useState("");
     const [r_end_date, setEDate] = useState("");
     const [contents, setContents] = useState("");
+    const [s_period, setSperiod] = useState("");
   
   
     const onTitleHandler = (event) => {
@@ -39,6 +40,11 @@ function StudyRegister() {
   
     const onContentsHandler = (event) => {
       setContents(event.currentTarget.value);
+      console.log(event.currentTarget.value);
+    }
+
+    const onSperiodHandler = (event) => {
+      setSperiod(event.currentTarget.value);
       console.log(event.currentTarget.value);
     }
 
@@ -88,6 +94,15 @@ function StudyRegister() {
             <input type="number" className={styles.input_title} value={total_people} onChange={onTPeopleHandler} />
           </div>
           <div className={styles.inner_box}>
+            <div className={styles.left}>스터디기간</div>
+            <select name="period" onChange={onSperiodHandler}>
+              <option value="1">1개월 미만</option>
+              <option value="3">3개월 미만</option>
+              <option value="6">6개월 미만</option>
+              <option value="12">1년 미만</option>
+            </select>
+          </div>
+          <div className={styles.inner_box}>
             <div className={styles.left}>내용</div>
             <input type="text" value={contents} onChange={onContentsHandler} className={styles.input_content} />
           </div>
@@ -96,18 +111,9 @@ function StudyRegister() {
             <input type="text" value={tag} onChange={onTagHandler} className={styles.input_desc} />
           </div>
 
-          {/* <div className={styles.inner_box}>
-            <div className={styles.left}>스터디기간</div>
-            <select name="period" onChange={onSPeriodHandler}>
-              <option value="1">1개월 미만</option>
-              <option value="3">3개월 미만</option>
-              <option value="6">6개월 미만</option>
-              <option value="12">1년 미만</option>
-            </select>
-          </div> */}
 
           <div className={styles.btnblock}>
-          <button type="submit" className={styles.btn_apply}>등록하기</button>
+          <button type="submit" className={styles.btn_apply} onClick={postStudyRegister}>등록하기</button>
           <button type="submit" className={styles.btn_back} onClick={ () => navigate('/studies')}>취소하기</button>
           </div>
           
