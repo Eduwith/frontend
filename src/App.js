@@ -1,10 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import './App.css';
+import './reset.css';
+import './App.css'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './routes/Home';
 import Join from './components/user/Join';
-import Login from './components//user/Login';
 import Volunteer from './routes/Volunteer';
 import VolunteerDetail from './components/volunteer/VolunteerDetail';
 import Mentoring from "./routes/Mentoring";
@@ -18,6 +19,12 @@ import MyStudy from './components/mypage/MyStudy';
 import MyScrap from './components/mypage/MyScrap';
 import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
+import MentiMentoring from './routes/MentiMentoring';
+import TestMain from './components/test/TestMain';
+import TestQna from './components/test/TestQna';
+import TestResult from './components/test/TestResult';
+import MyEditRecruit from './components/mypage/MyEditRecruit';
+import MenteeRecruit from './components/mentoring/MenteeRecruit';
 
 function App() {
 
@@ -26,8 +33,9 @@ function App() {
   return (
     <div className="App">
         <Router>
-          <Navbar isLogin={isLogin} />
+          <Navbar isLogin={isLogin}/>
           <Routes>
+
             <Route path="/" element={<Home />}></Route>
             <Route path="/main" element={<Home />}></Route>
             <Route path="/login" element={<Login />}></Route>
@@ -40,12 +48,27 @@ function App() {
             <Route path="/myscrap" element={<MyScrap/>}></Route>
             <Route path="/mypoint" element={<MyPoint/>}></Route>
 
+
             <Route path="/mentoring" element={<Mentoring />}></Route>
             <Route path="/studies" element={<Study />}></Route>
             <Route path="/studies/:idex" element={<StudyDetail />}></Route>
             <Route path="/studies/register" element={<StudyRegister />}></Route>
             <Route path="/volunteers" element={<Volunteer/>}></Route>
             <Route path="/volunteers/no=:idex" element={<VolunteerDetail />}></Route>
+
+            <Route path="/test" element={<TestMain />}></Route>
+            <Route path="/testqna" element={<TestQna />}></Route>
+            <Route path="/result" element={<TestResult />}></Route>
+
+            <Route path="/mentoring/mentor" element={<Mentoring/>}></Route>
+            <Route path="/mentoring/mentee" element={<MentiMentoring/>}></Route>
+
+            <Route path="/menteeRecruit" element={<MenteeRecruit />}></Route>
+            <Route path="/myEditRecruit/:m_no" element={<MyEditRecruit />}></Route>
+
+            <Route path="/mentoring/:keyword" element={<Mentoring />}></Route>
+            <Route path="/mentoring/filter" element={<Mentoring />}></Route>
+
             
           </Routes>
         </Router>

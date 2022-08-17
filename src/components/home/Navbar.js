@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import styles from "./Navbar.module.css";
 import {NavLink, Link} from 'react-router-dom';
 import logo from '../../images/logo.jpg';
@@ -26,12 +26,11 @@ function Navbar({isLogin}) {
     setLoginOpen(false);
   }
   
-
   return (
     <div>
     <nav className={styles.navbar}>
         <div className={styles.logo}>
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Link to="/main" style={{textDecoration: 'none'}}>
             <img className={styles.logo} src={logo} alt="로고" />
           </Link>
         </div>
@@ -51,9 +50,15 @@ function Navbar({isLogin}) {
     </nav>
     <nav className={styles.subvar}>
       <ul className={styles.subLinks}>
-        <li><NavLink to="/mentoring" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 멘토링</NavLink></li>
-        <li><NavLink to="/studies" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 스터디</NavLink></li>
-        <li><NavLink to="/volunteers" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
+
+        <li className={styles.dropdown}>
+          <NavLink to="/mentoring/mento" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.mlink}> 멘토링</NavLink>
+          <div className={styles.dropdown_content}>
+            <Link to="/mentoring/mento" >멘토 찾기</Link>
+            <Link to="/mentoring/menti" >멘티 찾기</Link>
+          </div>
+        </li>
+        <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
         <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
       </ul>
 

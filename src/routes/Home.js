@@ -27,7 +27,6 @@ function Home() {
       <Mento />
       <Home_Study />
     </div>
-
   );
 }
 
