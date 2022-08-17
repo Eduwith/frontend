@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Mentoring.module.css";
 import MentoApply from "../components/mentoring/MentoApply";
-import MentiRecruit from "../components/mentoring/MentiRecruit";
+import MentiRecruit from "../components/mentoring/MenteeRecruit";
 import axios from "axios";
-//import MentoList from "../components/mentoring/MentoList";
-import { useNavigate, useParams } from "react-router";
+import MentoList from "../components/mentoring/MentoList";
+import { Link } from "react-router-dom";
+
+
 
 function Mentoring() {
 
-  const navigate = useNavigate();
   //글 불러오기
-  const [geul, setGeul] = useState(null);
+  const [geul, setGeul] = useState([]);
+  const [current, setCurrent] = useState(0);
+
+  const url = 'http://localhost:8080';
+  //const url = 'http://34.64.249.190:8080/';
 
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      axios.get('http://34.64.249.190:8080/main')
+
+      axios.get(url + '/mentoring/mentor')
       //axios.get('/dummyMData.json')
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
-            setGeul(response.data); // 연결하면서 수정하기
+            setGeul(response.data.lists); // 연결하면서 수정하기
+
           }
         })
     } catch (err) {
@@ -42,10 +49,25 @@ function Mentoring() {
 
   //팝업
   const [showPopup, setShowPopup] = useState(false);
+
   const [showApplyPopup, setShowApplyPopup] = useState(false);
+
+
+
+  // const onView = (id) => {
+  //   console.log('onView', id)
+  //   setCurrent(geul.find(item => item.id === id))
+    
+  // }
+
+  const onView = (id) => {
+    setCurrent(id);
+  }
+
 
   const togglePopup = () => {
     setShowPopup(current => !current);
+    
   };
 
   const toggleApplyPopup = () => {
@@ -68,6 +90,9 @@ function Mentoring() {
   }
 
   //셀렉트 버튼 - 지역
+
+  const region_big = ["서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
+
   const area1 = ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
   const area2 = ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구", "강화군", "옹진군"];
   const area3 = ["대덕구", "동구", "서구", "유성구", "중구"];
@@ -84,9 +109,9 @@ function Mentoring() {
   const area14 = ["경산시", "경주시", "구미시", "김천시", "문경시", "상주시", "안동시", "영주시", "영천시", "포항시", "고령군", "군위군", "봉화군", "성주군", "영덕군", "영양군", "예천군", "울릉군", "울진군", "의성군", "청도군", "청송군", "칠곡군"];
   const area15 = ["거제시", "김해시", "마산시", "밀양시", "사천시", "양산시", "진주시", "진해시", "창원시", "통영시", "거창군", "고성군", "남해군", "산청군", "의령군", "창녕군", "하동군", "함안군", "함양군", "합천군"];
   const area16 = ["서귀포시", "제주시", "남제주군", "북제주군"];
-  const region_big = ["서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
+
   const area =
-  [area1, area2, area3, area4, area5, area6, area7, area8, area9, area10, area11, area12, area13, area14, area15, area16 ]
+  [area1, area2, area3, area4, area5, area6, area7, area8, area9, area10, area11, area12, area13, area14, area15, area16 ];
 
   const [regionB, setRegionB] = useState("서울특별시");
   const handleClickBRegion = (e) => {
@@ -109,30 +134,21 @@ function Mentoring() {
     console.log(rb)
   }
 
-  //handleSubmit
-  const filterTitle = (geul !== null) ? geul.filter((p) => {
+
+   //handleSubmit
+   const filterTitle = (Array.isArray(geul)) ? geul.filter((p) => {
     return (p.name.replace(" ", "").includes(kw)) || (p.title.replace(" ", "").includes(kw))
-  }) : null;
+  }) : geul;
 
-  const filterCt = (geul !== null) ? geul.filter((p) => {
-    return (p.field === fieldSt) && (p.m_period === period) && (p.region === region) && (p.way === way)
-  }) : null;
-  //fieldSt - 분야, period - 기간, region - 지역, way - 방식
-  //e.preventDefault();
-
-  const handleSubmit = () => (
-    console.log(fieldSt, periodSt, region, way),
-    filterCt !== null ? setGeul(filterCt) : null
-  )
-
-
+  //키워드 검색
   const filterKW = async () => {
     try {
       console.log('전달 키워드', kw);
       const response = await axios.get(`http://localhost:8080/mentoring/search/${kw}`, {
         keyword: kw
       });
-      if (response) {
+
+      if (response.data) {
         setGeul(response.data);
         console.log('키워드 검색 성공!!!', response.data);
         
@@ -145,34 +161,37 @@ function Mentoring() {
     }
   };
 
+
   const filterBox = async () => {
-    try {
-      console.log('전달 목록', fieldSt, region, periodSt, way)
-      const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
-       { params: {
-        field: fieldSt,
-        region: region,
-        m_period: periodSt,
-        way: way}}
-      );
-      if (response) {
-        setGeul(response.data);
-        console.log('조건 검색 성공!!!', response.data);
-      }
-      else {
-        console.log('데이터 없음...');
-      }
-    } catch (err) {
-      console.log("Box search Error >>", err);
-    }
-  };
+    // try {
+    //   console.log('전달 목록', fieldSt, region, periodSt, way)
+    //   const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
+    //    { params: {
+    //     field: fieldSt,
+    //     region: region,
+    //     m_period: periodSt,
+    //     way: way}}
+    //   );
+    //   if (response) {
+    //     setGeul(response.data);
+    //     console.log('조건 검색 성공!!!', response.data);
+    //   }
+    //   else {
+    //     console.log('데이터 없음...');
+    //   }
+    // } catch (err) {
+    //   console.log("Box search Error >>", err);
+    // }
+
+  }
 
   return (
     <div>
       <div className={styles.back}>
         <div className={styles.Title}>
-          멘토 찾기 <button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청하기  </button>
 
+          멘토 찾기 {/*<button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청  </button>*/}
+          <Link to="/mentiRecruit" className={styles.apply_btn}>멘토 신청</Link>
 
           <form className={styles.nav_form}>
             <input value={kw} onChange={handleUserInput} type="text" placeholder="멘토 검색" className={styles.total_search} />
@@ -187,16 +206,20 @@ function Mentoring() {
             <div className={styles.cn1}>
               <div className={styles.subject}>
                 <div style={{ fontSize: "24px", marginRight: "10px" }}><span style={{ color: "#A0CBFF" }}>■</span> 분야</div>
-                <label><input type="radio" name="category" checked={fieldSt === '진로'} onChange={() => handleClickField('진로')} /> 진로</label>
-                <label><input type="radio" name="category" checked={fieldSt === '교육'} onChange={() => handleClickField('교육')} /> 교육</label>
-                <label><input type="radio" name="category" checked={fieldSt === '문화예술스포츠'} onChange={() => handleClickField('문화예술스포츠')} /> 문화예술스포츠</label>
-                <label><input type="radio" name="category" checked={fieldSt === '기타'} onChange={() => handleClickField('기타')} /> 기타</label>
+
+                <label><input type="radio" name="category" defaultValue={fieldSt === '진로'} onChange={() => handleClickField('진로')} /> 진로</label>
+                <label><input type="radio" name="category" defaultValue={fieldSt === '교육'} onChange={() => handleClickField('교육')} /> 교육</label>
+                <label><input type="radio" name="category" defaultValue={fieldSt === '문화예술스포츠'} onChange={() => handleClickField('문화예술스포츠')} /> 문화예술스포츠</label>
+                <label><input type="radio" name="category" defaultValue={fieldSt === '기타'} onChange={() => handleClickField('기타')} /> 기타</label>
+
                 <div className={styles.hiddenblock}></div>
               </div>
 
               <div className={styles.subject}>
                 <div style={{ fontSize: "24px", marginRight: "10px" }}><span style={{ color: "#A0CBFF" }}>■</span> 멘토링기간</div>
-                <select name="period" value={periodSt} onChange={handleClickPeriod} className={styles.selectbox1}>
+
+                <select name="period" defaultValue={periodSt} onChange={handleClickPeriod} className={styles.selectbox1}>
+
                   {period.map((item) => (
                     <option value={item} key={item}>
                       {item}개월 이상
@@ -209,107 +232,34 @@ function Mentoring() {
             <div className={styles.cn1}>
               <div className={styles.subject}>
                 <div style={{ fontSize: "24px", marginRight: "10px" }}><span style={{ color: "#A0CBFF" }}>■</span> 지역</div>
-                <select name="region" value={regionB} onChange={handleClickBRegion} className={styles.region}>
+
+                <select name="region" defaultValue={regionB} onChange={handleClickBRegion} className={styles.region}>
+
                   {region_big.map((item) => (
                     <option value={item} key={item}>
                       {item}
                     </option>
                   ))}
                 </select>
-                <select name="region_sub" value={regionS} onChange={handleClickSRegion} className={styles.region}>
+                <select name="region_sub" defaultValue={regionS} onChange={handleClickSRegion} className={styles.region}>
 
-                  {region_big.map((big, idex) => (
-                    regionB === big ? area[idex].map((item) => (
-                      <option value={item} key={item}>
-                        {item}
-                      </option>
-                    )) : null
-                  ))}
-                  {/* {regionB === region_big[1] ? area2.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[2] ? area3.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[3] ? area4.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[4] ? area5.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[5] ? area6.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[6] ? area7.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[7] ? area8.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[8] ? area9.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[9] ? area10.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[10] ? area11.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[11] ? area12.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
+        {region_big.map((big, idex) => (
+                            regionB === big ? area[idex].map((item) => (
+                              <option value={item} key={item}>
+                                {item}
+                              </option>
+                            )) : null
+                          ))}
 
-                  {regionB === region_big[12] ? area13.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[13] ? area14.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[14] ? area15.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null}
-                  {regionB === region_big[15] ? area16.map((item) => (
-                    <option value={item} key={item}>
-                      {item}
-                    </option>
-                  )) : null} */}
                 </select>
-                <div className={styles.hiddenblock}></div>
+                <div className={styles.hiddenblock2}></div>
               </div>
 
               <div>
                 <div className={styles.subject}>
                   <div style={{ fontSize: "24px", marginRight: "10px" }}><span style={{ color: "#A0CBFF" }}>■</span> 강의 방식</div>
-                  <label><input type="radio" name="how" checked={way === 'ON'} onClick={() => handleClickWay('ON')} /> 온라인</label>
-                  <label><input type="radio" name="how" checked={way === 'OFF'} onClick={() => handleClickWay('OFF')} /> 오프라인</label>
+                  <label><input type="radio" name="how" value={way === 'ON'} onClick={() => handleClickWay('ON')} /> 온라인</label>
+                  <label><input type="radio" name="how" value={way === 'OFF'} onClick={() => handleClickWay('OFF')} /> 오프라인</label>
                 </div>
               </div>
             </div>
@@ -320,11 +270,21 @@ function Mentoring() {
 
           <div className={styles.group}>
             <div className={styles.middle_title}>🔎 멘티 구해요!</div>
-            {/* {kw !== null ? <MentoList geul={filterTitle} togglePopup={togglePopup} /> : <MentoList geul={geul} togglePopup={togglePopup} />} */}
+            {kw !== null ? <MentoList geul={filterTitle} onView={onView} togglePopup={togglePopup} /> : <MentoList geul={geul} onView={onView} togglePopup={togglePopup} />}
 
-            {showPopup && (
-              <MentoApply togglePopup={togglePopup} />
-            )}
+  
+            {kw !== null ? showPopup && (
+               <MentoApply togglePopup={togglePopup}  geul={filterTitle} current={current} />
+            ) : showPopup && (
+               <MentoApply togglePopup={togglePopup}  geul={filterTitle} current={current} />
+            ) }
+
+{console.log('신청 누르기 전 current', current)}
+            {console.log('신청 누르기 전 geul', geul)}
+            {console.log(current)}
+            
+
+            
 
             {showApplyPopup && (
               <MentiRecruit toggleApplyPopup={toggleApplyPopup} />

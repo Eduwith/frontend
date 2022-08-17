@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import styles from "./MentoApply.module.css";
-import pin from "../../images/pin.png";
+import pin from "../../images/animal.png";
 import { ImCross } from "react-icons/im";
 import {BsBookmarkStar, BsBookmarkStarFill} from "react-icons/bs";
+import axios from "axios";
+import { useRecoilValue } from "recoil";
+import { IdState } from "../../recoil/RecoilId";
 
 const Background = styled.div`
   position: fixed;
@@ -13,9 +16,6 @@ const Background = styled.div`
   overflow: hidden;
   width: 100vw;
   height:100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: grey;
   opacity: 0.9;
 `;
@@ -26,66 +26,86 @@ const Box = styled.div`
   margin: 0 auto;
   left: 0;
   right: 0;
-  display: flex;
   z-index: 990;
-  width: 63vw;
-  height: 73vh;
+  width: 61vw;
+  height: 71vh;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0px 2px 3px 0px #4673EA;
   background: white;
 `;
 
 
-function MentoApply({togglePopup}) {
+function MentoApply({ togglePopup, geul, current}) {
 
-  const [value, setValue] = useState("");
   const [bmk, setBmk] = useState(false);
+  const idx = current - 1;
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-  }
+  const {m_no, title, name, field, m_period, way, region, keyword, info} = geul[Object.keys(geul)[idx]];
 
+  console.log(geul[idx]);
   const onClickBMK = () => {
     setBmk(current => !current);
+    console.log(m_no);
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setValue("");
-    
-  }
+  //const url = 'http://34.64.249.190:8080';
+
+  const url = 'http://localhost:8080';
 
   const onClick = () => {
-    alert('지원이 완료되었습니다.');
+    alert(`지원이 완료되었습니다.`);
     togglePopup(false);
+    try {
+      axios.post(`${url}/mentoring/${m_no}/apply`, {
+        m_no: m_no
+      }).then(function (response) {
+        if(response){
+           console.log('전송 완료');
+        }
+        else
+          console.log('정보 없음');
+      });
+    }
+    catch(err) {
+      console.log('err : ', err);
+    }
   }
 
+
   return (
-    <div>
+    <div >
       <Background  onClick={togglePopup} />
-      <Box>
-            <img className={styles.pic} src={pin} alt="mentopic" />
+       <Box>
+            
             <div>
               <div className={styles.bin}>
                { bmk ? <BsBookmarkStarFill size="30" className={styles.book} onClick={onClickBMK} /> : <BsBookmarkStar size="30" className={styles.book} onClick={onClickBMK} /> }
-                <div className={styles.title}>중1 수학 멘티 모집</div>
+                <div className={styles.title}>{title}</div>
+                <ImCross size="20" className={styles.x} onClick={togglePopup} />
               </div>
-              <div className={styles.content}>
-                <p>멘토 한이음</p>
-                <p>분야 교육/수학</p>
-                <p>멘토링 기간 3개월</p>
-                <p>특징 #친절해요 #재밌어요</p>
-                <p>소개 즐겁게 공부할 멘티 구해요~</p>
+              <div className={styles.box}>
+                <img className={styles.pic} src={pin} alt="mentopic" />
+                <div className={styles.content}>
+                  <div className={styles.sub_box}>
+                    <p><span className={styles.content_span}>멘토</span> <span className={styles.content_span2}>{name}</span></p>
+                    <p><span  className={styles.content_span3}>멘토링 기간</span> <span className={styles.content_span2}>{m_period}개월 이상</span></p>
+                  </div>
+                  <div className={styles.sub_box}>
+                    <p><span className={styles.content_span}>분야</span> <span className={styles.content_span2}>{field}</span></p>
+                    <p><span className={styles.content_span3}>강의 방식</span> <span className={styles.content_span2}>{way === "ON" ? '온라인' : '오프라인'}</span></p>
+                  </div>
+                  <p><span className={styles.content_span}>지역</span> <span className={styles.content_region}>{region}</span></p>
+                  <p><span className={styles.content_span}>특징</span> <span className={styles.content_keyword}>#{keyword}</span></p>
+                  <p><span className={styles.content_span}>소개</span> <span className={styles.content_info}>{info}</span></p>
+                </div>
               </div>
-              <button className={styles.btn} onClick={onClick}>신청하기</button>
+              <button className={styles.btn} onClick={onClick}>멘티 지원하기</button>
             </div>
-            
-            <ImCross size="20" className={styles.x} onClick={togglePopup} />
            
-      </Box>
+      </Box> 
     </div>
-  );
+  )
 }
 
 export default MentoApply;
