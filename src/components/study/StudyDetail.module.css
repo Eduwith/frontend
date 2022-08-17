@@ -6,7 +6,7 @@
     right: 0;
     z-index: 990;
     width: 50vw;
-    height: 70vh;
+    height: auto;
     /* overflow: hidden; */
     background: white;
     padding: 3%;

@@ -44,7 +44,7 @@ function MyPage() {
         {
             headers:{
               'Content-type': 'application/json',
-              'Authorization' : `Bearer ${localStorage.getItem(jwtToken)}`
+              //'Authorization' : `Bearer ${localStorage.getItem(jwtToken)}`
             }
         }
         ).then(function (response) {

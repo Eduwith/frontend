@@ -14,6 +14,7 @@ function data_study() {
             s_period: "5",
             tag: ["한글", "문법", "맞춤법"],
             recruitYN: "Y",
+            scrapYN: "N",
         },
         {
             s_no:1,
@@ -28,6 +29,7 @@ function data_study() {
             s_period: "5",
             tag: ["한글", "문법"],
             recruitYN: "N",
+            scrapYN: "N",
         },
         {
             s_no:2,
@@ -42,6 +44,7 @@ function data_study() {
             s_period: "5",
             tag: [],
             recruitYN: "N",
+            scrapYN: "Y",
     
         },
         {
@@ -57,6 +60,7 @@ function data_study() {
             s_period: "5",
             tag: ["한글", "문법", "맞춤법"],
             recruitYN: "Y",
+            scrapYN: "N",
         },
         {
             s_no:4,
@@ -71,6 +75,7 @@ function data_study() {
             s_period: "5",
             tag: ["한글"],
             recruitYN: "Y",
+            scrapYN: "N",
     
         },
         {
@@ -86,6 +91,7 @@ function data_study() {
             s_period: "5",
             tag: [],
             recruitYN: "Y",
+            scrapYN: "Y",
         }
     ]
     

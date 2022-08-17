@@ -107,7 +107,7 @@ function StudyRegister() {
           </div> */}
 
           <div className={styles.btnblock}>
-          <button type="submit" className={styles.btn_apply}>등록하기</button>
+          <button type="submit" className={styles.btn_apply} onClick={postStudyRegister}>등록하기</button>
           <button type="submit" className={styles.btn_back} onClick={ () => navigate('/studies')}>취소하기</button>
           </div>
           

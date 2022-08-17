@@ -27,7 +27,7 @@ function Study(){
         background-color : #c4c4c4;
       }
     `;
-
+    const baseUrl = "http://localhost:8080";
     const [page, setPage] = useState(1); // 현재 페이지
     const onClickTwo = () =>{
         setPage(2);
@@ -46,10 +46,10 @@ function Study(){
     //     setCurrentPosts(slist.slice(indexOfFirstPost, indexOfLastPost));
     // }, [indexOfFirstPost, indexOfLastPost, page]);
 
+    //토클
     const [studyDetailPopup, setStudyDetailPopup] = useState(false);
     const toggleStudyDetailPopup = (s_no) => {
         setStudyDetailPopup(current => !current);
-        //setNo(s_no)
     };
 
     //스크랩
@@ -57,6 +57,22 @@ function Study(){
     const onClickScrap = () => {
         setScrap(current => !current);
     }
+    const getScrap = (scrapYn) => {
+        if(scrapYn == "Y") return (scrap == true)
+        if(scrapYn == "N") return (scrap == false)
+    }
+    const [s_no, setSno] = useState("");
+    const postScrap = async () => {
+        axios.post(baseUrl+"/studies/scrap", {
+          s_no: s_no,
+          scrapYN: scrap
+        }).then(function (response) {
+          
+        }).catch(function(error) {
+          console.log(error);
+          alert('실패');
+        });
+    };
 
     //검색창
     const [searchTag, setSearchTag] = useState("");
@@ -113,36 +129,41 @@ function Study(){
             <div className={styles.sbody}>
                 {slist.map((item, idex) =>
                 (
-                        <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }} style={{textDecoration : "none"}}>
                     <Sbox recruit={item.recruitYN} className={styles.box} key={idex}>
                         <div className={styles.boxtop}>
-                        <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
-                        
-                                { scrap ? <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> }
-                            </div>
-                            <div>
-                                <img src={peopleicon} className={styles.peopleicon}/> 
-                                 {item.current_people} / {item.total_people} <hr/> </div>
-                            
-                            <div className={styles.boxdetail} onClick={toggleStudyDetailPopup}>
-                                {item.contents} <br /><br />
-                                [모집마감기한] {item.r_end_date}
-                                <hr />
-                            </div>
 
-                            <div className={styles.boxtag} onClick={toggleStudyDetailPopup}>
-                                {
-                                    item.tag.map((tag, idex) =>(
-                                        <div className={styles.tag} key={tag}>#{tag}</div>
-                                    ))
-                                }
-                            </div>
-                            {/* {studyDetailPopup && (
+                            <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap: scrap}} style={{ textDecoration: "none", color: "#333333" }}>
+                                <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
+                            </Link>
+                            {getScrap(item.scrapYN)}
+                            {console.log(scrap)}
+                            {scrap ? <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} />}
+                        </div>
+                        <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }} style={{textDecoration : "none", color: "#333333"}}>
+                        <div>
+                            <img src={peopleicon} className={styles.peopleicon} />
+                            {item.current_people} / {item.total_people} <hr /> </div>
+
+                        <div className={styles.boxdetail} onClick={toggleStudyDetailPopup}>
+                            {item.contents} <br /><br />
+                            [모집마감기한] {item.r_end_date}
+                            <hr />
+                        </div>
+
+                        <div className={styles.boxtag} onClick={toggleStudyDetailPopup}>
+                            {
+                                item.tag.map((tag, idex) => (
+                                    <div className={styles.tag} key={tag}>#{tag}</div>
+                                ))
+                            }
+                        </div>
+                        </Link>
+                        {/* {studyDetailPopup && (
                                 <StudyDetail slist={item} toggleStudyDetailPopup={toggleStudyDetailPopup} scrap={scrap} onClickScrap={onClickScrap}/>
                              )}  */}
                     </Sbox>
-                    </Link>
                 ))}
+                {console.log(s_no)}
             
                 
             </div>

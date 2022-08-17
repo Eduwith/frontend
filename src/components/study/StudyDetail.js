@@ -26,89 +26,58 @@ background-color: #333333;
 opacity: 0.2;
 `;
 
-function StudyDetail({toggleStudyDetailPopup, scrap, onClickScrap}) {
+function StudyDetail() {
     const navigate = useNavigate();
     const location = useLocation();
     const slist = location.state.data;
+    const scrapYN = location.state.scrap;
+
     console.log(slist);
     console.log(location.state.scrap);
-    //const [slist, setSlist] = useState([]);
-     const [error, setError] = useState(null);
-     //const apiStudyDetail = "http://localhost:8080/api/studies";
-    // const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
-    // const postStudy = async () => {
-    //     try {
-    //         setError(null);
-    //         axios.post(apiStudyDetail, {
-    //             email:email,
-    //             s_no: slist.s_no
-    //         }).then(function(response) {
-    //             if(response.data){
-    //                 console.log('스터디 신청 완료');
-    //                 toggleStudyDetailPopup(false);
-    //               }
-    //               else{
-    //                 alert('신청 실패');
-    //               }
-    //         });
-    //     } catch (e) {
-    //         setError(e);
-    //         console.log(e);
-    //     }
-    // };
-    
-    // const getSlist = async () => {
-    //     try {
-    //         setError(null);
-    //         setSlist(null);
-    //         const response = await axios.get(apiStudyDetail);
-    //         setSlist(response.data);
-    //         console.log(response.data);
-    //     } catch (e) {
-    //         setError(e);
-    //         console.log(e);
-    //     }
-    // };
-    // useEffect(() => {
-    //     getSlist();
-    // }, []);
 
-    const email = "이메일";
-    // const [scrap, setScrap] = useState(false);
+    const baseUrl = "http://localhost:8080";
+    const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
+    const postStudy = async () => {
+        try {
+            axios.post(apiStudyDetail, {
+                s_no: slist.s_no,
+                scrapYN: scrap
+            }).then(function(response) {
+                if(response.data){
+                    console.log('스터디 신청 완료');
+                  }
+                  else{
+                    alert('신청 실패');
+                  }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    };
     
-    // const onClickScrap = () => {
-    //     setScrap(current => !current);
-    // }
+    const [scrap, setScrap] = useState(scrapYN);
+    const onClickScrap = () => {
+        setScrap(current => !current);
+    }
+
     const onClickApply = () => {
         alert('신청되었습니다.');
-        toggleStudyDetailPopup(false);
-        //postStudy();
+        //toggleStudyDetailPopup(false);
+        postStudy();
     }
     const onClickClose = () => {
         //toggleStudyDetailPopup(false);
         navigate('/studies');
     }
-    // var slist = [{
-    //     s_no:5,
-    //     title:"강의 자막 업로드",
-    //     contents: "안녕하세요. 스터디 모집글 작성. 스터디 모집글 작성",
-    //     r_start_date: "2022.02.28",
-    //     r_end_date: "2022.03.06",
-    //     s_start_date: "2022.03.07",
-    //     s_end_date: "2023.01.31",
-    //     current_people: "0",
-    //     total_people: "10",
-    //     s_period: "5"
-    // }]
-    console.log(slist)
+
     return(
         <div>
-            <Background onClick={toggleStudyDetailPopup} />
+            <Background />
             <div className={styles.box}>
                 <div className={styles.boxtop}>
                     {console.log(slist.title)}
                     <div className={styles.boxtitle}>{slist.title}</div>
-                    { scrap ? <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> }
+                    { scrap ? <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap}/> : <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> } 
                     <img className={styles.close} src={closeicon} onClick={onClickClose}/>
                 </div>
                 <div>
