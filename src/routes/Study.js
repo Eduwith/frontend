@@ -22,6 +22,11 @@ function Study(){
         {if(props.recruit == "N") { return "none"}
     }}
     `;
+    const SearchIcon = styled.img`
+    &:hover{  
+        background-color : #c4c4c4;
+      }
+    `;
 
     const [page, setPage] = useState(1); // 현재 페이지
     const onClickTwo = () =>{
@@ -41,22 +46,24 @@ function Study(){
     //     setCurrentPosts(slist.slice(indexOfFirstPost, indexOfLastPost));
     // }, [indexOfFirstPost, indexOfLastPost, page]);
 
-    const [no, setNo] = useState("");
     const [studyDetailPopup, setStudyDetailPopup] = useState(false);
     const toggleStudyDetailPopup = (s_no) => {
         setStudyDetailPopup(current => !current);
         //setNo(s_no)
     };
+
+    //스크랩
     const [scrap, setScrap] = useState(false);
     const onClickScrap = () => {
         setScrap(current => !current);
     }
 
+    //검색창
     const [searchTag, setSearchTag] = useState("");
     const handleSearchInput = (e) => {
         setSearchTag(e.target.value);
     }
-    const search = async () => {
+    const onSearch = async () => {
         try {
             console.log(searchTag + "검색");
             const response = await axios.get(`http://localhost:8080/mentoring/keyword=${searchTag}`, {
@@ -71,24 +78,25 @@ function Study(){
         }
     };
 
-    //const [slist, setSlist] = useState(slists);
-    const [slist, setSlist] = useState([]);
-    const apiStudy = "http://localhost:8080/api/studies";
-    const baseUrl =  "http://localhost:8080";
-    const getSlist = async () => {
-        try {
-            const response = await axios.get(baseUrl+ `/api/studies/?page=${page}&pageSize=10`,
-                {params : { page: page}
-            });
-            setSlist(response.data); // 데이터는 response.data 안에
-            console.log(response.data);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-    useEffect(() => {
-        getSlist();
-    }, []);
+
+    const [slist, setSlist] = useState(slists);
+    // const [slist, setSlist] = useState([]);
+    // const apiStudy = "http://localhost:8080/api/studies";
+    // const baseUrl =  "http://localhost:8080";
+    // const getSlist = async () => {
+    //     try {
+    //         const response = await axios.get(baseUrl+ `/api/studies?page=${page}&pageSize=10`,
+    //             {params : { page: page}
+    //         });
+    //         setSlist(response.data); // 데이터는 response.data 안에
+    //         console.log(response.data);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
+    // useEffect(() => {
+    //     getSlist();
+    // }, []);
 
     return(
         <div className={styles.wrap}>
@@ -100,17 +108,17 @@ function Study(){
             </div>
             <form className={styles.s_search}>
             <input value={searchTag} onChange={handleSearchInput} type="text" placeholder="검색어를 입력하세요" className={styles.searchInput} />
-            <img onClick={search} src={searchicon} className={styles.searchImg} />
-          </form>
+            <SearchIcon onClick={onSearch} src={searchicon} className={styles.searchImg} />
+            </form>
             <div className={styles.sbody}>
                 {slist.map((item, idex) =>
                 (
+                        <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }} style={{textDecoration : "none"}}>
                     <Sbox recruit={item.recruitYN} className={styles.box} key={idex}>
                         <div className={styles.boxtop}>
-                        <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }}>
                         <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
-                        </Link>
-                                { scrap ? <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> }
+                        
+                                { scrap ? <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> }
                             </div>
                             <div>
                                 <img src={peopleicon} className={styles.peopleicon}/> 
@@ -133,6 +141,7 @@ function Study(){
                                 <StudyDetail slist={item} toggleStudyDetailPopup={toggleStudyDetailPopup} scrap={scrap} onClickScrap={onClickScrap}/>
                              )}  */}
                     </Sbox>
+                    </Link>
                 ))}
             
                 

@@ -15,7 +15,7 @@ function Mentoring() {
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      axios.get('http://localhost:8080/mentoring/list')
+      axios.get('http://34.64.249.190:8080/main')
       //axios.get('/dummyMData.json')
         .then(function (response) {
           if (response) {

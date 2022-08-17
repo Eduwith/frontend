@@ -31,7 +31,7 @@ function Navbar({isLogin}) {
     <div>
     <nav className={styles.navbar}>
         <div className={styles.logo}>
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Link to="/main" style={{textDecoration: 'none'}}>
             <img className={styles.logo} src={logo} alt="로고" />
           </Link>
         </div>

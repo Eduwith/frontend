@@ -40,7 +40,7 @@ function data_study() {
             current_people: "7",
             total_people: "10",
             s_period: "5",
-            tag: ["한글", "문법", "맞춤법"],
+            tag: [],
             recruitYN: "N",
     
         },
