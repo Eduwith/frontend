@@ -112,7 +112,7 @@ function MyEditRecruit() {
       })
         .then(function (response) {
           if (response.data) {
-            alert('멘티 모집글이 등록되었습니다.');
+            alert('변경이 완료되었습니다.');
             navigate('/mentoring/mento') // 멘토 찾기 사이트로 간다.
           }
         })

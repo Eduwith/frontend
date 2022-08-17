@@ -45,7 +45,7 @@ function Join() {
 
   const handleSubmit2 = async () => {
     try {
-     axios.post('/user/join', {
+     axios.post(url + '/user/join', {
         email: email,
         name: name,
         pwd: password,
@@ -53,7 +53,7 @@ function Join() {
         gender: gender,
         address: address,
       }).then(function (response) {
-        if(response.data.result === "SUCCESS"){
+        if(response.data.result === "SUCCESS" && emailCheck){
            alert('회원가입이 완료되었습니다.');
            navigate('/main');
         }
@@ -66,42 +66,24 @@ function Join() {
     }
   };
 
+  const [emailCheck, setEmailCheck] = useState(true);
 
-  const handleSubmit = () => { // 정보 전송
-
-    const url = "http://localhost:8080/user/join";
-
-    const join_info = {
-        email: email,
-        name: name,
-        pwd: password,
-        age: age,
-        gender: gender,
-        address: address,
-    };
-
-    axios.post(url, {
-      headers: {
-        "Content-Type": "application/json"
-      },
-      data: join_info,
+  const emailClickEvent = () => {
+    axios.post(url + '/user/join/check', {
+      email: email
     })
-    .then(response => {
-      if(response.data.result === "SUCCESS"){
-        alert('회원가입 성공!');
-        navigate('/');
+    .then((res) => {
+      if (res.data.result === "SUCCESS"){
+        alert('가입 가능한 이메일입니다.');
+        setEmailCheck(true);
       }
-      else{
-        alert('회원가입 실패');
+      else{ 
+        alert('중복된 이메일입니다. 다른 이메일을 사용해주십시오.');
+        setEmailCheck(false);
       }
-    }).catch(error => {
-      console.log("Join Error >>", error);
-    });
-  };
-
-  const onSubmit = () => {
-    console.log('버튼 클릭');
+    })
   }
+ 
 
   return (
     <div>
@@ -115,7 +97,7 @@ function Join() {
               <h3>이메일</h3>
               <div className={styles.email}>
               <input name="email" type="email" placeholder="이메일" value={email} onChange={onEmailHandler} className={styles.input_join}/>
-              <button>중복확인</button>
+              <button onClick={emailClickEvent}>중복확인</button>
               </div>
             </div>
             <div className={styles.box}>

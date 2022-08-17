@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Mentoring.module.css";
 import MentoApply from "../components/mentoring/MentoApply";
-import MentiRecruit from "../components/mentoring/MentiRecruit";
+import MentiRecruit from "../components/mentoring/MenteeRecruit";
 import axios from "axios";
 import MentoList from "../components/mentoring/MentoList";
 import { Link } from "react-router-dom";

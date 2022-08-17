@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import mbti from "../../common/result.json"
 import styles from "./TestResult.module.css"
 
@@ -76,6 +76,7 @@ function TestResult() {
         })}
       </ul>
       
+      <Link to="/main" className={styles.homebtn}>홈 화면으로 이동</Link>
     </div>
     </div>
   )

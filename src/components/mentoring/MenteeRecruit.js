@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import styles from "./MentiRecruit.module.css";
+import styles from "./MenteeRecruit.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { IdState } from "../../recoil/RecoilId";
 import { useRecoilValue } from "recoil";
 
-function MentiRecruit() {
+function MenteeRecruit() {
   const navigate = useNavigate();
 
   const userId = useRecoilValue(IdState);
@@ -199,4 +199,4 @@ function MentiRecruit() {
     </div>
   );
 }
-export default MentiRecruit;
+export default MenteeRecruit;

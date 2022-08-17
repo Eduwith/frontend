@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import styles from "./Navbar.module.css";
-import {NavLink, Link, useNavigate} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import logo from '../../images/logo.jpg';
 import Login from "../user/Login";
 import point from '../../images/point.png';
 import bell from '../../images/bell.png';
 import msg from '../../images/msg.png';
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useRecoilState } from "recoil";
-import { nicknameState } from "../../recoil/User";
-import { IdState } from "../../recoil/RecoilId";
 
 function Navbar({isLogin}) {
 

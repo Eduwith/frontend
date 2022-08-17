@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Mentoring.module.css";
 import MentoApply from "../components/mentoring/MentoApply";
-import MentiRecruit from "../components/mentoring/MentiRecruit";
+import MentiRecruit from "../components/mentoring/MenteeRecruit";
 import axios from "axios";
 import MentoList from "../components/mentoring/MentoList";
 import { Link } from "react-router-dom";
@@ -20,12 +20,12 @@ function Mentoring() {
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      axios.get(url + 'mentoring/mentor')
-      // axios.get('/dummyMData.json')
+      //axios.get(url + 'mentoring/mentor')
+       axios.get('/dummyMData.json')
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
-            setGeul(response.data); // 연결하면서 수정하기
+            setGeul(response.data.lists); // 연결하면서 수정하기
           }
         })
     } catch (err) {
@@ -235,7 +235,7 @@ function Mentoring() {
                           ))}
 
                 </select>
-                <div className={styles.hiddenblock}></div>
+                <div className={styles.hiddenblock2}></div>
               </div>
 
               <div>

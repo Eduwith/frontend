@@ -49,3 +49,10 @@
   text-align: left;
   padding-left: 30px;
 }
+
+.homebtn {
+  text-decoration: none;
+  color: #4673EA;
+  font-weight: 700;
+  
+}

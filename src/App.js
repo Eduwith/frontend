@@ -15,12 +15,12 @@ import MyStudy from './components/mypage/MyStudy';
 import MyScrap from './components/mypage/MyScrap';
 import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
-import MentiRecruit from './components/mentoring/MentiRecruit';
 import MentiMentoring from './routes/MentiMentoring';
 import TestMain from './components/test/TestMain';
 import TestQna from './components/test/TestQna';
 import TestResult from './components/test/TestResult';
 import MyEditRecruit from './components/mypage/MyEditRecruit';
+import MenteeRecruit from './components/mentoring/MenteeRecruit';
 
 function App() {
 
@@ -33,7 +33,7 @@ function App() {
         <Router>
           <Navbar isLogin={isLogin}/>
           <Routes>
-            <Route path="/" element={<Home />}>
+          <Route path="/" element={<Home />}>
             </Route>
             <Route path="/main" element={<Home />}>
             </Route>
@@ -52,7 +52,7 @@ function App() {
             <Route path="/mentoring/mentor" element={<Mentoring/>}></Route>
             <Route path="/mentoring/mentee" element={<MentiMentoring/>}></Route>
 
-            <Route path="/mentiRecruit" element={<MentiRecruit />}></Route>
+            <Route path="/menteeRecruit" element={<MenteeRecruit />}></Route>
             <Route path="/myEditRecruit/:m_no" element={<MyEditRecruit />}></Route>
 
 
