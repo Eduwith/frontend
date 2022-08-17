@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./StudyDetail.module.css";
 import styled from "styled-components";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useL } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import scrapicon from "../../images/scrap.png";
 import scrappedicon from "../../images/scrapped.png";
 import closeicon from "../../images/close.png";
@@ -26,31 +26,37 @@ background-color: #333333;
 opacity: 0.2;
 `;
 
-function StudyDetail({slist, toggleStudyDetailPopup, scrap, onClickScrap}) {
+function StudyDetail({toggleStudyDetailPopup, scrap, onClickScrap}) {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const slist = location.state.data;
+    console.log(slist);
+    console.log(location.state.scrap);
     //const [slist, setSlist] = useState([]);
      const [error, setError] = useState(null);
      //const apiStudyDetail = "http://localhost:8080/api/studies";
-     const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
-    const postStudy = async () => {
-        try {
-            setError(null);
-            axios.post(apiStudyDetail, {
-                email:email,
-                s_no: slist.s_no
-            }).then(function(response) {
-                if(response.data){
-                    console.log('스터디 신청 완료');
-                    toggleStudyDetailPopup(false);
-                  }
-                  else{
-                    alert('신청 실패');
-                  }
-            });
-        } catch (e) {
-            setError(e);
-            console.log(e);
-        }
-    };
+    // const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
+    // const postStudy = async () => {
+    //     try {
+    //         setError(null);
+    //         axios.post(apiStudyDetail, {
+    //             email:email,
+    //             s_no: slist.s_no
+    //         }).then(function(response) {
+    //             if(response.data){
+    //                 console.log('스터디 신청 완료');
+    //                 toggleStudyDetailPopup(false);
+    //               }
+    //               else{
+    //                 alert('신청 실패');
+    //               }
+    //         });
+    //     } catch (e) {
+    //         setError(e);
+    //         console.log(e);
+    //     }
+    // };
+    
     // const getSlist = async () => {
     //     try {
     //         setError(null);
@@ -76,10 +82,11 @@ function StudyDetail({slist, toggleStudyDetailPopup, scrap, onClickScrap}) {
     const onClickApply = () => {
         alert('신청되었습니다.');
         toggleStudyDetailPopup(false);
-        postStudy();
+        //postStudy();
     }
     const onClickClose = () => {
-        toggleStudyDetailPopup(false);
+        //toggleStudyDetailPopup(false);
+        navigate('/studies');
     }
     // var slist = [{
     //     s_no:5,

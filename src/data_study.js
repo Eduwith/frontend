@@ -11,7 +11,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "5",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: ["한글", "문법", "맞춤법"],
+            recruitYN: "Y",
         },
         {
             s_no:1,
@@ -23,7 +25,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "2",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: ["한글", "문법"],
+            recruitYN: "N",
         },
         {
             s_no:2,
@@ -35,7 +39,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "7",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: ["한글", "문법", "맞춤법"],
+            recruitYN: "N",
     
         },
         {
@@ -48,7 +54,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "0",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: ["한글", "문법", "맞춤법"],
+            recruitYN: "Y",
         },
         {
             s_no:4,
@@ -60,7 +68,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "7",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: ["한글"],
+            recruitYN: "Y",
     
         },
         {
@@ -73,7 +83,9 @@ function data_study() {
             s_end_date: "2023.01.31",
             current_people: "0",
             total_people: "10",
-            s_period: "5"
+            s_period: "5",
+            tag: [],
+            recruitYN: "Y",
         }
     ]
     
