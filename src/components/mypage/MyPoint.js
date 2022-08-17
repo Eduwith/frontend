@@ -23,27 +23,27 @@ function MyPoint() {
   const url = "http://localhost:8080";
 
   const getStampPoint = () => {
-    // axios.get(url+ '/user/stamp')
-    // .then((res) => {
-    //   setStamp(res.data.stamp);
-    //   setPoint(res.data.point);
-        //  setStampDay(res.data.day);
-        //  setUserPointList(res.data.useAttendance);
-    // })
-    // .catch((err) => {
-    //   console.log('get stamp error :', err);
-    // })
+    axios.get(url+ '/user/stamp')
+    .then((res) => {
+      setStamp(res.data.stamp);
+      setPoint(res.data.point);
+         setStampDay(res.data.day);
+         setUserPointList(res.data.useAttendance);
+    })
+    .catch((err) => {
+      console.log('get stamp error :', err);
+    })
   }
 
   const patchStampEvent = () => {
-    // axios.patch(url + '/user/attendance')
-    // .then((res) => {
-    //   setStamp(res.data.stamp);
-    //   setPoint(res.data.point);
-    // })
-    // .catch((err) => {
-    //   console.log('patch stamp error :', err);
-    // })
+    axios.patch(url + '/user/attendance')
+    .then((res) => {
+      setStamp(res.data.stamp);
+      setPoint(res.data.point);
+    })
+    .catch((err) => {
+      console.log('patch stamp error :', err);
+    })
   }
 
   const getPoint = () => {
@@ -51,7 +51,7 @@ function MyPoint() {
   }
 
   useEffect(() => {
-    // getStampPoint();
+   getStampPoint();
   }, [])
 
   return (
@@ -98,7 +98,7 @@ function MyPoint() {
               <span className={styles.totalPoint}> {point === 0 ? `${point}` : `+${point}`} point</span>
             </div>
               
-              {/* {
+              {
                 userPointList.map((item) => {
                   <div className={styles.pointBox}>
                     <span className={styles.pointTitle}>{item.title}</span>
@@ -106,11 +106,11 @@ function MyPoint() {
                     <span className={styles.pointNum}>+{item.point}p</span>
                   </div>
                 })
-              } */}
+              }
 
             
 
-            <div className={styles.pointBox}>
+            {/* <div className={styles.pointBox}>
               <span className={styles.pointTitle}>포인트 내역</span>
               <span className={styles.pointNum}>+100p</span>
             </div>
@@ -118,7 +118,7 @@ function MyPoint() {
             <div className={styles.pointBox}>
               <span className={styles.pointTitle}>포인트 내역</span>
               <span className={styles.pointNum}>+100p</span>
-            </div>
+            </div> */}
 
 
 

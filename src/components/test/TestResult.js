@@ -44,7 +44,7 @@ function TestResult() {
   const url = "http://34.64.249.190:8080"
 
   const sendMbti = () => {
-    axios.post('/userTest',{
+    axios.post('http://localhost:8080/userTest',{
       mbti: mbti[count].id,
       animal: mbti[count].nickname
     })

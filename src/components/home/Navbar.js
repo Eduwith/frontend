@@ -52,10 +52,10 @@ function Navbar({isLogin}) {
       <ul className={styles.subLinks}>
 
         <li className={styles.dropdown}>
-          <NavLink to="/mentoring/mento" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.mlink}> 멘토링</NavLink>
+          <NavLink to="/mentoring/mentor" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.mlink}> 멘토링</NavLink>
           <div className={styles.dropdown_content}>
-            <Link to="/mentoring/mento" >멘토 찾기</Link>
-            <Link to="/mentoring/menti" >멘티 찾기</Link>
+            <Link to="/mentoring/mentor" >멘토 찾기</Link>
+            <Link to="/mentoring/mentee" >멘티 찾기</Link>
           </div>
         </li>
         <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>

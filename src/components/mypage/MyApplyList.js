@@ -9,8 +9,8 @@ function MyApplyList() {
 
   const getApplyList = () => {
     try {
-        //axios.get('http://localhost:8080/mypage/apply')
-        axios.get('/dummyMData.json')
+        axios.get('http://localhost:8080/mypage/apply')
+        //axios.get('/dummyMData.json')
         .then((res) => {
           //역할에 맞는 글 가져오기
           setMyAList(res.data.lists);
@@ -25,13 +25,13 @@ function MyApplyList() {
   }
 
   const applyCancelEvent = () => {
-    // axios.delete(`http://localhost:8080/mentoring/${applyMno}`)
-    //       .then((res) => {
+    axios.delete(`http://localhost:8080/mentoring/${applyMno}`)
+          .then((res) => {
             const value = window.confirm("정말로 삭제하시겠습니까?");
             if (value) {
               alert('취소되었습니다.');
             }
-          // })
+          })
   }
 
 

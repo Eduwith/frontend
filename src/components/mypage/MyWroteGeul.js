@@ -18,26 +18,26 @@ function MyWroteGeul({ item }) {
 
   const acceptClick = () => {
 
-    // axios.post(`${url}/mypage/${m_no}/apply/${applyNo}`, {
-    //   m_no: m_no,
-    //   apply_no: applyNo
-    // })
-    //   .then((res) => {
-    //     if (res.data.result === "SUCCESS") {
-    //       alert('멘티 신청을 수락했습니다.');
-    //       window.scrollTo(0, 0);
+    axios.post(`${url}/mypage/${m_no}/apply/${applyNo}`, {
+      m_no: m_no,
+      apply_no: applyNo
+    })
+      .then((res) => {
+        if (res.data.result === "SUCCESS") {
+          alert('멘티 신청을 수락했습니다.');
+          window.scrollTo(0, 0);
 
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log('list get error', err);
-    //   })
+        }
+      })
+      .catch((err) => {
+        console.log('list get error', err);
+      })
   }
 
   const rejectClick = () => {
     console.log('an', userInfo.apply_no);
     console.log(userInfo)
-    //axios.delete(`/mypage/${m_no}/apply/${applyNo}`);
+    axios.delete(`/mypage/${m_no}/apply/${applyNo}`);
     alert('멘티 신청을 거절했습니다.');
     window.scrollTo(0, 0);
   }

@@ -15,16 +15,16 @@ function MentiMentoring() {
   const [current, setCurrent] = useState(0);
 
 
-  const url = 'http://34.64.249.190:8080/';
-
+  //const url = 'http://34.64.249.190:8080/';
+  const url = 'http://localhost:8080';
   const fetchGeul = async () => {
     try {
       setGeul(null);
-      axios.get(url + 'mentoring/mentee')
+      axios.get(url + '/mentoring/mentee')
       //axios.get('/dummyMtData.json')
         .then(function (response) {
           if (response.data) {
-            console.log('멘토링 조회 성공!');
+            console.log('멘토링 조회 성공!', response.data);
             setGeul(response.data); // 연결하면서 수정하기
           }
         })
@@ -127,7 +127,7 @@ function MentiMentoring() {
   }
 
    //handleSubmit
-   const filterTitle = (geul !== null) ? geul.filter((p) => {
+   const filterTitle = (Array.isArray(geul)) ? geul.filter((p) => {
     return (p.name.replace(" ", "").includes(kw)) || (p.title.replace(" ", "").includes(kw))
   }) : geul;
 

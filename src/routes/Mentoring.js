@@ -21,8 +21,8 @@ function Mentoring() {
     try {
       setGeul(null);
 
-      //axios.get(url + 'mentoring/mentor')
-       axios.get('/dummyMData.json')
+      axios.get(url + '/mentoring/mentor')
+      //axios.get('/dummyMData.json')
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
@@ -136,7 +136,7 @@ function Mentoring() {
 
 
    //handleSubmit
-   const filterTitle = (geul !== null) ? geul.filter((p) => {
+   const filterTitle = (Array.isArray(geul)) ? geul.filter((p) => {
     return (p.name.replace(" ", "").includes(kw)) || (p.title.replace(" ", "").includes(kw))
   }) : geul;
 
@@ -163,25 +163,25 @@ function Mentoring() {
 
 
   const filterBox = async () => {
-    try {
-      console.log('전달 목록', fieldSt, region, periodSt, way)
-      const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
-       { params: {
-        field: fieldSt,
-        region: region,
-        m_period: periodSt,
-        way: way}}
-      );
-      if (response) {
-        setGeul(response.data);
-        console.log('조건 검색 성공!!!', response.data);
-      }
-      else {
-        console.log('데이터 없음...');
-      }
-    } catch (err) {
-      console.log("Box search Error >>", err);
-    }
+    // try {
+    //   console.log('전달 목록', fieldSt, region, periodSt, way)
+    //   const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
+    //    { params: {
+    //     field: fieldSt,
+    //     region: region,
+    //     m_period: periodSt,
+    //     way: way}}
+    //   );
+    //   if (response) {
+    //     setGeul(response.data);
+    //     console.log('조건 검색 성공!!!', response.data);
+    //   }
+    //   else {
+    //     console.log('데이터 없음...');
+    //   }
+    // } catch (err) {
+    //   console.log("Box search Error >>", err);
+    // }
 
   }
 
