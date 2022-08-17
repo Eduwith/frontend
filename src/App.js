@@ -42,10 +42,10 @@ function App() {
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
             <Route path="/studies" element={<Study />}></Route>
-            <Route path="/studies?no=:idex" element={<StudyDetail />}></Route>
+            <Route path="/studies/:idex" element={<StudyDetail />}></Route>
             <Route path="/studies/register" element={<StudyRegister />}></Route>
             <Route path="/volunteers" element={<Volunteer/>}></Route>
-            <Route path="/volunteers/:idex" element={<VolunteerDetail />}></Route>
+            <Route path="/volunteers/no=:idex" element={<VolunteerDetail />}></Route>
             
           </Routes>
         </Router>

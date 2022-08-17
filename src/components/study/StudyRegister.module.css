@@ -1,41 +1,28 @@
-.title_box {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    background-color: #F1F5FA;
-  }
+.wrap{
+  padding: 0 15%;
+}
+.top{
+  margin-top: 47px;
+  margin-bottom: 80px;
+  font-size: 30px;
+  font-weight: 600;
+}
   
-  .big_title {
-    font-size: 28px;
-    line-height: 100px;
-    font-weight: 600;
-  }
-  
-  .x {
-    position: absolute;
-    cursor: pointer;
-    top: 25px;
-    right: 25px;
-    color: grey;
-  }
-  
-  
-  .outer_box {
-    width: 80%;
-    height: 350px;
-    margin: 0 auto;
-    padding: 10px 0;
-  }
-  
-  .inner_box {
+  /* .inner_box {
+    height: 47px;
+
+    border: solid 1px #dadada;
+    border-radius: 5px;
+    padding: 5px 14px 5px 14px;
+    margin-bottom: 20px;
+  } */
+  .inner_display {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
     height: 40px;
   }
-  
   .left {
     width: 150px;
     font-size: 20px;
@@ -57,7 +44,7 @@
     margin: 15px auto;
   }
   
-  .btn {
+  /* .btn {
     width: 100px;
     height: 40px;
     background-color: #4673EA;
@@ -68,5 +55,34 @@
     color: white;
     font-weight: 550;
     cursor: pointer;
-  }
-  
+  } */
+  .btnblock{
+    display: flex;
+    /* margin: 0 25%; */
+    width: 295px;
+    margin: 0 40%;
+}
+.btn_apply{
+    color: white;
+    background-color: #4673EA;
+    /* margin-left: 25%; */
+    width: 130px;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+
+    font-weight: 500;
+    font-size: 20px;
+}
+.btn_back{
+    background-color: white;
+    color: #4673EA;
+    margin-left: 35px;
+    width: 130px;
+    height: 50px;
+    border: 3px solid #4673EA;
+    border-radius: 30px;
+
+    font-weight: 500;
+    font-size: 22px;
+}  

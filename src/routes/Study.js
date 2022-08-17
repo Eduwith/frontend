@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Study.module.css";
+import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -7,10 +8,21 @@ import slists from "../data_study.js";
 import scrapicon from "../images/scrap.png";
 import scrappedicon from "../images/scrapped.png";
 import peopleicon from "../images/people.png";
+import searchicon from "../images/search.png";
 import StudyDetail from "../components/study/StudyDetail";
 import Paging from "../components/volunteer/Paging";
 
 function Study(){
+    const Sbox= styled.div`
+    background : ${props => 
+        {if(props.recruit == "N") { return "#C4C4C4"}
+    }}
+    ;
+    border: ${props => 
+        {if(props.recruit == "N") { return "none"}
+    }}
+    `;
+
     const [page, setPage] = useState(1); // 현재 페이지
     const onClickTwo = () =>{
         setPage(2);
@@ -40,19 +52,37 @@ function Study(){
         setScrap(current => !current);
     }
 
+    const [searchTag, setSearchTag] = useState("");
+    const handleSearchInput = (e) => {
+        setSearchTag(e.target.value);
+    }
+    const search = async () => {
+        try {
+            console.log(searchTag + "검색");
+            const response = await axios.get(`http://localhost:8080/mentoring/keyword=${searchTag}`, {
+                keyword : searchTag
+            });
+            if (response.data) {
+                setSlist(response.data);
+                console.log(response.data);
+            }
+        } catch (err) {
+            console.log("search Error >>", err);
+        }
+    };
+
     //const [slist, setSlist] = useState(slists);
     const [slist, setSlist] = useState([]);
-    const [error, setError] = useState(null);
     const apiStudy = "http://localhost:8080/api/studies";
+    const baseUrl =  "http://localhost:8080";
     const getSlist = async () => {
         try {
-            setError(null);
-            setSlist(null);
-            const response = await axios.get(apiStudy +`?page=${page}`);
+            const response = await axios.get(baseUrl+ `/api/studies/?page=${page}&pageSize=10`,
+                {params : { page: page}
+            });
             setSlist(response.data); // 데이터는 response.data 안에
             console.log(response.data);
         } catch (e) {
-            setError(e);
             console.log(e);
         }
     };
@@ -68,13 +98,18 @@ function Study(){
                     <button className={styles.swritebtn}>스터디 모집하기</button>
                 </Link>
             </div>
-            <div className={styles.ssearch}>검색창</div>
+            <form className={styles.s_search}>
+            <input value={searchTag} onChange={handleSearchInput} type="text" placeholder="검색어를 입력하세요" className={styles.searchInput} />
+            <img onClick={search} src={searchicon} className={styles.searchImg} />
+          </form>
             <div className={styles.sbody}>
                 {slist.map((item, idex) =>
                 (
-                    <div className={styles.box} key={idex}>
+                    <Sbox recruit={item.recruitYN} className={styles.box} key={idex}>
                         <div className={styles.boxtop}>
-                                <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
+                        <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }}>
+                        <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
+                        </Link>
                                 { scrap ? <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> }
                             </div>
                             <div>
@@ -88,14 +123,16 @@ function Study(){
                             </div>
 
                             <div className={styles.boxtag} onClick={toggleStudyDetailPopup}>
-                                <div className={styles.tag}>#한글</div>
-                                <div className={styles.tag}>#다문화</div>
-                                <div className={styles.tag}>#문법</div>
+                                {
+                                    item.tag.map((tag, idex) =>(
+                                        <div className={styles.tag} key={tag}>#{tag}</div>
+                                    ))
+                                }
                             </div>
-                            {studyDetailPopup && (
+                            {/* {studyDetailPopup && (
                                 <StudyDetail slist={item} toggleStudyDetailPopup={toggleStudyDetailPopup} scrap={scrap} onClickScrap={onClickScrap}/>
-                             )} 
-                    </div>
+                             )}  */}
+                    </Sbox>
                 ))}
             
                 
