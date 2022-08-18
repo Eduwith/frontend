@@ -1,52 +1,117 @@
-.head{
-    height: 380px;
-    padding-left: 100px;
-    padding-top: 70px;
-    background: #F1F5FA;
+.wrap {
+    padding: 0 15%;
+}
+.head {
+    height: 90px;
+    padding-top: 20px;
 
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
+}
+.nav {
+    text-align: center;
+    width: 1300px;
+    height: 50px;
+    line-height: 44px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+}
+.nav li>* {
+    width: 180px;
+    font-size: 24px;
+}
+.top{
+    margin-top: 47px;
+    font-size: 22px;
+    font-weight: 500;
 }
 .body{
-    background-color: white;
-    height: auto;
+    padding: 0 10%;
 }
-.box{
-    z-index: 50;
-}
-.mybox {
-    position: relative;
-    z-index: 900;
-    top: -180px;
-    margin: 0 auto;
-    width: 1200px;
-    height: 800px;
-    padding: 60px;
+.topbox{
+    margin-top: 42px;
+    margin-bottom: 28px;
+    padding: 30px;
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
 
+    display: flex;
+}
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+.boxtag{
+    display: flex;
+}
+.btn_edit{
+    color: white;
+    background-color: #4673EA;
+    width: 170px;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 47%;
+    margin-top: 100px;
+}
+
+.toplist{
+    display: flex;
+    padding: 18px 30px 18px 18px;
+}
+.detail{
+    margin-left: 22px;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: #4673EA;
+}
+.acceptbtn{
     background-color: white;
-    display: grid;
-    grid-template-columns: minmax(150px, 1fr) 2fr;
-    grid-gap: 100px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-      0 8px 16px -8px rgba(0, 0, 0, 0.178), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+    border: none;
+    font-size: 26px;
+
+    margin-left: 45%;
 }
-.myimg{
-    position: relative;
-    margin: 0;
-    width: 250px;
-    height: 250px;
-    margin-bottom: 30px;
+.refusebtn{
+    background-color: white;
+    border: none;
+    font-size: 26px;
+    color: #FF0000;
+
+    margin-left: 35px;
 }
-.nav{
-    list-style: none;
-}
-.nav li{
-    margin: 15px 0px;
+.bottom{
+    margin-top: 73px;
     font-size: 22px;
 }
-.mymenu{
-    font-size: 30px;
-    margin-bottom: 10px;
+.line{
+    margin-top: 42px;
+    border: 1px solid #c4c4c4;
+}
+.bottombox{
+    margin-bottom: 28px;
+    padding: 20px 28px;
+    border-bottom: 1px solid #c4c4c4;
+
+    display: flex;
+}
+.btn_detail{
+    color: white;
+    background-color: #4673EA;
+    width: 160px;
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 60%;
 }

@@ -1,0 +1,13 @@
+import axios from 'axios';
+
+const accessUser = (token) => {axios.create({
+    baseURL: 'http://localhost;8080',
+    headers : {
+        "Content-type" : "application/json",
+        //'Authorization' : `Bearer ${localStorage.getItem(jwtToken)}`
+    },
+    withCredentials: true,
+});
+}
+
+export default accessUser;

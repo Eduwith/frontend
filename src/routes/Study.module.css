@@ -22,9 +22,18 @@
     font-weight: 600;
     font-size: 20px;
 }
+.s_search{
+    width: 35%;
+    border-bottom: solid 2px #c4c4c4;
+}
 .searchInput{
+    width: 85%;
     height: 40px;
     border: none;
+}
+.searchImg{
+    cursor: pointer;
+    margin-left: 10px;
 }
 .sbody{
     margin-top: 80px;

@@ -1,79 +1,91 @@
-.head{
-    height: 380px;
-    padding-left: 100px;
-    padding-top: 70px;
-    background: #F1F5FA;
+.wrap {
+    padding: 0 15%;
+}
+.head {
+    height: 90px;
+    padding-top: 20px;
 
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
+}
+.nav {
+    text-align: center;
+    width: 1300px;
+    height: 50px;
+    line-height: 44px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+}
+.nav li>* {
+    width: 180px;
+    font-size: 24px;
+
 }
 .body{
-    background-color: white;
-    height: auto;
+    display: flex;
 }
-.box{
-    z-index: 50;
-}
-.mybox {
-    position: relative;
-    z-index: 900;
-    top: -180px;
-    margin: 0 auto;
-    width: 1200px;
-    height: 800px;
-    padding: 60px;
+.left{
+    margin-right: 200px;
+    margin-top: 70px;
 
-    background-color: white;
-    display: grid;
-    grid-template-columns: minmax(150px, 1fr) 2fr;
-    grid-gap: 100px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-      0 8px 16px -8px rgba(0, 0, 0, 0.178), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-}
-.myimg{
-    position: relative;
-    margin: 0;
-    width: 250px;
-    height: 250px;
-    margin-bottom: 30px;
-}
-.nav{
-    list-style: none;
-}
-.nav li{
-    margin: 15px 0px;
+    font-weight: 500;
     font-size: 22px;
+    color: #333333;
 }
-.mymenu{
+.name{
+    margin-bottom: 170px;
+
+    font-weight: 600;
     font-size: 30px;
-    margin-bottom: 10px;
+    color: #333333;
 }
 .tbmenu{
-    background-color: white;
-    font-size: 20px;
+    margin-bottom: 58px;
 }
-.profileimg{
-    width: 100px;
-    height: 100px;
+.right{
+    margin-top: 70px;
+
+    font-weight: 500;
+    font-size: 24px;
+    color: #333333;
 }
-.imgbtn{
-    margin-left: 20px;
+.myimg {
+    width: 160px;
+    height: 160px;
+}
+.quitbtn {
+    margin-left: 40px;
     width: 100px;
     height: 40px;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 20px;
     background-color: white;
+    border-radius: 5px;
     border: 1px solid #5D6466;
 }
-.btnbox{
+.input{
+    width: 100%;
+    height: 47px;
+
+    border: solid 1px #dadada;
+    border-radius: 5px;
+    padding: 5px 14px 5px 14px;
+    margin-bottom: 45px;
+}
+.text{
+    margin-bottom: 45px;
+}
+.btnbox {
     display: flex;
     margin: 0 25%;
     font-weight: 500;
     font-size: 20px;
 }
-.editbtn{
+
+.editbtn {
     color: white;
     background-color: #4673EA;
     width: 130px;
@@ -81,13 +93,4 @@
     border: none;
     border-radius: 30px;
 
-}
-.quitbtn{
-    background-color: white;
-    color: #4673EA;
-    width: 130px;
-    height: 50px;
-    border: 3px solid #4673EA;
-    border-radius: 30px;
-    margin-left: 10%;
 }

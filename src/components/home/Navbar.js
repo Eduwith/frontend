@@ -71,7 +71,7 @@ function Navbar({isLogin}) {
           </div>
         </li>
         <li><NavLink to="/volunteers" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
-        <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
+        <li><NavLink to="/studies" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>스터디</NavLink></li>
       </ul>
 
       <ul className={styles.nav_icons_ul}>

@@ -10,7 +10,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "5",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         {
             v_no:1,
@@ -21,7 +22,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "2",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "N",
         },
         {
             v_no:2,
@@ -32,7 +34,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "7",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "N",
     
         },
         {
@@ -44,7 +47,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "0",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         {
             v_no:0,
@@ -55,7 +59,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "5",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         {
             v_no:1,
@@ -66,7 +71,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "2",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         {
             v_no:2,
@@ -77,7 +83,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "7",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         {
             v_no:3,
@@ -88,7 +95,8 @@ function data() {
             v_start_date: "2022.03.07",
             v_end_date: "2023.01.31",
             current_people: "0",
-            total_people: "10"
+            total_people: "10",
+            recruitYN: "Y",
         },
         // {
         //     v_no:0,
