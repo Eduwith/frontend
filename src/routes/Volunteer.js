@@ -76,11 +76,11 @@ function Volunteer() {
     
                     {vlist.map((item, idex) =>
                     (
+                                <Link to={`/volunteers/no=${item.v_no}`} state={{ data: item }} style={{ textDecoration: "none", color: "#333333" }}> 
                         <div className={styles.listbox} key={idex}>
                             <div className={styles.boxleft}>
-                                <Link to={`/volunteers/no=${item.v_no}`} state={{ data: item }}>
                                     <Vbutton recruit={item.recruitYN} className={styles.recruitbtn}>모집중</Vbutton>
-                                </Link>
+                                
                                 <div><img src={peopleicon}/> {item.current_people}/{item.total_people}</div>
                             </div>
                             <div className={styles.boxdetail}>
@@ -90,6 +90,7 @@ function Volunteer() {
                             </div>
                             {console.log(idex)}
                         </div>
+                        </Link>
                     ))}
                 </div>
             </div>
