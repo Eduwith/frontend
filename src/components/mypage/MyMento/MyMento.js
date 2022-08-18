@@ -31,10 +31,16 @@ function MyMento() {
 
     const url = 'http://localhost:8080';
     const [user, setUser] = useState(null);
-    const [logList, setLogList] = useState([]);
+    //const [logList, setLogList] = useState([]);
     const [mtitle, setMtitle] = useState('');
     const [current, setCurrent] = useState(null);
-
+    
+    const [logList, setLogList] = useState([{
+      "mentoring_no": 1,
+      "title": "첫번째 멘토링 일지",
+      "content": "오늘은 직각삼각형에 대해 배웠어요.",
+      "date": "2022-08-16"
+    }]);
 
     //멘토링 일지 조회
 
@@ -47,6 +53,9 @@ function MyMento() {
                 setMtitle(res.data.m_title);
               }
 
+           })
+           .catch((e) =>  {
+              console.log(e);
            })
     }
 

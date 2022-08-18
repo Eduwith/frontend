@@ -42,12 +42,12 @@ function App() {
             <Route path="/join" element={<Join />}></Route>
             <Route path='/notice' element={<Notice/>}></Route>
 
-            <Route path="/mypage" element={<MyPage/>}></Route>
-            <Route path="/mymentoapply" element={<MyMentoApply/>}></Route>
-            <Route path="/mymento" element={<MyMento/>}></Route>
-            <Route path="/mystudy" element={<MyStudy/>}></Route>
-            <Route path="/myscrap" element={<MyScrap/>}></Route>
-            <Route path="/mypoint" element={<MyPoint/>}></Route>
+            <Route path="/MyPage" element={<MyPage/>}></Route>
+            <Route path="/MyMentoApply" element={<MyMentoApply/>}></Route>
+            <Route path="/MyMento" element={<MyMento/>}></Route>
+            <Route path="/MyStudy" element={<MyStudy/>}></Route>
+            <Route path="/MyScrap" element={<MyScrap/>}></Route>
+            <Route path="/MyPoint" element={<MyPoint/>}></Route>
 
 
             <Route path="/mentoring" element={<Mentoring />}></Route>
