@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Mentoring.module.css";
-import MentoApply from "../components/mentoring/MentoApply";
-import MentiRecruit from "../components/mentoring/MenteeRecruit";
-import axios from "axios";
-import MentoList from "../components/mentoring/MentoList";
 import { Link } from "react-router-dom";
+import styles from "./Mentoring.module.css";
+import axios from "axios";
+import MentoApply from "../components/mentoring/MentoApply";
+import MentoList from "../components/mentoring/MentoList";
+import MenteeRecruit from "../components/mentoring/MenteeRecruit";
 
 
 
-function MentiMentoring() {
+function MenteeMentoring() {
 
   //글 불러오기
   const [geul, setGeul] = useState([]);
@@ -24,7 +24,6 @@ function MentiMentoring() {
       //axios.get('/dummyMtData.json')
         .then(function (response) {
           if (response.data) {
-            console.log('멘토링 조회 성공!', response.data);
             setGeul(response.data); // 연결하면서 수정하기
           }
         })
@@ -51,14 +50,9 @@ function MentiMentoring() {
   const [showApplyPopup, setShowApplyPopup] = useState(false);
 
 
-  // const onView = (id) => {
-  //   console.log('onView', id)
-  //   setCurrent(geul.find(item => item.id === id))
-    
-  // }
-
   const onView = (id) => {
-    setCurrent(id);
+    setCurrent(geul && geul.find(item => item.id === id))
+    
   }
 
   const togglePopup = () => {
@@ -67,7 +61,6 @@ function MentiMentoring() {
   };
 
   const toggleApplyPopup = () => {
-    console.log('멘토 신청 버튼 클릭');
     setShowApplyPopup(current => !current);
   };
 
@@ -82,7 +75,6 @@ function MentiMentoring() {
   const [periodSt, setPeriodSt] = useState(1);
   const handleClickPeriod = (e) => {
     setPeriodSt(e.target.value)
-    console.log(e.target.value)
   }
 
   //셀렉트 버튼 - 지역
@@ -108,13 +100,11 @@ function MentiMentoring() {
   const [regionB, setRegionB] = useState("서울특별시");
   const handleClickBRegion = (e) => {
     setRegionB(e.target.value)
-    console.log(e.target.value)
   }
 
   const [regionS, setRegionS] = useState("");
   const handleClickSRegion = (e) => {
     setRegionS(e.target.value)
-    console.log(e.target.value)
   }
 
   const region = regionB + regionS;
@@ -123,28 +113,24 @@ function MentiMentoring() {
   const [way, setWay] = useState();
   const handleClickWay = (rb) => {
     setWay(rb)
-    console.log(rb)
   }
 
    //handleSubmit
    const filterTitle = (Array.isArray(geul)) ? geul.filter((p) => {
-    return (p.name.replace(" ", "").includes(kw)) || (p.title.replace(" ", "").includes(kw))
+    return (p.name ? p.name.replace(" ", "").includes(kw) : null) || (p.title ? p.title.replace(" ", "").includes(kw) : null)
   }) : geul;
 
   //키워드 검색
   const filterKW = async () => {
     try {
-      console.log('전달 키워드', kw);
       const response = await axios.get(`http://localhost:8080/mentoring/search/${kw}`, {
         keyword: kw
       });
       if (response) {
-        setGeul(response.data);
-        console.log('키워드 검색 성공!!!', response.data);
-        
+        console.log('키워드 검색 성공', response.data);
       }
       else {
-        console.log('데이터 없음...');
+        console.log('검색 결과 없음');
       }
     } catch (err) {
       console.log("keyword search Error >>", err);
@@ -154,7 +140,6 @@ function MentiMentoring() {
   //박스 검색
   const filterBox = async () => {
     try {
-      console.log('전달 목록', fieldSt, region, periodSt, way)
       const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
        { params: {
         field: fieldSt,
@@ -164,10 +149,10 @@ function MentiMentoring() {
       );
       if (response) {
         setGeul(response.data);
-        console.log('조건 검색 성공!!!', response.data);
+        console.log('조건 검색 성공', response.data);
       }
       else {
-        console.log('데이터 없음...');
+        console.log('검색 결과 없음');
       }
     } catch (err) {
       console.log("Box search Error >>", err);
@@ -178,8 +163,8 @@ function MentiMentoring() {
     <div>
       <div className={styles.back}>
         <div className={styles.Title}>
-          멘티 찾기 {/*<button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청  </button>*/}
-          <Link to="/mentiRecruit" className={styles.apply_btn}>멘티 신청</Link>
+          멘티 찾기
+          <Link to="/mentorRecruit" className={styles.apply_btn}>멘티 신청</Link>
 
 
           <form className={styles.nav_form}>
@@ -235,7 +220,7 @@ function MentiMentoring() {
                           ))}
 
                 </select>
-                <div className={styles.hiddenblock}></div>
+                <div className={styles.hiddenblock2}></div>
               </div>
 
               <div>
@@ -261,16 +246,10 @@ function MentiMentoring() {
             ) : showPopup && (
                <MentoApply togglePopup={togglePopup}  geul={filterTitle} current={current} />
             ) }
-
-{console.log('신청 누르기 전 current', current)}
-            {console.log('신청 누르기 전 geul', geul)}
-            {console.log(current)}
-            
-
             
 
             {showApplyPopup && (
-              <MentiRecruit toggleApplyPopup={toggleApplyPopup} />
+              <MenteeRecruit toggleApplyPopup={toggleApplyPopup} />
             )}
           </div>
         </div>
@@ -280,4 +259,4 @@ function MentiMentoring() {
   );
 }
 
-export default MentiMentoring;
+export default MenteeMentoring;

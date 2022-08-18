@@ -6,6 +6,8 @@ import Login from "../user/Login";
 import point from '../../images/point.png';
 import bell from '../../images/bell.png';
 import msg from '../../images/msg.png';
+import { useRecoilValue } from "recoil";
+import { tokenState } from "../../recoil/GlobalToken";
 
 function Navbar({isLogin}) {
 
@@ -17,7 +19,13 @@ function Navbar({isLogin}) {
     color:'#4673EA',
   };
   const [loginOpen, setLoginOpen] = useState(false);
+  const [token, setToken] = useRecoilValue(tokenState);
 
+  const logoutToken = () => {
+    localStorage.removeItem('jwtToken');
+    setToken('');
+  }
+  
   const openLogin = () => {
     setLoginOpen(true);
   };
@@ -25,7 +33,7 @@ function Navbar({isLogin}) {
   const closeLogin = () => {
     setLoginOpen(false);
   }
-  
+
   return (
     <div>
     <nav className={styles.navbar}>
@@ -35,9 +43,13 @@ function Navbar({isLogin}) {
           </Link>
         </div>
         <ul className={styles.navLinks}>
+          { token ? 
+          <li className={styles.navItem} style={{textDecoration: 'none', color: 'gray'}} onClick={logoutToken} >
+            로그아웃
+          </li> : 
           <li className={styles.navItem} style={{textDecoration: 'none', color: 'gray'}} onClick={openLogin} >
-            {isLogin? '로그아웃' : '로그인'}
-          </li>
+          로그인
+        </li> }
 
           <li className={styles.navItem}>
             <Link to="/join" style={{textDecoration: 'none', color: 'gray'}} >회원가입</Link>
@@ -58,7 +70,7 @@ function Navbar({isLogin}) {
             <Link to="/mentoring/mentee" >멘티 찾기</Link>
           </div>
         </li>
-        <li><NavLink to="/volunteer" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
+        <li><NavLink to="/volunteers" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}> 자원봉사</NavLink></li>
         <li><NavLink to="/guide" style={({ isActive }) => isActive ? activeStyle : undefined } className={styles.link}>이용안내</NavLink></li>
       </ul>
 

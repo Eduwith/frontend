@@ -46,6 +46,8 @@ color: #5D6466;
   height: 93px;
   left: 65px;
   top: 263px;
+  border: 1px solid #333;
+  border-radius: 10px;
 
   font-family: Noto Sans;
   font-style: normal;
@@ -60,6 +62,8 @@ color: #5D6466;
   height: 93px;
   left: 65px;
   top: 373px;
+  border: 1px solid #333;
+  border-radius: 10px;
 
   font-family: Noto Sans;
   font-style: normal;
@@ -107,7 +111,7 @@ color: #5D6466;
   top: 546px;
   
   background: #4673EA;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   color: white;
 

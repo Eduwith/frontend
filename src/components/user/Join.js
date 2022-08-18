@@ -9,7 +9,7 @@ function Join() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState(10);
   const [gender, setGender] = useState("M");
   const [address, setAddress] = useState("");
 
@@ -43,7 +43,8 @@ function Join() {
   //const url = 'http://34.64.249.190:8080';
   const url = 'http://localhost:8080';
 
-  const handleSubmit2 = async () => {
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
     try {
      axios.post(url + '/user/join', {
         email: email,
@@ -53,7 +54,7 @@ function Join() {
         gender: gender,
         address: address,
       }).then(function (response) {
-        if(response.data.result === "SUCCESS" && emailCheck){
+        if(response.data.result === "SUCCESS" && emailCheck && password === confirmPassword ){
            alert('회원가입이 완료되었습니다.');
            navigate('/main');
         }
@@ -68,7 +69,8 @@ function Join() {
 
   const [emailCheck, setEmailCheck] = useState(true);
 
-  const emailClickEvent = () => {
+  const emailClickEvent = (e) => {
+    e.preventDefault();
     axios.post(url + '/user/join/check', {
       email: email
     })
