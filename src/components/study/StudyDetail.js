@@ -36,7 +36,7 @@ function StudyDetail() {
     console.log(location.state.scrap);
 
     const baseUrl = "http://localhost:8080";
-    const apiStudyDetail = "http://localhost:8080/api/studies"+slist.s_no
+    const apiStudyDetail = "http://localhost:8080/api/studies/"+slist.s_no
     const postStudy = async () => {
         try {
             axios.post(apiStudyDetail, {

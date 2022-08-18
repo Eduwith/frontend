@@ -23,8 +23,7 @@ function MyStudy() {
     // const baseUrl = "http://localhost:8080";
     // const getSlist = async () => {
     //     try {
-    //         setSlist(null);
-    //         const response = await axios.get(baseUrl +"/");
+    //         const response = await axios.get(baseUrl +"/api/mypage/study");
     //         setSlist(response.data); // 데이터는 response.data 안에
     //         console.log(response.data);
     //     } catch (e) {
@@ -34,7 +33,7 @@ function MyStudy() {
     // useEffect(() => {
     //     getSlist();
     // }, []);
-    //console.log(slistTag);
+
     const str = '#englist#dd#rr';
     console.log(str.split('#'));
     // const [slistTag, setSlistTag] = useState([]);
@@ -67,9 +66,7 @@ function MyStudy() {
                             </div>
                             <div>모집마감기한 {slist[0].r_end_date}</div>
                             <div className={styles.boxtag}>
-                                <div className={styles.tag}>#한글</div>
-                                <div className={styles.tag}>#다문화</div>
-                                <div className={styles.tag}>#문법</div>
+                                # {slist[0].tag}
                             </div>
                             {/* {
                                     tag.map((tag, idex) =>(

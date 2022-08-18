@@ -75,43 +75,44 @@ function Study(){
     };
 
     //검색창
-    const [searchTag, setSearchTag] = useState("");
+    const [keyword, setKeyword] = useState("");
     const handleSearchInput = (e) => {
-        setSearchTag(e.target.value);
+        setKeyword(e.target.value);
     }
     const onSearch = async () => {
         try {
-            console.log(searchTag + "검색");
-            const response = await axios.get(`http://localhost:8080/mentoring/keyword=${searchTag}`, {
-                keyword : searchTag
+            console.log(keyword + "검색");
+            const response = await axios.get(`http://localhost:8080/studies/search?keyword=${keyword}`, {
+                keyword : keyword
             });
-            if (response.data) {
-                setSlist(response.data);
-                console.log(response.data);
-            }
+            setSlist(response.data);
+            console.log(response.data);
+            // if (response.data) {
+            // }
         } catch (err) {
             console.log("search Error >>", err);
         }
     };
 
 
-    //const [slist, setSlist] = useState(slists);
-    const apiStudy = "http://localhost:8080/api/studies";
-    const [slist, setSlist] = useState([]);
-    const getSlist = async () => {
-        try {
-            const response = await axios.get(apiStudy,
-                {params : { page: page}
-            });
-            setSlist(response.data); // 데이터는 response.data 안에
-            console.log(response.data);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-    useEffect(() => {
-        getSlist();
-    }, []);
+    const [slist, setSlist] = useState(slists);
+    // const apiStudy = "http://localhost:8080/api/studies";
+    // const apipagestudy = baseUrl+ `/api/studies?page=${page}&pageSize=10`;
+    // const [slist, setSlist] = useState([]);
+    // const getSlist = async () => {
+    //     try {
+    //         const response = await axios.get(apiStudy,
+    //             {params : { page: page}
+    //         });
+    //         setSlist(response.data); // 데이터는 response.data 안에
+    //         console.log(response.data);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
+    // useEffect(() => {
+    //     getSlist();
+    // }, []);
 
     return(
         <div className={styles.wrap}>
@@ -122,7 +123,7 @@ function Study(){
                 </Link>
             </div>
             <form className={styles.s_search}>
-            <input value={searchTag} onChange={handleSearchInput} type="text" placeholder="검색어를 입력하세요" className={styles.searchInput} />
+            <input value={keyword} onChange={handleSearchInput} type="text" placeholder="검색어를 입력하세요" className={styles.searchInput} />
             <SearchIcon onClick={onSearch} src={searchicon} className={styles.searchImg} />
             </form>
             <div className={styles.sbody}>
@@ -150,10 +151,11 @@ function Study(){
                         </div>
 
                         <div className={styles.boxtag} onClick={toggleStudyDetailPopup}>
-                            {
-                                item.tag.map((tag, idex) => (
-                                    <div className={styles.tag} key={tag}>#{tag}</div>
-                                ))
+                            # {
+                                // item.tag.map((tag, idex) => (
+                                //     <div className={styles.tag} key={tag}>#{tag}</div>
+                                // ))
+                                item.tag
                             }
                         </div>
                         </Link>
