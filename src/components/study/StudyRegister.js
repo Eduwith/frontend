@@ -8,14 +8,12 @@ import axios from "axios";
 function StudyRegister() {
     const navigate = useNavigate();
 
-    const email = "email.com";
-    const current_people = "0";
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
-    const [total_people, setTPeople] = useState("");
+    const [total_people, setTPeople] = useState("1");
     const [r_end_date, setEDate] = useState("");
     const [contents, setContents] = useState("");
-    const [s_period, setSperiod] = useState("");
+    const [s_period, setSperiod] = useState("1");
   
   
     const onTitleHandler = (event) => {
@@ -52,24 +50,17 @@ function StudyRegister() {
   const postStudyRegister = async () => {
       console.log("스터디 등록 버튼 클릭됨");
       axios.post(apiStudyRegister, {
-        email: email,
         title: title,
         contents: contents,
         tag: tag,
         total_people: total_people,
-        current_people: current_people,
         r_end_date: r_end_date,
-        current_people:current_people
+        s_period: s_period
       }).then(function (response) {
-        console.log('스터디 등록 완료');
-        navigate("/studies");
-        // if (response.data) {
-        //   console.log('스터디 등록 완료');
-        //   navigate("/study");
-        // }
-        // else {
-        //   alert('등록 실패');
-        // }
+        if(response.data.result === "SUCCESS"){
+          console.log('스터디 등록 완료');
+          navigate("/studies");
+        }
       }).catch(function(error) {
         console.log(error);
         alert('등록 실패');
@@ -99,12 +90,7 @@ function StudyRegister() {
           </div>
           <div className={styles.inner_box}>
             <div className={styles.boxtop}>스터디기간</div>
-            <select name="period" onChange={onSperiodHandler}  className={styles.input_select}>
-              <option value="1">1개월 미만</option>
-              <option value="3">3개월 미만</option>
-              <option value="6">6개월 미만</option>
-              <option value="12">1년 미만</option>
-            </select>
+            <input type="number" className={styles.input_title} value={s_period} onChange={onSperiodHandler} />
           </div>
           <div className={styles.inner_box}>
             <div className={styles.boxtop}>내용</div>
@@ -123,16 +109,9 @@ function StudyRegister() {
           
         </form>
       </div>
-
     </div>
 
     );
 }
 
 export default StudyRegister;
-
-// regin_big.map((item, idex ){regionB === region_big[idex] ? area[idex].map((item) => (
-//   <option value={item} key={item}>
-//     {item}
-//   </option>
-// )) : null}

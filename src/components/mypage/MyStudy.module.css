@@ -56,9 +56,10 @@
     border: none;
     border-radius: 30px;
 
+    position: absolute;
     font-weight: 600;
     font-size: 20px;
-    margin-left: 47%;
+    margin-left: 40%;
     margin-top: 100px;
 }
 

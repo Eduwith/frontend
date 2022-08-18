@@ -22,11 +22,14 @@
     font-weight: 600;
 }
 .scrap{
-    margin-left: 60%;
+    position: absolute;
+    margin-left: 70%;
     height: 50px;
 }
 .close{
     height: 50px;
+    position: absolute;
+    margin-left: 80%;
 }
 .boxtag{
     display: flex;

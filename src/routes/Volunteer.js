@@ -17,48 +17,28 @@ function Volunteer() {
             {if(props.recruit == "N") { return "#5D6466"}
         } }
     `;
-    // const [page, setPage] = useState(1); // 현재 페이지
-    // const [currentPosts, setCurrentPosts] = useState([]); // 보여줄 포스트
-    // const [postPerPage] = useState(7); //페이지당 포스트 개수
-    // const indexOfLastPost = page * postPerPage; //해당 페이지의 첫번째 데이터 인덱스
-    // const indexOfFirstPost = indexOfLastPost - postPerPage; //해당 페이지의 마지막 데이터 인덱스
-    // const handlePageChange = (page) => { 
-    //     setPage(page); 
-    //     console.log(page); 
-    // }
 
-    // useEffect(() => {
-    //     setCurrentPosts(vlist.slice(indexOfFirstPost, indexOfLastPost));
-    // }, [indexOfFirstPost, indexOfLastPost, page]);
-
-    // const onClickTwo = () =>{
-    //     setPage(2);
-    // }
-    // const onClickone= () =>{
-    //     setPage(1);
-    // }
-
-    const [vlist, setVlist] = useState(vlists);
+    //const [vlist, setVlist] = useState(vlists);
     
-    // const [vlist, setVlist] = useState([]);
-    // const apiVolunteer = "http://localhost:8080/api/volunteers";
-    // const baseUrl =  "http://localhost:8080";
-    // const getVlist = async () => {
-    //     try {
-    //         const response = await axios.get(baseUrl+ "/api/volunteers",
-    //             {params : { page: "0"}
-    //         });
-    //         setVlist(response.data); // 데이터는 response.data 안에
-    //         // const response = await axios.get(apiVolunteer +`?page=${page}&pageSize=10`);
-    //         //setPage(response.data.params);
-    //         console.log(response.data.params);
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // };
-    // useEffect(() => {
-    //     getVlist();
-    // }, []);
+    const [vlist, setVlist] = useState([]);
+    const apiVolunteer = "http://localhost:8080/api/volunteers";
+    const baseUrl =  "http://localhost:8080";
+    const getVlist = async () => {
+        try {
+            const response = await axios.get(baseUrl+ "/api/volunteers",
+                {params : { page: "0"}
+            });
+            setVlist(response.data); // 데이터는 response.data 안에
+            // const response = await axios.get(apiVolunteer +`?page=${page}&pageSize=10`);
+            //setPage(response.data.params);
+            console.log(response.data.params);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    useEffect(() => {
+        getVlist();
+    }, []);
 
     return (
         <div className={styles.wrap}>
