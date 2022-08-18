@@ -40,16 +40,16 @@ function TestResult() {
       }
     }
   }
-  
-  const url = "http://34.64.249.190:8080"
 
   const sendMbti = () => {
-    axios.post('http://localhost:8080/userTest',{
+    axios.post('http://localhost:8080/api/userTest',{
       mbti: mbti[count].id,
       animal: mbti[count].nickname
     })
     .then((res) => {
-      console.log('mbti 결과 전송 완료 ', res.data)
+      if(res.data){
+        console.log('mbti 결과 전송 완료 ', res.data)
+      }
     });
   }
 

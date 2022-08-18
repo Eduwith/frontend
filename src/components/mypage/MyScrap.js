@@ -1,5 +1,5 @@
 import Navbar from "../home/Navbar";
-import styles from "./MyMento.module.css";
+import styles from "./MyMento/MyMento.module.css";
 import myimg from "../../images/myimg.png";
 import {NavLink} from "react-router-dom";
 

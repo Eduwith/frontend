@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import styles from "./Login.module.css"
 import { MdClose } from "react-icons/md";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import axios from 'axios';
 import setAuthorizationToken from './setAuthorizationToken';
-import { useCookies } from 'react-cookie';
 import { useRecoilState } from 'recoil';
 import { nicknameState } from '../../recoil/User';
 import { IdState } from '../../recoil/RecoilId';
+import { tokenState } from '../../recoil/GlobalToken';
 
 
 const Login = (props) => {
   const navigate = useNavigate();
-  const [cookies, setCookie] = useCookies(['id']);
 
   const [username, setUsername] = useRecoilState(nicknameState);
   const [userID, setUserId] = useRecoilState(IdState);
   const { open, close } = props;
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
+  const [tokenData, setTokenData] = useRecoilState(tokenState);
 
   const onEmailHandler = (event) => { // id 저장
     console.log(event.currentTarget.value)
@@ -36,21 +36,30 @@ const Login = (props) => {
   const login = (e) => {
     e.preventDefault();
     try {
-      axios.post('http://localhost:8080/user/login', {
+      axios.post(url + '/user/login', {
         email: email,
         pwd: pw
       })
         .then((res) => {
-          const token = res.data.accessToken;
-          localStorage.setItem('jwtToken', token);
-          setAuthorizationToken(token);
-          setUsername(res.data.name);
-          setUserId(res.data.email);
+          if(res.data){
+            const token = res.data.accessToken;
+            localStorage.setItem('jwtToken', token);
+            setTokenData(localStorage.getItem('jwtToken'));
+            setAuthorizationToken(token);
+            setUsername(res.data.name);
+            setUserId(res.data.email);
+            props.close(); 
+            navigate('/main');
+          }
+          else {
+            alert('로그인 실패: ID 또는 PW를 잘못 입력하셨습니다.');
+          }
         });
     } catch (err) {
       console.log('login err', err)
 
     }
+
   }
 
   return (
@@ -75,7 +84,7 @@ const Login = (props) => {
               onChange={onPwHandler}
             />
             <div className={styles.findpw}>비밀번호를 잊어버리셨나요?</div>
-            <div className={styles.sign}>회원가입</div>
+            <div className={styles.sign}><Link to="/join">회원가입</Link></div>
             <button className={styles.lbtn} type="submit">
               LOGIN
             </button>

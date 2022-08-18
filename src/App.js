@@ -13,19 +13,19 @@ import Study from "./routes/Study";
 import StudyDetail from './components/study/StudyDetail';
 import StudyRegister from './components/study/StudyRegister';
 import MyPage from "./routes/Mypage";
-import MyMentoApply from './components/mypage/MyMentoApply';
-import MyMento from './components/mypage/MyMento';
+import MyMentoApply from './components/mypage/MyMentoApply/MyMentoApply';
+import MyMento from './components/mypage/MyMento/MyMento';
 import MyStudy from './components/mypage/MyStudy';
 import MyScrap from './components/mypage/MyScrap';
 import MyPoint from './components/mypage/MyPoint';
 import Navbar from './components/home/Navbar';
-import MentiMentoring from './routes/MentiMentoring';
 import TestMain from './components/test/TestMain';
 import TestQna from './components/test/TestQna';
 import TestResult from './components/test/TestResult';
-import MyEditRecruit from './components/mypage/MyEditRecruit';
+import MyEditRecruit from './components/mypage/MyMentoApply/MyEditRecruit';
 import MenteeRecruit from './components/mentoring/MenteeRecruit';
 import Notice from './components/mypage/Notice';
+import MenteeMentoring from './routes/MenteeMentoring';
 
 function App() {
 
@@ -62,8 +62,9 @@ function App() {
             <Route path="/result" element={<TestResult />}></Route>
 
             <Route path="/mentoring/mentor" element={<Mentoring/>}></Route>
-            <Route path="/mentoring/mentee" element={<MentiMentoring/>}></Route>
+            <Route path="/mentoring/mentee" element={<MenteeMentoring/>}></Route>
 
+            <Route path="/mentorRecruit" element={<MenteeRecruit />}></Route>
             <Route path="/menteeRecruit" element={<MenteeRecruit />}></Route>
             <Route path="/myEditRecruit/:m_no" element={<MyEditRecruit />}></Route>
 

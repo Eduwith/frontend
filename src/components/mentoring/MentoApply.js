@@ -5,8 +5,6 @@ import pin from "../../images/animal.png";
 import { ImCross } from "react-icons/im";
 import {BsBookmarkStar, BsBookmarkStarFill} from "react-icons/bs";
 import axios from "axios";
-import { useRecoilValue } from "recoil";
-import { IdState } from "../../recoil/RecoilId";
 
 const Background = styled.div`
   position: fixed;
@@ -36,14 +34,14 @@ const Box = styled.div`
 `;
 
 
-function MentoApply({ togglePopup, geul, current}) {
+function MentoApply({ togglePopup, current}) {
 
   const [bmk, setBmk] = useState(false);
   const idx = current - 1;
 
-  const {m_no, title, name, field, m_period, way, region, keyword, info} = geul[Object.keys(geul)[idx]];
+  //const {m_no, title, name, field, m_period, way, region, keyword, info} = geul[Object.keys(geul)[idx]];
+  const {m_no, title, name, field, m_period, way, region, keyword, info} = current;
 
-  console.log(geul[idx]);
   const onClickBMK = () => {
     setBmk(current => !current);
     console.log(m_no);

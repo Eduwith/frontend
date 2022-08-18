@@ -26,7 +26,7 @@ function Mentoring() {
         .then(function (response) {
           if (response) {
             console.log('멘토링 조회 성공!');
-            setGeul(response.data.lists); // 연결하면서 수정하기
+            setGeul(response.data); // 연결하면서 수정하기
 
           }
         })
@@ -52,18 +52,10 @@ function Mentoring() {
 
   const [showApplyPopup, setShowApplyPopup] = useState(false);
 
-
-
-  // const onView = (id) => {
-  //   console.log('onView', id)
-  //   setCurrent(geul.find(item => item.id === id))
-    
-  // }
-
   const onView = (id) => {
-    setCurrent(id);
+    setCurrent(geul && geul.find(item => item.id === id))
+    
   }
-
 
   const togglePopup = () => {
     setShowPopup(current => !current);
@@ -71,7 +63,6 @@ function Mentoring() {
   };
 
   const toggleApplyPopup = () => {
-    console.log('멘토 신청 버튼 클릭');
     setShowApplyPopup(current => !current);
   };
 
@@ -86,13 +77,10 @@ function Mentoring() {
   const [periodSt, setPeriodSt] = useState(1);
   const handleClickPeriod = (e) => {
     setPeriodSt(e.target.value)
-    console.log(e.target.value)
   }
 
   //셀렉트 버튼 - 지역
-
   const region_big = ["서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
-
   const area1 = ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
   const area2 = ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구", "강화군", "옹진군"];
   const area3 = ["대덕구", "동구", "서구", "유성구", "중구"];
@@ -109,20 +97,16 @@ function Mentoring() {
   const area14 = ["경산시", "경주시", "구미시", "김천시", "문경시", "상주시", "안동시", "영주시", "영천시", "포항시", "고령군", "군위군", "봉화군", "성주군", "영덕군", "영양군", "예천군", "울릉군", "울진군", "의성군", "청도군", "청송군", "칠곡군"];
   const area15 = ["거제시", "김해시", "마산시", "밀양시", "사천시", "양산시", "진주시", "진해시", "창원시", "통영시", "거창군", "고성군", "남해군", "산청군", "의령군", "창녕군", "하동군", "함안군", "함양군", "합천군"];
   const area16 = ["서귀포시", "제주시", "남제주군", "북제주군"];
-
   const area =
   [area1, area2, area3, area4, area5, area6, area7, area8, area9, area10, area11, area12, area13, area14, area15, area16 ];
-
   const [regionB, setRegionB] = useState("서울특별시");
   const handleClickBRegion = (e) => {
     setRegionB(e.target.value)
-    console.log(e.target.value)
   }
 
   const [regionS, setRegionS] = useState("");
   const handleClickSRegion = (e) => {
     setRegionS(e.target.value)
-    console.log(e.target.value)
   }
 
   const region = regionB + regionS;
@@ -131,58 +115,50 @@ function Mentoring() {
   const [way, setWay] = useState();
   const handleClickWay = (rb) => {
     setWay(rb)
-    console.log(rb)
   }
-
 
    //handleSubmit
    const filterTitle = (Array.isArray(geul)) ? geul.filter((p) => {
-    return (p.name.replace(" ", "").includes(kw)) || (p.title.replace(" ", "").includes(kw))
+    return (p.name ? p.name.replace(" ", "").includes(kw) : null) || (p.title ? p.title.replace(" ", "").includes(kw) : null)
   }) : geul;
 
   //키워드 검색
   const filterKW = async () => {
     try {
-      console.log('전달 키워드', kw);
       const response = await axios.get(`http://localhost:8080/mentoring/search/${kw}`, {
         keyword: kw
       });
-
-      if (response.data) {
-        setGeul(response.data);
-        console.log('키워드 검색 성공!!!', response.data);
-        
+      if (response) {
+        console.log('키워드 검색 성공', response.data);
       }
       else {
-        console.log('데이터 없음...');
+        console.log('검색 결과 없음');
       }
     } catch (err) {
       console.log("keyword search Error >>", err);
     }
   };
 
-
+  //박스 검색
   const filterBox = async () => {
-    // try {
-    //   console.log('전달 목록', fieldSt, region, periodSt, way)
-    //   const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
-    //    { params: {
-    //     field: fieldSt,
-    //     region: region,
-    //     m_period: periodSt,
-    //     way: way}}
-    //   );
-    //   if (response) {
-    //     setGeul(response.data);
-    //     console.log('조건 검색 성공!!!', response.data);
-    //   }
-    //   else {
-    //     console.log('데이터 없음...');
-    //   }
-    // } catch (err) {
-    //   console.log("Box search Error >>", err);
-    // }
-
+    try {
+      const response = await axios.get('http://localhost:8080/mentoring/search/filter', 
+       { params: {
+        field: fieldSt,
+        region: region,
+        m_period: periodSt,
+        way: way}}
+      );
+      if (response) {
+        setGeul(response.data);
+        console.log('조건 검색 성공', response.data);
+      }
+      else {
+        console.log('검색 결과 없음');
+      }
+    } catch (err) {
+      console.log("Box search Error >>", err);
+    }
   }
 
   return (
@@ -190,8 +166,8 @@ function Mentoring() {
       <div className={styles.back}>
         <div className={styles.Title}>
 
-          멘토 찾기 {/*<button className={styles.apply_btn} onClick={toggleApplyPopup}> 멘토 신청  </button>*/}
-          <Link to="/mentiRecruit" className={styles.apply_btn}>멘토 신청</Link>
+          멘토 찾기
+          <Link to="/menteeRecruit" className={styles.apply_btn}>멘토 신청</Link>
 
           <form className={styles.nav_form}>
             <input value={kw} onChange={handleUserInput} type="text" placeholder="멘토 검색" className={styles.total_search} />
@@ -277,18 +253,12 @@ function Mentoring() {
                <MentoApply togglePopup={togglePopup}  geul={filterTitle} current={current} />
             ) : showPopup && (
                <MentoApply togglePopup={togglePopup}  geul={filterTitle} current={current} />
-            ) }
-
-{console.log('신청 누르기 전 current', current)}
-            {console.log('신청 누르기 전 geul', geul)}
-            {console.log(current)}
-            
-
-            
+            ) }                      
 
             {showApplyPopup && (
               <MentiRecruit toggleApplyPopup={toggleApplyPopup} />
             )}
+
           </div>
         </div>
       </div>

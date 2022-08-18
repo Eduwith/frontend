@@ -1,10 +1,9 @@
-import Navbar from "../home/Navbar";
+import Navbar from "../../home/Navbar";
 import styles from "./MyMentoApply.module.css";
-import myimg from "../../images/myimg.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MyWroteGeul from "./MyWroteGeul";
+import MyWroteGeul from "../MyWroteGeul";
 import MyApplyList from "./MyApplyList";
 
 function MyMentoApply() {
