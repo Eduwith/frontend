@@ -96,12 +96,11 @@ function Study(){
 
 
     //const [slist, setSlist] = useState(slists);
-    const [slist, setSlist] = useState([]);
     const apiStudy = "http://localhost:8080/api/studies";
-    //const baseUrl =  "http://localhost:8080";
+    const [slist, setSlist] = useState([]);
     const getSlist = async () => {
         try {
-            const response = await axios.get(baseUrl+ `/api/studies?page=${page}&pageSize=10`,
+            const response = await axios.get(apiStudy,
                 {params : { page: page}
             });
             setSlist(response.data); // 데이터는 response.data 안에
@@ -135,8 +134,8 @@ function Study(){
                             <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap: scrap}} style={{ textDecoration: "none", color: "#333333" }}>
                                 <div className={styles.boxtitle} onClick={toggleStudyDetailPopup}>{item.title}</div>
                             </Link>
-                            {getScrap(item.scrapYN)}
-                            {console.log(scrap)}
+                            {/* {getScrap(item.scrapYN)}
+                            {console.log(scrap)} */}
                             {scrap ? <img src={scrappedicon} className={styles.scrap} onClick={onClickScrap} /> : <img src={scrapicon} className={styles.scrap} onClick={onClickScrap} />}
                         </div>
                         <Link to={`/studies/${item.s_no}`} state={{ data: item, scrap : scrap, }} style={{textDecoration : "none", color: "#333333"}}>
@@ -163,12 +162,9 @@ function Study(){
                              )}  */}
                     </Sbox>
                 ))}
-                {console.log(s_no)}
             
                 
             </div>
-            <div onClick={onClickone}>1</div>
-            <div onClick={onClickTwo}>2</div>
             {/* <Paging className={styles.vbottom} page={page} totalCount={slist.length} postPerPage={postPerPage}
                     pageRangeDisplayed={5} handlePageChange={handlePageChange}/> */}
         </div>

@@ -84,18 +84,22 @@ function StudyRegister() {
       
         <form onSubmit={postStudyRegister}>
           <div className={styles.inner_box}>
-            <div className={styles.left}>제목</div>
-            <input type="text" className={styles.input_title} value={title} onChange={onTitleHandler} />
+            <div className={styles.boxtop}>제목</div>
+            <input type="text" className={styles.input_title} value={title} onChange={onTitleHandler} placeholder="제목을 입력하세요" />
           </div>
           <div className={styles.inner_display}>
-            <div className={styles.left}>모집마감기한</div>
+            <div>
+            <div className={styles.boxtop}>모집마감기한</div>
             <input type="text" className={styles.input_title} value={r_end_date} onChange={onEDateHandler} />
-            <div className={styles.left}>모집인원</div>
+            </div>
+            <div className={styles.displaybox}>
+            <div className={styles.boxtop}>모집인원</div>
             <input type="number" className={styles.input_title} value={total_people} onChange={onTPeopleHandler} />
+            </div>
           </div>
           <div className={styles.inner_box}>
-            <div className={styles.left}>스터디기간</div>
-            <select name="period" onChange={onSperiodHandler}>
+            <div className={styles.boxtop}>스터디기간</div>
+            <select name="period" onChange={onSperiodHandler}  className={styles.input_select}>
               <option value="1">1개월 미만</option>
               <option value="3">3개월 미만</option>
               <option value="6">6개월 미만</option>
@@ -103,12 +107,12 @@ function StudyRegister() {
             </select>
           </div>
           <div className={styles.inner_box}>
-            <div className={styles.left}>내용</div>
-            <input type="text" value={contents} onChange={onContentsHandler} className={styles.input_content} />
+            <div className={styles.boxtop}>내용</div>
+            <input type="text" value={contents} onChange={onContentsHandler} className={styles.input_content} placeholder="내용을 입력하세요"  />
           </div>
           <div className={styles.inner_box}>
-            <div className={styles.left}>태그</div>
-            <input type="text" value={tag} onChange={onTagHandler} className={styles.input_desc} />
+            <div className={styles.boxtop}>태그</div>
+            <input type="text" value={tag} onChange={onTagHandler} className={styles.input_title} placeholder="#태그를 입력하세요" />
           </div>
 
 
