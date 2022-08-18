@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 function MyPoint() {
 
-  const [stamp, setStamp] = useState(2);
+  const [stamp, setStamp] = useState(0);
   const [point, setPoint] = useState(0);
   const [stampDay, setStampDay] = useState(0);
   const [userPointList, setUserPointList] = useState(null);
@@ -23,7 +23,7 @@ function MyPoint() {
   const url = "http://localhost:8080";
 
   const getStampPoint = () => {
-    axios.get(url+ '/user/stamp')
+    axios.get(url+ '/user/attendance')
     .then((res) => {
       setStamp(res.data.stamp);
       setPoint(res.data.point);
@@ -80,11 +80,11 @@ function MyPoint() {
               <span className={styles.stampCnt}> <b>{stamp}</b> 개</span>
             </div>
             <div className={styles.stampSubBox}>
-              {[...Array(stamp)].map((n, index) => {
+              {[...Array(stampDay)].map((n, index) => {
 
                 return (<img src={stampT} className={styles.stampBd} key={index} />)
               })}
-              {[...Array(7 - stamp)].map((n, index) => {
+              {[...Array(7 - stampDay)].map((n, index) => {
 
                 return (<img src={stampF} className={styles.stampBd} key={index} />)
               })}
@@ -99,7 +99,7 @@ function MyPoint() {
             </div>
               
               {
-                userPointList.map((item) => {
+                userPointList && userPointList.map((item) => {
                   <div className={styles.pointBox}>
                     <span className={styles.pointTitle}>{item.title}</span>
                     <span className={styles.pointDate}>{item.date}</span>

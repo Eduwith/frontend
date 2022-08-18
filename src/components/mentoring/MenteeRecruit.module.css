@@ -125,6 +125,7 @@ border: 1px solid #666;
   font-size: 17px;  
   border-radius: 5px;
   line-height: 30px;
+  padding-left: 10px;
 }
 
 .input_desc::placeholder {
