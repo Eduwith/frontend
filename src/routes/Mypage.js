@@ -19,24 +19,24 @@ function MyPage() {
     }
     const navigate = useNavigate();
 
-    const [user, setuser] = useState(userdata);
+    //const [user, setuser] = useState(userdata);
     const baseurl = "http://localhost:8080";
-    // const [user, setUser] = useState([]);
-    // const [error, setError] = useState(null);
-    // const apiMypage = "http://localhost:8080/user/mypage";
-    // const getUser = async () => {
-    //     try {
-    //         const response = await axios.get(baseurl+ "/user/mypage");
-    //         setUser(response.data);
-    //     } catch (e) {
-    //         setError(e);
-    //         console.log(e);
-    //     }
-    // };
+    const [user, setUser] = useState([]);
+    const [error, setError] = useState(null);
+    const apiMypage = "http://localhost:8080/user/mypage";
+    const getUser = async () => {
+        try {
+            const response = await axios.get(baseurl+ "/user/mypage");
+            setUser(response.data);
+        } catch (e) {
+            setError(e);
+            console.log(e);
+        }
+    };
 
-    // useEffect(() => {
-    //     getUser();
-    // }, []);
+    useEffect(() => {
+        getUser();
+    }, []);
 
     const editUser = async () => {
         console.log("수정 버튼 클릭됨");

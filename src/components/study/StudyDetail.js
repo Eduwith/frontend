@@ -8,7 +8,6 @@ import scrapicon from "../../images/scrap.png";
 import scrappedicon from "../../images/scrapped.png";
 import closeicon from "../../images/close.png";
 import peopleicon from "../../images/people.png";
-//import slists from "../../data_study";
 
 
 const Background = styled.div`
@@ -62,11 +61,9 @@ function StudyDetail() {
 
     const onClickApply = () => {
         alert('신청되었습니다.');
-        //toggleStudyDetailPopup(false);
         postStudy();
     }
     const onClickClose = () => {
-        //toggleStudyDetailPopup(false);
         navigate('/studies');
     }
 
