@@ -25,6 +25,7 @@ import TestQna from './components/test/TestQna';
 import TestResult from './components/test/TestResult';
 import MyEditRecruit from './components/mypage/MyEditRecruit';
 import MenteeRecruit from './components/mentoring/MenteeRecruit';
+import Notice from './components/mypage/Notice';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/main" element={<Home />}></Route>
             <Route path="/join" element={<Join />}></Route>
+            <Route path='/notice' element={<Notice/>}></Route>
 
             <Route path="/mypage" element={<MyPage/>}></Route>
             <Route path="/mymentoapply" element={<MyMentoApply/>}></Route>
